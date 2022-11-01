@@ -51,11 +51,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.1 Flow Diagramming" href="Ch2_1FlowDiagrams.html" />
+    <link rel="next" title="2.1 Flow Diagram" href="Ch2_1FlowDiagrams.html" />
     <link rel="prev" title="Exercises" href="../Chapter1/Ch1_exercises.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -181,32 +183,27 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="Ch2_1FlowDiagrams.html">
-     2.1 Flow Diagramming
+     2.1 Flow Diagram
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_2FlowToCode.html">
-     2.2 From Flow to Code
+    <a class="reference internal" href="Ch2_2FlowBranching.html">
+     2.2 Allowing Choices in Flowcharts
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_3FlowBranching.html">
-     2.3 Allowing Choices
+    <a class="reference internal" href="Ch2_3ConditionalStatements.html">
+     2.3 Conditional Statements
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_4ConditionalStatements.html">
-     2.4 Conditional Statements
+    <a class="reference internal" href="Ch2_4IfElse.html">
+     2.4 if / else statements
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_5IfElse.html">
-     2.5 if / else statements
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_6SimpleRecursion.html">
-     2.6 Repetition with Conditions and Functions
+    <a class="reference internal" href="Ch2_5SimpleRecursion.html">
+     2.5 Repetition with Conditions and Functions
     </a>
    </li>
    <li class="toctree-l2">
@@ -432,6 +429,52 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="algorithmic-thinking">
 <h1>2 Algorithmic Thinking<a class="headerlink" href="#algorithmic-thinking" title="Permalink to this headline">#</a></h1>
+<p>When we first took algebra, math teachers said we were solving algorithms which of course causes to associate the term with algebra. The same is true with formulas. We were often given something like the following:</p>
+<p><span class="math notranslate nohighlight">\( f(x) = 2x + 3\)</span></p>
+<p>And we were told, if <span class="math notranslate nohighlight">\(f(x)\)</span> is 9, solve for <span class="math notranslate nohighlight">\(x\)</span>. What we weren’t told was the <em>why</em>. We were essentially a computer solving someone elses algorithm. Instead with programming we flip that. We notice that</p>
+<p><span class="math notranslate nohighlight">\( f(x)  = 2x + 3\)</span></p>
+<p>is a <em>function</em>. <span class="math notranslate nohighlight">\(x\)</span> is the parameter, and we have been given a repeatable formula to solve. We could rewrite it in python even.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">slope</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>For any value of <span class="math notranslate nohighlight">\(x\)</span> we can repeat that function. For longer problems, we were often given multiple lines. These are all algorithms in the fact they are set actions to follow and repeat.</p>
+<p>Looking at  another domain, we can also consider recipes. A recipe has two parts to it. One part is the ingredients. The other part is the instructions we use to assemble the recipe.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-pb-j-game admonition">
+<p class="admonition-title">PB&amp;J Game  </p>
+<p>There is a game programming instructors will play. They ask students to explain how to make a PB&amp;J sandwich to them, adn they take everything they say <em>literally</em>. Get some peanut butter (from where?) take out some and spread it (they use their hands), etc. Context matters!</p>
+</div>
+</aside>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Million Dollar Sandwich</div>
+<p class="sd-card-text"><strong>Ingredients</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">Two slices of sandwich bread</p></li>
+<li><p class="sd-card-text">2 tablespoons of peanut butter</p></li>
+<li><p class="sd-card-text">2 tablespoons of strawberry jam</p></li>
+<li><p class="sd-card-text">2 large strawberries</p></li>
+</ul>
+<p class="sd-card-text"><strong>Steps</strong></p>
+<ol class="simple">
+<li><p class="sd-card-text">Spread peanut butter onto one side of one slice of bread</p></li>
+<li><p class="sd-card-text">Spread jam onto one side of one slice of bread</p></li>
+<li><p class="sd-card-text">Slice strawberries and place onto jam side of bread</p></li>
+<li><p class="sd-card-text">Place peanut butter slice on top of jam slice</p></li>
+<li><p class="sd-card-text">Serve</p></li>
+</ol>
+</div>
+</div>
+<p>The ingredients are variables, and the steps are operations. By following th operations in order, you are essentially following an algorithm. That means <em>cooking/baking</em> is algorithmic thinking! If you are a writer who follows set pattern when writing, such as the five paragraph essay or the heroes journey, you are following algorithmic thinking.</p>
+<p>With computer science, we learn to how to document and define these steps for a computer to follow. The problem is that both examples have <strong>context</strong>. When we say spread the peanut butter, we know that they mean with a knife. When we say, place the slices together, we know the peanut butter and jam should be facing each other! A computer doesn’t know this, as it doesn’t have learned context to adjust.</p>
+<blockquote class="epigraph">
+<div><p>You have to be exact with computers, because they can’t make up the missing steps!</p>
+</div></blockquote>
+<p>In programming, we always have to set our variables, define our steps carefully, and document what we do. However, the languages we use may vary based on the problem. Furthermore, how we do it may vary, which is why  programming can be difficult - there is rarely a single answer to the problem, if the problem is sufficiently large enough. However, there are more correct answers than others in how we do things, and thinking via Divide-Conquer-Glue will get you closer to seeing the differences.</p>
+<p>In this chapter, we explore more tools to help us in our algorithmic thinking. Most notably, we will learn how to program without writing code, but in a repeatable manner anyone can reproduce and follow. We will also be given the ability to add options and choices in our code, so our algorithms can further break the mode of a single action but allow multiple actions based on the information at hand. Let’s get cooking!</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -473,7 +516,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="Ch2_1FlowDiagrams.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2.1 Flow Diagramming</p>
+        <p class="prev-next-title">2.1 Flow Diagram</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

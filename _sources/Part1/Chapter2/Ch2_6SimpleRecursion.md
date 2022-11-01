@@ -1,1 +1,0 @@
-# 2.6 Repetition with Conditions and Functions
