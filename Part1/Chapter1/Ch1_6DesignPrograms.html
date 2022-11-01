@@ -1,0 +1,1145 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.6 Divide-Conquer-Glue (aka Designing Programs) &#8212; Computational Thinking with Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/my_styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exercises" href="Ch1_exercises.html" />
+    <link rel="prev" title="1.5 Functions" href="Ch1_5Functions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Thinking with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Computational Thinking with Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Programming
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Ch1_0Intro.html">
+   1. Getting Started: Your Instrument
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_1Computer.html">
+     1.1 Computers are everywhere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_2ComputerWorks.html">
+     1.2 How does it all work?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_3FirstProgram.html">
+     1.3 Let’s Program!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_4Operations.html">
+     1.4 Basic Operators and Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_5Functions.html">
+     1.5 Functions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.6 Divide-Conquer-Glue (aka Designing Programs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_exercises.html">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter2/Ch2_0Intro.html">
+   2 Algorithmic Thinking
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_1FlowDiagrams.html">
+     2.1 Flow Diagramming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_2FlowToCode.html">
+     2.2 From Flow to Code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_3FlowBranching.html">
+     2.3 Allowing Choices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_4ConditionalStatements.html">
+     2.4 Conditional Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_5IfElse.html">
+     2.5 if / else statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_6SimpleRecursion.html">
+     2.6 Repetition with Conditions and Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_exercises.html">
+     Chapter 2 Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter3/Ch3_0Intro.html">
+   3 Sequential Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_1BasicList.html">
+     3.1 Basic Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_2Tuple.html">
+     3.2 Tuple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_3AccessingSequentialData.html">
+     3.3 Accessing Sequential Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_4StringsLists.html">
+     3.4 Strings are Sequential
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_5ForEachLoop.html">
+     3.5 Foreach Loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_6Range.html">
+     3.6 Useful Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_7FileReading.html">
+     3.7 Data From Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_exercises.html">
+     Chapter 3 Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter4/Ch4_0Intro.html">
+   Return to Types and Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter5/Ch5_0Intro.html">
+   Return to Control Flow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   Citations and Glossary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter1/Ch1_6DesignPrograms.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/lionelle/computational-thinking-with-python/blob/main/Part1/Chapter1/Ch1_6DesignPrograms.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/lionelle/computational-thinking-with-python"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Part1/Chapter1/Ch1_6DesignPrograms.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../_sources/Part1/Chapter1/Ch1_6DesignPrograms.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decomposition">
+   Decomposition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-and-repeat">
+     Evaluation and Repeat
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstraction">
+   Abstraction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeating-this-process">
+     Repeating This Process
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documenting">
+   Documenting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice">
+     Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-code">
+   Writing Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validate-code">
+   Validate Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glue">
+   Glue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#designing-with-modification-in-mind">
+   Designing with modification in mind
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-word-on-error-checking">
+   A Word on Error Checking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reflection">
+   Reflection
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1.6 Divide-Conquer-Glue (aka Designing Programs)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decomposition">
+   Decomposition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-and-repeat">
+     Evaluation and Repeat
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstraction">
+   Abstraction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeating-this-process">
+     Repeating This Process
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documenting">
+   Documenting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice">
+     Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-code">
+   Writing Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validate-code">
+   Validate Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glue">
+   Glue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#designing-with-modification-in-mind">
+   Designing with modification in mind
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-word-on-error-checking">
+   A Word on Error Checking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reflection">
+   Reflection
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="divide-conquer-glue-aka-designing-programs">
+<h1>1.6 Divide-Conquer-Glue (aka Designing Programs)<a class="headerlink" href="#divide-conquer-glue-aka-designing-programs" title="Permalink to this headline">#</a></h1>
+<p>You are learning some of the basic syntax of programming, but what is more important is how you look at he problems, break them down, and solve them. Problems itself is problematic, as while programmers are technically problem solvers, they don’t often view everything they are doing is a problem! Don’t get caught up on the word, and think of it as more of tasks and building.</p>
+<p>The primary means in which we look at problems is via <strong>Divide-Conquer-Glue</strong>. Let’s take the following scenario, and break it down before we write code.</p>
+<div class="admonition-scenario admonition">
+<p class="admonition-title">Scenario</p>
+<p>Your client has a database of ages, and knows the current year. He wants to be able to type the name of the person, the year they were born, and the current year, and your program is to give them the age. (sound familiar?)</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Programmers Notebook</p>
+<p>Some programmers keep notebooks to help them with design, and instead of typing out the tasks, they sketch them in their notebook. You should try it out!</p>
+</aside>
+<p>Now the question becomes, how do we take this idea, and break it up into a program. The first stage is <strong>writing down</strong> often as a comment in your file the various tasks you have to accomplish!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Type name of client</span>
+<span class="c1"># 2. Type year they were born</span>
+<span class="c1"># 3. Type current year</span>
+<span class="c1"># 4. Calculate age from born and current year</span>
+<span class="c1">#    * Note: will need to convert from input to int</span>
+<span class="c1"># 5. Print out the age </span>
+<span class="c1">#    * Probably should include name also, ask client on exact format </span>
+<span class="c1">#    * If this was an assignment, you should ask!</span>
+</pre></div>
+</div>
+<p>You should open up a file and type the stuff above. For clarity, displaying it as part of the page below.</p>
+<ol class="simple">
+<li><p>Type name of client</p></li>
+<li><p>Type year they were born</p></li>
+<li><p>Type current year</p></li>
+<li><p>Calculate age from born and current year</p>
+<ul class="simple">
+<li><p>Note: will need to convert from input to int</p></li>
+</ul>
+</li>
+<li><p>Print out the age</p>
+<ul class="simple">
+<li><p>Probably should include name also, ask client on exact format</p></li>
+<li><p>If this was an assignment, you should ask!</p></li>
+</ul>
+</li>
+</ol>
+<section id="decomposition">
+<h2>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this headline">#</a></h2>
+<p>Taking the tasks steps above, we can break the program up into three major components.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Input</div>
+<p class="sd-card-text">Collect Data From Client</p>
+<ul class="simple">
+<li><p class="sd-card-text">Name</p></li>
+<li><p class="sd-card-text">Current Year</p></li>
+<li><p class="sd-card-text">Birth Year</p></li>
+</ul>
+<ul class="simple">
+<li><p class="sd-card-text">Convert Years to <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p class="sd-card-text">Needs: input from client</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Calculations</div>
+<p class="sd-card-text">Take Current Year minus Birth year</p>
+<ul class="simple">
+<li><p class="sd-card-text">Needs: current_year as <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p class="sd-card-text">Needs: birth_year as <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Output</div>
+<p class="sd-card-text">Print out age and person’s name</p>
+<ul class="simple">
+<li><p class="sd-card-text">Needs: age from Calculations</p></li>
+<li><p class="sd-card-text">Needs: name from Input</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>“This is a lot of work for a small program”.</p>
+<p>Remember, you are training your mind to look at these problems. They
+may start small now, but make sure to <strong>practice the process</strong>, for when
+programs get very, very large!</p>
+</div>
+</aside>
+<section id="evaluation-and-repeat">
+<h3>Evaluation and Repeat<a class="headerlink" href="#evaluation-and-repeat" title="Permalink to this headline">#</a></h3>
+<p>For each of these stages in the program, we should be able to ask.</p>
+<ol class="simple">
+<li><p>Are they sufficiently small that we can isolate the tasks?</p>
+<ul class="simple">
+<li><p>If it isn’t true, we take the stage and start the process again for that stage.</p></li>
+<li><p>This gives layers of decomposition.</p></li>
+</ul>
+</li>
+<li><p>Can each stage be fully tested with mock (made-up) inputs without the other stage?</p>
+<ul class="simple">
+<li><p>This condition isn’t always true, but the closer we can make it, the better.</p></li>
+</ul>
+</li>
+</ol>
+<p>For each stage, we can say, yes - though there may be way to break down stage one into two components.</p>
+</section>
+</section>
+<section id="abstraction">
+<h2>Abstraction<a class="headerlink" href="#abstraction" title="Permalink to this headline">#</a></h2>
+<p>Looking at the <strong>Input</strong> stage of this program, we start thinking about what parts are in common, and can we represent them more abstractly, in a more generalized manner.</p>
+<ol class="simple">
+<li><p>Getting the name requests input from the client and is going to need to set a <code class="docutils literal notranslate"><span class="pre">str</span></code> value.</p></li>
+<li><p>Getting the current year is going to need input from a client (that is a whole number) and return an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+<li><p>Getting the birth year is going to need input from a client (that is a whole number) and return an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+</ol>
+<p>Right there you see current year and birth year are performing the same task, the only difference is the prompt (string message) you use for the client. As such, we could further break that down into a component.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+get_year</div>
+<p class="sd-card-text">Prompts a user with a message, and returns an <code class="docutils literal notranslate"><span class="pre">int</span></code> value the represents a year.</p>
+<ul class="simple">
+<li><p class="sd-card-text">Needs: <code class="docutils literal notranslate"><span class="pre">str</span></code> message for prompt</p></li>
+<li><p class="sd-card-text">Returns: <code class="docutils literal notranslate"><span class="pre">int</span></code> year</p></li>
+</ul>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title">Strange Syntax?</p>
+<p>The <em>: type</em> and <em>-&gt; return type</em> syntax is actually valid python syntax, but it is optional. Many industry standards require that programmers put them into their code. We will use it for descriptions at this point, but we won’t put it in most of the code so it is easier to read. Later in this book, we will start including them in the code as the programs become more complex.</p>
+</aside>
+<p>Combining it all together, I believe I have the following functions to write for the <strong>Input</strong> stage. Note
+the <em>-&gt;</em> symbol reminds us of what it is going to return from the function, and the <em>: type</em> tells me
+what I am expecting. We will explore this more in the future, but for now it is safe to use it
+in your design.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_name()</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_year(prompt:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code></p></li>
+</ul>
+<section id="repeating-this-process">
+<h3>Repeating This Process<a class="headerlink" href="#repeating-this-process" title="Permalink to this headline">#</a></h3>
+<p>We should repeat this process for every stage defined. However, in the Calculations and Output stages,
+we really only have one action each. Giving us the following functions</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_age(current_year:</span> <span class="pre">int,</span> <span class="pre">birth_year:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">print_results(name:</span> <span class="pre">str,</span> <span class="pre">age:</span> <span class="pre">int)</span></code></p>
+<ul>
+<li><p>Notice, this doesn’t actually return anything.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="documenting">
+<h2>Documenting<a class="headerlink" href="#documenting" title="Permalink to this headline">#</a></h2>
+<p>We are almost to writing code, in fact we can now write our method definitions and our docstring! This process is often called “stubbing” or “function stubs” your code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_name</span><span class="p">():</span>
+   <span class="sd">&quot;&quot;&quot; Prompts the client to enter name of the individual.</span>
+<span class="sd">       For example,</span>
+
+<span class="sd">        &gt;&gt;&gt; get_name() # client enters Ada Lovelace</span>
+<span class="sd">       Enter a name: </span>
+<span class="sd">       &#39;Ada Lovelace&#39;</span>
+<span class="sd">       &gt;&gt;&gt; get_name() # client enters Trillian Astra</span>
+<span class="sd">       Enter a name: </span>
+<span class="sd">       &#39;Trillian Astra&#39;</span>
+<span class="sd">      </span>
+
+<span class="sd">      :return: The value returned by the input</span>
+<span class="sd">      :rtype: str</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">get_year</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot; Prompts the user with `prompt` requesting a year. For example:</span>
+<span class="sd">       `get_year(&quot;What is the current year? &quot;)` would print to the screen</span>
+<span class="sd">       &quot;What is the current year? &quot; and wait for the client to enter</span>
+<span class="sd">       a whole number. The whole number is converted to an int. For example,</span>
+<span class="sd">      </span>
+<span class="sd">        &gt;&gt;&gt; get_year(&quot;Current Year &quot;)  # client enters &quot;2022&quot; </span>
+<span class="sd">       Current Year </span>
+<span class="sd">       2022</span>
+<span class="sd">       &gt;&gt;&gt; get_year(&quot;Current Year &quot;)  # client enters &quot;2525&quot; </span>
+<span class="sd">       Current Year </span>
+<span class="sd">       2525</span>
+<span class="sd">       &gt;&gt;&gt; get_year(&quot;Other Message &quot;) # client enters &quot;1979&quot; </span>
+<span class="sd">       Other Message </span>
+<span class="sd">       1979</span>
+<span class="sd">       &gt;&gt;&gt; get_year(&quot;Birth Year &quot;) # client enters &quot;1224&quot; </span>
+<span class="sd">       Birth Year </span>
+<span class="sd">       1224 </span>
+
+<span class="sd">       :param prompt: Message to show to the user, make sure to include space at the end</span>
+<span class="sd">       :type prompt: str</span>
+
+<span class="sd">       :return: The whole number of the value entered</span>
+<span class="sd">       :rtype: int  </span>
+<span class="sd">   &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<section id="practice">
+<h3>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h3>
+<p>Based on the examples above, complete the other function docstrings in the box below.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The docstrings should include some tests, with expected output. It is actually following the format if you typed out
+the function call in the python interrupter directly. This format includes. <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> at the start of the function call, a space
+and the function call with the parameter values you are testing it with. Then immediately on the next line, the expected value
+to either be printed or returned. For values that require inputs, you write out the prompt to the screen and then on the
+next line the returned value. If the returned value is a string use single quotes.</p>
+<p>While we are writing the tests ourselves for now, this type of format is common in python, and allows you to run
+<code class="docutils literal notranslate"><span class="pre">doctests</span></code> on the file itself confirming validity. The solution file for this section is ran using doctests.</p>
+</div>
+<iframe
+ frameBorder="0"
+ height="450px"  
+ src="https://onecompiler.com/embed/python/3ymmashx7?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true" 
+ width="100%"
+ ></iframe>
+</section>
+</section>
+<section id="writing-code">
+<h2>Writing Code<a class="headerlink" href="#writing-code" title="Permalink to this headline">#</a></h2>
+<p>You now broken up your clients request into smaller parts, clearly defined what functions you are going to write, and even provided yourself with examples on how to confirm you wrote the function correctly. Let’s start coding. We will work on one function together, and the rest you will do on your own.  The <code class="docutils literal notranslate"><span class="pre">get_age</span></code> function
+we have completed in <a class="reference internal" href="Ch1_5Functions.html"><span class="doc">1.5 Functions</span></a> in the check_age example. We will start with that one. Your docstring may differ. You should feel to write the code in the programming window above or in your own <a class="reference internal" href="../citations.html#term-IDE"><span class="xref std std-term">IDE</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="n">current_year</span><span class="p">,</span> <span class="n">birth_year</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot; Takes the current year minus the birth year, and returns the result.</span>
+<span class="sd">       There is no error checking, it will return the value of whatever</span>
+<span class="sd">       numbers are provided. For example,</span>
+
+<span class="sd">      &gt;&gt;&gt; get_age(2022, 1980) </span>
+<span class="sd">      42</span>
+<span class="sd">      &gt;&gt;&gt; get_age(2525, 1979) </span>
+<span class="sd">      546</span>
+<span class="sd">      &gt;&gt;&gt; get_age(2022, 2022) </span>
+<span class="sd">      0</span>
+<span class="sd">      </span>
+<span class="sd">      It currently does not factor invalid age ranges, as the the following </span>
+<span class="sd">      would be valid.</span>
+<span class="sd">      &gt;&gt;&gt; get_age(2022, 2023)</span>
+<span class="sd">      -1</span>
+<span class="sd">      </span>
+
+<span class="sd">      :param current_year: the current year as a whole number</span>
+<span class="sd">      :type current_year: int</span>
+<span class="sd">      :param birth_year: the birth year as a whole number</span>
+<span class="sd">      :type birth_year: int</span>
+<span class="sd">      :return: the current_year - birth_year </span>
+<span class="sd">      :rtype: int</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+   <span class="k">return</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">birth_year</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="validate-code">
+<h2>Validate Code<a class="headerlink" href="#validate-code" title="Permalink to this headline">#</a></h2>
+<p><strong>Before</strong> we move onto my next function, we should write some tests. Right now, the tests seem simple, but eventually, it will be critical.  To write a test, add a function call at the bottom of your file. We also like to include a print line, so we can see what is going on!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------ TESTS -------&quot;</span><span class="p">)</span>
+<span class="n">is42</span> <span class="o">=</span> <span class="n">get_age</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1980</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`get_age(2022, 1980)` should return 42, returns: </span><span class="si">{</span><span class="n">is42</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">is546</span> <span class="o">=</span> <span class="n">get_age</span><span class="p">(</span><span class="mi">2525</span><span class="p">,</span> <span class="mi">1979</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`get_age(2525, 1979)` should return 546, returns: </span><span class="si">{</span><span class="n">is546</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">is0</span> <span class="o">=</span> <span class="n">get_age</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2022</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`get_age(2022, 2022)` should return 0, returns: </span><span class="si">{</span><span class="n">is0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span> <span class="c1"># just adds an empty line at the bottom of my output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------ TESTS -------
+`get_age(2022, 1980)` should return 42, returns: 42
+`get_age(2525, 1979)` should return 546, returns: 546
+`get_age(2022, 2022)` should return 0, returns: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>By following the tasks of design, document with tests defined, write code, and validate, We had everything laid out for us at each next step! These seems like a lot of steps now, but in the long run, you will end up writing much more efficiently in the future.</p>
+</div>
+<p>We will explore how to come up with test cases in the future, but for now, just simply try to think through what is expected of each function you write. At this stage, we can say “get_age is done”, and we no longer have to worry about it. We don’t have to worry how it is implemented, we can just call it as we need in our code. Similar to how you call print in your code, you don’t care how it works, just that it works. This is called <em>black box</em> testing. Once we know a function works, it is a black box that we no longer need to see the contents.</p>
+<blockquote class="epigraph">
+<div><p>Black box testing is essential to efficient software development.</p>
+</div></blockquote>
+<section id="id1">
+<h3>Practice<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Your turn! Go ahead and write each function, and make sure to write
+tests at the bottom of the file after each function.</p>
+<p>Testing client input and output can be tricky, as you don’t have set inputs and return types. Instead you may modify the test to be more interactive.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title">Software Testing </p>
+<p>Within computer science there is an entire field tied to software testing and validation. They have sophisticated techniques to make sure every line of  program is tested and meets validation. However, the problem is hard and expensive on companies, so it is an open field of research.</p>
+<p>Why would it matter, other than we have all experienced a buggy program? Imagine if you were writing software for space shuttle launches or the next smart car. Testing and validation at every stage of the process is life critical for people!</p>
+</aside>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test1: get_name(), entering &#39;Ada Lovelace&#39;&quot;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">get_name</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test1: returns </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># probably add one more test as this is straight forward</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1">#now test for get_year()</span>
+<span class="n">cyear1</span> <span class="o">=</span> <span class="n">get_year</span><span class="p">(</span><span class="s2">&quot;T1: Enter Year: &#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test1: get_year(&#39;Enter Year &#39;) with 2022 entered returns </span><span class="si">{</span><span class="n">cyear1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">byear1</span> <span class="o">=</span> <span class="n">get_year</span><span class="p">(</span><span class="s2">&quot;T1: Birth Year: &#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test1: get_year(&#39;Birth Year &#39;) with 0020 entered returns </span><span class="si">{</span><span class="n">byear1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1">## some other tests</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># tests for output</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;print_results(&#39;Ada Lovelace&#39;, 22) should print to the screen &#39;Ada Lovelace is 22.&quot;</span><span class="p">)</span>
+<span class="n">print_results</span><span class="p">(</span><span class="s1">&#39;Ada Lovelace&#39;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="c1">## add more tests</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="glue">
+<h2>Glue<a class="headerlink" href="#glue" title="Permalink to this headline">#</a></h2>
+<p>We have written our components, tested to make sure they work, but we have yet to build the full working program! To do that, this requires us either adding the lines to the file, or writing another function whose main purpose is to handle the <em>glue</em> of the program. We will use another function, in order to keep our code clean.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>  <span class="c1"># this is the common name for the starting point of a program!</span>
+   <span class="sd">&quot;&quot;&quot; A simple program that asks a client for a name, a current year,</span>
+<span class="sd">       and the birth year of an individual. Will print out</span>
+<span class="sd">       {name} is {age}.</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+   <span class="n">name</span> <span class="o">=</span> <span class="n">get_name</span><span class="p">()</span>
+   <span class="n">current_year</span> <span class="o">=</span> <span class="n">get_year</span><span class="p">(</span><span class="s2">&quot;What is the current year? &quot;</span><span class="p">)</span>
+   <span class="n">birth_year</span> <span class="o">=</span> <span class="n">get_year</span><span class="p">(</span><span class="s2">&quot;What is the birth year? &quot;</span><span class="p">)</span>
+   <span class="n">age</span> <span class="o">=</span> <span class="n">get_age</span><span class="p">(</span><span class="n">current_year</span><span class="p">,</span> <span class="n">birth_year</span><span class="p">)</span>
+   <span class="n">print_results</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+
+
+<span class="c1">## then before my tests, but at the end of my code we add</span>
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Don’t forget to comment out your tests!</p>
+</div>
+<p>You will notice a few things about the  main() function. This function doesn’t do any real work. Instead, it is calling other functions, and simply storing the returned result. Each function it calls is a very isolated task, that by itself may not make sense, but when put together in the main() we have a working program.</p>
+<p>Often times, you will multiple glue methods in your program, and it all depends on how many layers of decomposition was needed in the design. Each layer is often a point in which we need to bring concepts together.</p>
+<blockquote>
+<div><p>View the <a class="reference external" href="https://pythontutor.com/render.html#code=def%20get_name%28%29%3A%0A%20%20%20%20%22%22%22%20Prompts%20the%20client%20to%20enter%20name%20of%20the%20individual.%0A%20%20%20%20%20%20%20For%20example,%0A%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%23%20client%20enters%20Ada%20Lovelace%0A%20%20%20%20%20%20%20Enter%20a%20name%3A%20%0A%20%20%20%20%20%20%20%27Ada%20Lovelace%27%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%23%20client%20enters%20Trillian%20Astra%0A%20%20%20%20%20%20%20Enter%20a%20name%3A%20%0A%20%20%20%20%20%20%20%27Trillian%20Astra%27%0A%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%3Areturn%3A%20The%20value%20returned%20by%20the%20input%0A%20%20%20%20%20%20%3Artype%3A%20str%0A%20%20%20%20%22%22%22%0A%20%20%20%20return%20input%28%22Enter%20a%20name%3A%20%22%29%0A%0A%0Adef%20get_year%28prompt%29%3A%0A%20%20%20%22%22%22%20Prompts%20the%20user%20with%20%60prompt%60%20requesting%20a%20year.%20For%20example%3A%0A%20%20%20%20%20%20%20%60get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%60%20would%20print%20to%20the%20screen%0A%20%20%20%20%20%20%20%22What%20is%20the%20current%20year%3F%20%22%20and%20wait%20for%20the%20client%20to%20enter%0A%20%20%20%20%20%20%20a%20whole%20number.%20The%20whole%20number%20is%20converted%20to%20an%20int.%20For%20example,%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20client%20enters%20%222022%22%20%0A%20%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%20%202022%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20client%20enters%20%222525%22%20%0A%20%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%20%202525%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Other%20Message%20%22%29%20%23%20client%20enters%20%221979%22%20%0A%20%20%20%20%20%20%20Other%20Message%20%0A%20%20%20%20%20%20%201979%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Birth%20Year%20%22%29%20%23%20client%20enters%20%221224%22%20%0A%20%20%20%20%20%20%20Birth%20Year%20%0A%20%20%20%20%20%20%201224%20%0A%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%20%3Aparam%20prompt%3A%20Message%20to%20show%20to%20the%20user,%20make%20sure%20to%20include%20space%20at%20the%20end%0A%20%20%20%20%20%20%20%3Atype%20prompt%3A%20str%0A%0A%20%20%20%20%20%20%20%3Areturn%3A%20The%20whole%20number%20of%20the%20value%20entered%0A%20%20%20%20%20%20%20%3Artype%3A%20int%20%20%0A%20%20%20%22%22%22%0A%20%20%20return%20int%28input%28prompt%29%29%20%0A%0A%0Adef%20get_age%28current_year,%20birth_year%29%3A%0A%20%20%20%22%22%22%20Takes%20the%20current%20year%20minus%20the%20birth%20year,%20and%20returns%20the%20result.%0A%20%20%20%20%20%20%20There%20is%20no%20error%20checking,%20it%20will%20return%20the%20value%20of%20whatever%0A%20%20%20%20%20%20%20numbers%20are%20provided.%20For%20example,%0A%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%201980%29%20%0A%20%20%20%20%20%2042%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282525,%201979%29%20%0A%20%20%20%20%20%20546%0A%20%20%20%20%20%0A%20%20%20%20%20%20It%20currently%20does%20not%20factor%20invalid%20age%20ranges%20%0A%20%20%20%20%20%20would%20be%20valid.%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%202023%29%0A%20%20%20%20%20%20-1%0A%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%3Aparam%20current_year%3A%20the%20current%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%3Atype%20current_year%3A%20int%0A%20%20%20%20%20%20%3Aparam%20birth_year%3A%20the%20birth%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%3Atype%20birth_year%3A%20int%0A%20%20%20%20%20%20%3Areturn%3A%20the%20current_year%20-%20birth_year%20%0A%20%20%20%20%20%20%3Artype%3A%20int%0A%20%20%20%22%22%22%0A%20%20%20return%20current_year%20-%20birth_year%0A%0A%0Adef%20print_results%28name,%20age%29%3A%0A%20%20%20%22%22%22%20Prints%20to%20the%20screen%20%7Bname%7D%20is%20%7Bage%7D%20based%20on%20parameters.%20For%20example%3A%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28%27Ada%20Lovelace%27,%2022%29%20%0A%20%20%20%20%20%20Ada%20Lovelace%20is%2022.%20%20%20%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28%27Trillian%20Astra%27,%2042%29%20%0A%20%20%20%20%20%20Trillian%20Astra%20is%2042.%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Aparam%20name%3A%20the%20name%20of%20the%20person%0A%20%20%20%20%20%20%3Atype%20name%3A%20str%0A%20%20%20%20%20%20%3Aparam%20age%3A%20the%20age%20of%20the%20person%0A%20%20%20%20%20%20%3Atype%20age%3A%20int%0A%20%20%20%22%22%22%0A%20%20%20print%28f%22%7Bname%7D%20is%20%7Bage%7D.%22%29%0A%0A%0Adef%20main%28%29%3A%20%20%23%20this%20is%20the%20common%20name%20for%20the%20starting%20point%20of%20a%20program%21%0A%20%20%20%22%22%22%20A%20simple%20program%20that%20asks%20a%20client%20for%20a%20name,%20a%20current%20year,%0A%20%20%20%20%20%20%20and%20the%20birth%20year%20of%20an%20individual.%20Will%20print%20out%0A%20%20%20%20%20%20%20%7Bname%7D%20is%20%7Bage%7D.%0A%20%20%20%22%22%22%0A%20%20%20name%20%3D%20get_name%28%29%0A%20%20%20current_year%20%3D%20get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%0A%20%20%20birth_year%20%3D%20get_year%28%22What%20is%20the%20birth%20year%3F%20%22%29%0A%20%20%20age%20%3D%20get_age%28current_year,%20birth_year%29%0A%20%20%20print_results%28name,%20age%29%0A%0A%0Amain%28%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">final solution with code tracing</a>.</p>
+</div></blockquote>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When presented with solutions, you should try run them using code tracing. Ask yourself questions!
+The arrow symbol next to the link encourages you to open it in a new tab by right clicking on it.</p>
+<p>You can also find chapter solutions by going to the public GitHub repository linked to the top of each page.</p>
+</div>
+</aside>
+</section>
+<section id="designing-with-modification-in-mind">
+<h2>Designing with modification in mind<a class="headerlink" href="#designing-with-modification-in-mind" title="Permalink to this headline">#</a></h2>
+<p>This program seems simple. However, what if instead of the person entering in the current year, you calculate it based off of information stored in the computer. Furthermore, since the database stores birth dates, you pull the birthday from the database? Another feature could be narrowing down birthday using the month and day, so it is exact.  Finally, a modification could be sending the person an email birthday card automatically.</p>
+<p>What started off like a simple program grows <em>but</em> the key components still remain the same, and with every feature update, you end up updating only small portions of your code. This only works because we broken the problem up into smaller concepts, and wrote around those smaller concepts!</p>
+<p>Finally, what our program didn’t include is error checking. For example, what if they entered “twenty-two” instead of “2022” for the current year, or just mistyped something. In the next chapter we will explore some error checking techniques, that will help our code be more robust.</p>
+</section>
+<section id="a-word-on-error-checking">
+<h2>A Word on Error Checking<a class="headerlink" href="#a-word-on-error-checking" title="Permalink to this headline">#</a></h2>
+<p>You will have errors. Errors are often broken into three categories</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../citations.html#term-Syntax-Errors"><span class="xref std std-term">Syntax Errors</span></a> - these are caught before the program runs, everyone has them.</p></li>
+<li><p><a class="reference internal" href="../citations.html#term-Runtime-Errors"><span class="xref std std-term">Runtime Errors</span></a> - these errors crash a program while it runs, for example giving <code class="docutils literal notranslate"><span class="pre">int()</span></code> something like <code class="docutils literal notranslate"><span class="pre">int(&quot;hi&quot;)</span></code>. It will compile, but it will crash throwing a runtime error. You will learn to test with cases to generate these errors, so you can find them in your validation stage.</p></li>
+<li><p><a class="reference internal" href="../citations.html#term-Logic-Errors"><span class="xref std std-term">Logic Errors</span></a> - these are errors where everything works right, but right does not mean it works correctly. For example, someone enters 2022 for current year and 2023 for birth year,  -1 is not a valid age. However, the program worked rightly, just not correctly. These are on the programmer to catch with validation and more importantly, your own validation of the results.</p></li>
+</ul>
+<p>Computers are very powerful, but they are also very stupid. They do exactly what you tell them to do, without variation. This means most errors, whether we like it or not, are often our fault. That means we have to continually look at our code and validate what we are doing <strong>as we are doing it</strong>. Some guiding principles are:</p>
+<ol class="simple">
+<li><p><strong>Write Incrementally</strong> - Write only a few lines at a time, and test. Your tests don’t have to be logically valid, they are there so you as the programmer knows that it compiles and that you understand what is going on. Adding print randomly throughout your code will help!</p></li>
+<li><p><strong>Validate Incrementally</strong> - Test your code at every function. Don’t wait until you have written everything to test.</p></li>
+<li><p><strong>Check your assumptions</strong> - You should constantly look at what you assume is going on, and find out what is really going on. Often assumption from client specifications get us in trouble, so any time you have a question, there is usually a person in the process to ask! Specifications are rarely that clear, which is why some people dedicate their careers to working with clients on gathering specifications.</p></li>
+<li><p><strong>Collaborate</strong> - The idea of a programmer working alone in a basement, ever talking to others is completely false. Programming is a social activity in which we often have to work together to solve problems. While sharing code is rarely beneficial (and plagiarism), talking with others about concepts, ideas, and going over problems is essential to success.</p></li>
+<li><p><strong>Art and Logic</strong> - There is important logic and structure to programmer, but there is also art to programming. The art is creatively coming up with ideas. That means a programmer is constantly switching from different sides of their brain as they look at problems. Embrace the art and the logic both!</p></li>
+</ol>
+<p>Above all…. <em>practice, practice, practice</em>. You are learning an instrument, and the only way to get better at it is practicing.</p>
+</section>
+<section id="reflection">
+<h2>Reflection<a class="headerlink" href="#reflection" title="Permalink to this headline">#</a></h2>
+<p>Take time to reflect. Reflection is one of five principles of recall, and is an <em>evidence based</em> practice on improving your understanding of material <span id="id2">[<a class="reference internal" href="../citations.html#id5" title="Henry L Roediger III and Mary A Pyc. Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice. J. Appl. Res. Mem. Cogn., 1(4):242–248, 2012.">RoedigerIIIP12</a>]</span>,<span id="id3">[<a class="reference internal" href="../citations.html#id6" title="Peter C Brown, Henry L Roediger III, and Mark A McDaniel. Make it stick. Harvard University Press, 2014.">BRoedigerIIIM14</a>]</span>,<span id="id4">[<a class="reference internal" href="../citations.html#id7" title="Henry L Roediger III. Applying cognitive psychology to education: Translational educational science. Psychol. Sci. Public Interes., 14(1):1–3, 2013.">RoedigerIII13</a>]</span>! It has been directly linked towards programming success <span id="id5">[<a class="reference internal" href="../citations.html#id8" title="Tammy VanDeGrift, Tamara Caruso, Natalie Hill, Beth Simon, Tammy Van DeGrift, and Beth Simon. Experience Report: Getting Novice Programmers to THINK about Improving their Software Development Process. In Proc. 42nd ACM Tech. Symp. Comput. Sci. Educ., 493–498. New York, New York, USA, 2011. ACM Press. URL: http://portal.acm.org/citation.cfm?doid=1953163.1953307, doi:10.1145/1953163.1953307.">VCH+11</a>]</span>, <span id="id6">[<a class="reference internal" href="../citations.html#id9" title="Jeffrey A Stone and Elinor M Madigan. Integrating reflective writing in CS/IS. ACM SIGCSE Bull., 39(2):42–45, 2007. doi:10.1145/1272848.1272881.">SM07</a>]</span>. As such, before you move onto the next chapter, we encourage you to write out in a journal/notebook/etc the following.</p>
+<ul class="simple">
+<li><p>What are concepts you understand the most? Can you imagine ways to use them in the future.</p></li>
+<li><p>What are concepts you find yourself struggling with? What are some resources that will help you understand them? See if you can come up with code examples of these concepts.</p></li>
+<li><p>Reflect on the process of what you are learning, and how it applies not only to programming but problems around you on a day to day basis.</p></li>
+<li><p>Reflect on items in your life that could benefit from a program to help with the task. Whether you know how to write it not, just think of solutions to things that could be improved with software.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Part1\Chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Ch1_5Functions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">1.5 Functions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Ch1_exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Albert Lionelle<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

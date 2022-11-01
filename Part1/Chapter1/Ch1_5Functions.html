@@ -1,0 +1,1012 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.5 Functions &#8212; Computational Thinking with Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/my_styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.6 Divide-Conquer-Glue (aka Designing Programs)" href="Ch1_6DesignPrograms.html" />
+    <link rel="prev" title="1.4 Basic Operators and Expressions" href="Ch1_4Operations.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Thinking with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Computational Thinking with Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Programming
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Ch1_0Intro.html">
+   1. Getting Started: Your Instrument
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_1Computer.html">
+     1.1 Computers are everywhere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_2ComputerWorks.html">
+     1.2 How does it all work?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_3FirstProgram.html">
+     1.3 Let’s Program!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_4Operations.html">
+     1.4 Basic Operators and Expressions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.5 Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_6DesignPrograms.html">
+     1.6 Divide-Conquer-Glue (aka Designing Programs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_exercises.html">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter2/Ch2_0Intro.html">
+   2 Algorithmic Thinking
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_1FlowDiagrams.html">
+     2.1 Flow Diagramming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_2FlowToCode.html">
+     2.2 From Flow to Code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_3FlowBranching.html">
+     2.3 Allowing Choices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_4ConditionalStatements.html">
+     2.4 Conditional Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_5IfElse.html">
+     2.5 if / else statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_6SimpleRecursion.html">
+     2.6 Repetition with Conditions and Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_exercises.html">
+     Chapter 2 Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter3/Ch3_0Intro.html">
+   3 Sequential Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_1BasicList.html">
+     3.1 Basic Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_2Tuple.html">
+     3.2 Tuple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_3AccessingSequentialData.html">
+     3.3 Accessing Sequential Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_4StringsLists.html">
+     3.4 Strings are Sequential
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_5ForEachLoop.html">
+     3.5 Foreach Loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_6Range.html">
+     3.6 Useful Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_7FileReading.html">
+     3.7 Data From Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_exercises.html">
+     Chapter 3 Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter4/Ch4_0Intro.html">
+   Return to Types and Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter5/Ch5_0Intro.html">
+   Return to Control Flow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   Citations and Glossary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter1/Ch1_5Functions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/lionelle/computational-thinking-with-python/blob/main/Part1/Chapter1/Ch1_5Functions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/lionelle/computational-thinking-with-python"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Part1/Chapter1/Ch1_5Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../_sources/Part1/Chapter1/Ch1_5Functions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#built-in-functions">
+   Built-In Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-functions">
+   Writing Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trace-the-code">
+     Trace The Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice">
+     Practice
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-calling-functions">
+   Functions calling functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Trace The Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstring">
+   Docstring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-checks">
+   Knowledge Checks
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1.5 Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#built-in-functions">
+   Built-In Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-functions">
+   Writing Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trace-the-code">
+     Trace The Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice">
+     Practice
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-calling-functions">
+   Functions calling functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Trace The Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstring">
+   Docstring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-checks">
+   Knowledge Checks
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>1.5 Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<p>Writing code line by line is fine, but wouldn’t it be a pain to always have to redo/retype stuff that is done? Also, it makes it difficult to isolate and test various tasks. Let’s take the name example. Instead of just asking one person’s age, maybe I am building a two player game that needs to ask all that four times. As such the code could be.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player 1&quot;</span><span class="p">)</span>
+<span class="n">born_year_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year were you born in? &quot;</span><span class="p">)</span>
+<span class="n">born_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">born_year_str</span><span class="p">)</span>
+<span class="n">current_year_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year is it currently? &quot;</span><span class="p">)</span>
+<span class="n">current_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current_year_str</span><span class="p">)</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">born_year</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My age in </span><span class="si">{</span><span class="n">current_year</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player 2&quot;</span><span class="p">)</span>
+<span class="n">born_year_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year were you born in? &quot;</span><span class="p">)</span>
+<span class="n">born_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">born_year_str</span><span class="p">)</span>
+<span class="n">current_year_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year is it currently? &quot;</span><span class="p">)</span>
+<span class="n">current_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current_year_str</span><span class="p">)</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">born_year</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My age in </span><span class="si">{</span><span class="n">current_year</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Wait, I meant to say “Player age”. Ok, I only need to change that twice. What if we made it a four player game? What if we wanted it optional on the number of players? Now it starts getting complicated.</p>
+<p>Enter the generation of reusable code of using a <a class="reference internal" href="../citations.html#term-Function"><span class="xref std std-term">Function</span></a>. While the use of reusable code was built up through multiple groups, we often thank the ENIAC Women <a class="reference external" href="https://spectrum.ieee.org/untold-history-of-ai-invisible-woman-programmed-americas-first-electronic-computer">ref</a>, <a class="reference external" href="https://www.codecademy.com/resources/blog/eniac-six-women-programmed-computer/">ref2</a> who focused on developing reusable blocks that could be used on different projects. They also developed many of the sorts and algorithms we use today. However, <a class="reference external" href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">LISP</a> was the first functional programming language developed by <a class="reference external" href="https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)">John McCarthy</a> in 1958.</p>
+<p>The idea behind functions is that you have a block of code, that</p>
+<ol class="simple">
+<li><p>Can be repeated</p></li>
+<li><p>Can take in parameters</p></li>
+<li><p>Can return a value to be used</p></li>
+</ol>
+<p>A <a class="reference internal" href="../citations.html#term-Parameter"><span class="xref std std-term">Parameter</span></a> is a value that gets passed into the function. It ends up becoming a variable that can be used. A return value is a value that gets passed out of the function. You have already been using both!</p>
+<section id="built-in-functions">
+<h2>Built-In Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">#</a></h2>
+<p>You currently have already been using a few of Pythons built in functions. These functions someone else wrote, and you are given access to call the function (often called <a class="reference internal" href="../citations.html#term-Invoke"><span class="xref std std-term">Invoke</span></a>) when you need to use its capabilities. We don’t care how it works, just that it works as intended! Here are a few you have used.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="note admonition">
+<p class="admonition-title">None</p>
+<p>None is a keyword/type in python that means nothing or not defined. We will end up using
+it a lot, but for now, just know, like everything in this book, we will come back to the concept.</p>
+</div>
+</aside>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">print(value)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code></dt><dd><p>You call this function to print the value to the screen. Value has been a variety of things, but every time you have “passed” in a value to the function. This value is the parameter for print to work. We say it returns <code class="docutils literal notranslate"><span class="pre">None</span></code> meaning there is nothing actually returned to store in a variable after the function is executed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">input(value)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></dt><dd><p>input function takes in an (optional) value, that prints to the screen you want the message to read. However, when you used input, you set it to a variable. When you did this, what you were really doing was setting the value <strong>returned</strong> to the variable. In the following example <code class="docutils literal notranslate"><span class="pre">quest</span></code> ends up being assigned the string value returned from the input function, which is the value someone types into the keyboard.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quest</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your quest? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int(value)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code></dt><dd><p>the int function converts a string to an int value, so you can  perform mathematical operations. As such the parameter is a string, and it returns an int as long as the string matches a whole number style format. For example: <code class="docutils literal notranslate"><span class="pre">int(&quot;11&quot;)</span></code> would work, <code class="docutils literal notranslate"><span class="pre">int(&quot;11.5&quot;)</span></code> would cause an error.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">float(value)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code></dt><dd><p>A float is short for floating point number or decimal. The float function takes in a string that looks like a float, and converts it to a floating point value so you can perform mathematical functions. For float, <em>any</em> valid number  works fine, as you can also add a .0 to a whole number.</p>
+</dd>
+</dl>
+<p>All four of these functions were written by someone else, so you don’t have to write the code yourself. However, the real power of programming comes down to the ability for you to write your <em>own</em> functions!</p>
+</section>
+<section id="writing-functions">
+<h2>Writing Functions<a class="headerlink" href="#writing-functions" title="Permalink to this headline">#</a></h2>
+<p>A function in python has various parts. The basic format of a function is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>  
+  <span class="sd">&quot;&quot;&quot;docstring&quot;&quot;&quot;</span>
+  <span class="c1">#do something cool</span>
+  <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>  <span class="k">def</span> <span class="nf">says</span><span class="p">(</span><span class="n">animal</span><span class="p">,</span> <span class="n">sound</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">animal</span><span class="si">}</span><span class="s2"> says </span><span class="si">{</span><span class="n">sound</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+  <span class="n">cat_says</span> <span class="o">=</span> <span class="n">says</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+  <span class="n">dog_says</span> <span class="o">=</span> <span class="n">says</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;woof&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">cat_says</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">dog_says</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The cat says meow.
+The dog says woof.
+</pre></div>
+</div>
+</div>
+</div>
+<dl class="simple myst">
+<dt>def name</dt><dd><p>starting a line off with def, means define function. It tells the compiler the next block of code is going to be reusable. <strong>Every</strong> line after the def needs to be indented if it is part of the function as python uses indents to determine code blocks. The name is what you will call the function. It can be anything you want, as long as it starts with a letter, and isn’t a reserved word.</p>
+</dd>
+<dt>parameters</dt><dd><p>this is optional, but often you have one or more parameters. For every parameter named, it ends up being a variable with a value in it! In the example, <code class="docutils literal notranslate"><span class="pre">animal</span></code> is a parameter that I can use directly as a variable. <code class="docutils literal notranslate"><span class="pre">sound</span></code> is a parameter that I use directly as a variable. We will code trace this example below</p>
+</dd>
+<dt>return value</dt><dd><p>the return keyword says “give back this value”. This is critical, and setting the returned value to a variable <code class="docutils literal notranslate"><span class="pre">cat_says</span> <span class="pre">=</span> <span class="pre">says(&quot;cat,</span> <span class="pre">&quot;meow&quot;)</span></code> is critical!</p>
+</dd>
+<dt>docstring</dt><dd><p>we will explore this below, but it is important to document what the function is doing!</p>
+</dd>
+</dl>
+<p>You have the basic parts, but let’s trace the above function!</p>
+<section id="trace-the-code">
+<h3>Trace The Code<a class="headerlink" href="#trace-the-code" title="Permalink to this headline">#</a></h3>
+<p>Following the code below, it is important to note that with the function call a new frame is created! This frame has a unique set of variables for that execution, and then it returns back to the global frame.</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20says%28animal,%20sound%29%3A%0A%20%20return%20f%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%0A%0Acat_says%20%3D%20says%28%22cat%22,%20%22meow%22%29%0Adog_says%20%3D%20says%28%22dog%22,%20%22woof%22%29%0Aprint%28cat_says%29%0Aprint%28dog_says%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</section>
+<section id="practice">
+<h3>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h3>
+<p>Now it is your turn to practice.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tasks</p>
+<p>You will write a function and then call/invoke that function with different parameters.</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Write a function that takes in two dates, current_year and birth_year</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Return the persons age based on current_year and birth_year (no need to worry about months)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Call the function with the parameters 2022 and 1980, print out the result</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Call the function with the parameters of 2023 and 1989, print out the results</p></li>
+</ul>
+</div>
+<p>Use the ‘click to show’ to get a code editor below.</p>
+<div class="toggle docutils container">
+<iframe
+ frameBorder="0"
+ height="450px"  
+ src="https://onecompiler.com/embed/python/3ym59u5qg?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true&hideStdin=true" 
+ width="100%"
+ ></iframe>
+</div>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_age</span><span class="p">(</span><span class="n">current_year</span><span class="p">,</span> <span class="n">birth_year</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">birth_year</span>
+
+<span class="n">age1</span> <span class="o">=</span> <span class="n">calc_age</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1980</span><span class="p">)</span>
+<span class="n">age2</span> <span class="o">=</span> <span class="n">calc_age</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1989</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">age1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
+34
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="functions-calling-functions">
+<h2>Functions calling functions<a class="headerlink" href="#functions-calling-functions" title="Permalink to this headline">#</a></h2>
+<p>It is also possible to have a function call another function inside of it! For example, let’s modify the above code to be:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Doubles a string value</span>
+<span class="sd">       </span>
+<span class="sd">       :param value: the string you want doubled to be separated by new line character</span>
+<span class="sd">       :type value: Any</span>
+<span class="sd">       :return: a doubled string of the format &quot;{value}\n{value}&quot;</span>
+<span class="sd">       :rtype: str</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+
+   <span class="k">def</span> <span class="nf">dsays</span><span class="p">(</span><span class="n">animal</span><span class="p">,</span> <span class="n">sound</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Builds a doubled string of what the animal says, and doubles it before return</span>
+<span class="sd">     </span>
+<span class="sd">       :param animal: The type of animal</span>
+<span class="sd">       :type animal: str</span>
+<span class="sd">       :param sound: The sound the animal makes</span>
+<span class="sd">       :type sound: str</span>
+<span class="sd">       :return: string of format &quot;The {animal} says {sound}.\\nThe {animal} says {sound}.&quot;</span>
+<span class="sd">       :rtype: str</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+     <span class="n">double</span> <span class="o">=</span> <span class="n">double_it</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">animal</span><span class="si">}</span><span class="s2"> says </span><span class="si">{</span><span class="n">sound</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> 
+     <span class="k">return</span> <span class="n">double</span>
+
+   <span class="n">cat_says</span> <span class="o">=</span> <span class="n">dsays</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+   <span class="n">dog_says</span> <span class="o">=</span> <span class="n">dsays</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;woof&quot;</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">cat_says</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">dog_says</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The cat says meow.
+The cat says meow.
+The dog says woof.
+The dog says woof.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3>Trace The Code<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Trace the code above. Notice that the <code class="docutils literal notranslate"><span class="pre">dsays</span></code> frame is still open while <code class="docutils literal notranslate"><span class="pre">double_it()</span></code> is being called.</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20double_it%28value%29%3A%0A%20%20%22%22%22Doubles%20a%20string%20value%0A%20%20%20%20%0A%20%20%20%20%3Aparam%20value%3A%20the%20string%20you%20want%20doubled%20to%20be%20separated%20by%20new%20line%20character%0A%20%20%20%20%3Atype%20value%3A%20Any%0A%20%20%20%20%3Areturn%3A%20a%20doubled%20string%20of%20the%20format%20%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%20%20%20%20%3Artype%3A%20str%0A%20%20%22%22%22%0A%20%20return%20f%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%0Adef%20dsays%28animal,%20sound%29%3A%0A%20%20%22%22%22Builds%20a%20doubled%20string%20of%20what%20the%20animal%20says,%20and%20doubles%20it%20before%20return%0A%20%20%0A%20%20%20%20%3Aparam%20animal%3A%20The%20type%20of%20animal%0A%20%20%20%20%3Atype%20animal%3A%20str%0A%20%20%20%20%3Aparam%20sound%3A%20The%20sound%20the%20animal%20makes%0A%20%20%20%20%3Atype%20sound%3A%20str%0A%20%20%20%20%3Areturn%3A%20string%20of%20format%20%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%5CnThe%20%7Banimal%7D%20says%20%7Bsound%7D.%22%0A%20%20%20%20%3Artype%3A%20str%0A%20%20%22%22%22%0A%20%20double%20%3D%20double_it%28f%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%29%20%0A%20%20return%20double%0A%0Acat_says%20%3D%20dsays%28%22cat%22,%20%22meow%22%29%0Adog_says%20%3D%20dsays%28%22dog%22,%20%22woof%22%29%0Aprint%28cat_says%29%0Aprint%28dog_says%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</section>
+</section>
+<section id="docstring">
+<h2>Docstring<a class="headerlink" href="#docstring" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="tip admonition">
+<p class="admonition-title">reStructuredText</p>
+<p>In this book we will use the <a class="reference external" href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">reStructuredText</a> format for docstrings encouraged as the default for Sphinx.autodoc. Sphinx is a common documentation generator in industry,
+and reST is common. It is simply a way to format your files, so another program can read it to generate webpages or other documentation.  If you are using <a class="reference external" href="https://code.visualstudio.com/">VSCode</a> there is an <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">extension</a> for docstrings. If you are using <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> it
+is the default documentation syntax for python.</p>
+<p>In both cases, you just simply define your function, type return/enter, and then three three quotation marks and enter. This will
+automatically generate the base docstring formatting!</p>
+</div>
+</aside>
+<p>In the above example, we gave an extensive <a class="reference internal" href="../citations.html#term-docstring"><span class="xref std std-term">docstring</span></a> which is short for documentation string. It is a special formatted string using three quotes or three double quotes immediately below the function definition. It is broken up into the various parts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;[SUMMARY]</span>
+
+<span class="sd">----</span>
+<span class="sd">[Expected input and output] </span>
+<span class="sd">----</span>
+
+<span class="sd">:param parameter1: Description of parameter</span>
+<span class="sd">:type parameter1: Optional, but clear definition of expected value type</span>
+<span class="sd">... </span>
+
+<span class="sd">:return: Description of what is returned</span>
+<span class="sd">:rtype: description of the return type</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The summary should provide what the function does in simple terms. It can be detailed and even highlight some of the steps as part of the process. While not common, for this course, you will include a section that includes expected input and output for the function. This will be used to help you test and debug functions that we talk about in the next section. The param is needed for each parameter, but the type is optional. However, it helps you clearly see what you expect. The return is important, so you know what is being returned. The rtype is also optional, but it helps you know more about what is being returned.</p>
+<p>Why is this formatting useful? It is actually possible to generate webpages, and this formatting is used on the <a class="reference external" href="https://docs.python.org/3/library/index.html">python language library</a> to generate the entire website! Most importantly, you write docstrings so <strong>you</strong> know what you did (or least supposed to do) when you wrote the function and come back to it later!</p>
+<blockquote class="epigraph">
+<div><p>Documenting functions is critical to programming, both on the job and in practice.</p>
+</div></blockquote>
+<p>Additionally, if you put in the docstring, you can easily type to find out what a function does!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">dsays</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function dsays in module __main__:
+
+dsays(animal, sound)
+    Builds a doubled string of what the animal says, and doubles it before return
+    
+    :param animal: The type of animal
+    :type animal: str
+    :param sound: The sound the animal makes
+    :type sound: str
+    :return: string of format &quot;The {animal} says {sound}.\nThe {animal} says {sound}.&quot;
+    :rtype: str
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also print the doc using <code class="docutils literal notranslate"><span class="pre">__doc__</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dsays</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Builds a doubled string of what the animal says, and doubles it before return
+  
+    :param animal: The type of animal
+    :type animal: str
+    :param sound: The sound the animal makes
+    :type sound: str
+    :return: string of format &quot;The {animal} says {sound}.\nThe {animal} says {sound}.&quot;
+    :rtype: str
+  
+</pre></div>
+</div>
+</div>
+</div>
+<p>This also works for built in functions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False)
+    
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+</pre></div>
+</div>
+</div>
+</div>
+<p>As such, if you are unsure what a function does, if it has a docstring, you can quickly check!</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">#</a></h2>
+<p>Between basic instructions and functions, you have a solid foundation to start writing simple programs. It will also help us start the major design thought for this class, <strong>divide-conquer-glue</strong>.</p>
+</section>
+<section id="knowledge-checks">
+<h2>Knowledge Checks<a class="headerlink" href="#knowledge-checks" title="Permalink to this headline">#</a></h2>
+<p>TO ADD</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Part1\Chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Ch1_4Operations.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">1.4 Basic Operators and Expressions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Ch1_6DesignPrograms.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">1.6 Divide-Conquer-Glue (aka Designing Programs)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Albert Lionelle<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

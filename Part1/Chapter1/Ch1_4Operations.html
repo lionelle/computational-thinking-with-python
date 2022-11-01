@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.4 Basic Operators and Expressions &#8212; Computational Thinking with Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/my_styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.5 Functions" href="Ch1_5Functions.html" />
+    <link rel="prev" title="1.3 Let’s Program!" href="Ch1_3FirstProgram.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Thinking with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Computational Thinking with Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Programming
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Ch1_0Intro.html">
+   1. Getting Started: Your Instrument
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_1Computer.html">
+     1.1 Computers are everywhere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_2ComputerWorks.html">
+     1.2 How does it all work?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_3FirstProgram.html">
+     1.3 Let’s Program!
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.4 Basic Operators and Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_5Functions.html">
+     1.5 Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_6DesignPrograms.html">
+     1.6 Divide-Conquer-Glue (aka Designing Programs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch1_exercises.html">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter2/Ch2_0Intro.html">
+   2 Algorithmic Thinking
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_1FlowDiagrams.html">
+     2.1 Flow Diagramming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_2FlowToCode.html">
+     2.2 From Flow to Code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_3FlowBranching.html">
+     2.3 Allowing Choices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_4ConditionalStatements.html">
+     2.4 Conditional Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_5IfElse.html">
+     2.5 if / else statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_6SimpleRecursion.html">
+     2.6 Repetition with Conditions and Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_exercises.html">
+     Chapter 2 Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter3/Ch3_0Intro.html">
+   3 Sequential Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_1BasicList.html">
+     3.1 Basic Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_2Tuple.html">
+     3.2 Tuple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_3AccessingSequentialData.html">
+     3.3 Accessing Sequential Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_4StringsLists.html">
+     3.4 Strings are Sequential
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_5ForEachLoop.html">
+     3.5 Foreach Loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_6Range.html">
+     3.6 Useful Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_7FileReading.html">
+     3.7 Data From Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_exercises.html">
+     Chapter 3 Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter4/Ch4_0Intro.html">
+   Return to Types and Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter5/Ch5_0Intro.html">
+   Return to Control Flow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   Citations and Glossary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter1/Ch1_4Operations.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/lionelle/computational-thinking-with-python/blob/main/Part1/Chapter1/Ch1_4Operations.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/lionelle/computational-thinking-with-python"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Part1/Chapter1/Ch1_4Operations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../_sources/Part1/Chapter1/Ch1_4Operations.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types">
+   Types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#string">
+     String
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#adding-strings-concatenation">
+       Adding Strings - Concatenation
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#alternative-to-string-concatenation-f-string">
+         Alternative to String Concatenation  - f-String
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#special-characters">
+       Special Characters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#trace-the-code-execution">
+       Trace the Code Execution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-input">
+   Introducing input()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-with-numbers">
+   input() with numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization">
+     Visualization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-got-this">
+     You Got This
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-checks">
+   Knowledge Checks
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1.4 Basic Operators and Expressions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types">
+   Types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#string">
+     String
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#adding-strings-concatenation">
+       Adding Strings - Concatenation
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#alternative-to-string-concatenation-f-string">
+         Alternative to String Concatenation  - f-String
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#special-characters">
+       Special Characters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#trace-the-code-execution">
+       Trace the Code Execution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-input">
+   Introducing input()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-with-numbers">
+   input() with numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization">
+     Visualization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-got-this">
+     You Got This
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-checks">
+   Knowledge Checks
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-operators-and-expressions">
+<h1>1.4 Basic Operators and Expressions<a class="headerlink" href="#basic-operators-and-expressions" title="Permalink to this headline">#</a></h1>
+<p>Growing up we learn basic mathematical operations like addition, subtraction, multiplication, and division. For example, using basic math, we would look at the following statement:</p>
+<p><span class="math notranslate nohighlight">\( 40 + 2 \)</span></p>
+<p>And say the answer is <code class="docutils literal notranslate"><span class="pre">42</span></code>. With computers, we need to store that answer in memory, so we are given the <a class="reference internal" href="../citations.html#term-Assignment-Operator"><span class="xref std std-term">Assignment Operator</span></a>, the <code class="docutils literal notranslate"><span class="pre">=</span></code> sign! As such, if I want to store that value, I use the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meaning</span> <span class="o">=</span> <span class="mi">40</span><span class="o">+</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>what we have is is the Expression 40+2, using the addition <code class="docutils literal notranslate"><span class="pre">+</span></code> operator, and then using the <code class="docutils literal notranslate"><span class="pre">=</span></code> we assign value to the variable <code class="docutils literal notranslate"><span class="pre">meaning</span></code>. Programming has the basic operators we learn growing up.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>Addition</p></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>Subtraction</p></td>
+</tr>
+<tr class="row-even"><td><p>*</p></td>
+<td><p>Multiplication</p></td>
+</tr>
+<tr class="row-odd"><td><p>/</p></td>
+<td><p>Division</p></td>
+</tr>
+<tr class="row-even"><td><p>=</p></td>
+<td><p>Assignment</p></td>
+</tr>
+</tbody>
+</table>
+<p>You will note that <code class="docutils literal notranslate"><span class="pre">*</span></code> is multiplication, and not x that is because how would one distinguish a variable x from the operator x? As such, we have to use unique characters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Python uses <a class="reference internal" href="../citations.html#term-PEMDAS"><span class="xref std std-term">PEMDAS</span></a> for order of evaluation.<br />
+<strong>P</strong> - Parentheses<br />
+<strong>E</strong> - Exponentiation<br />
+<strong>M</strong> - Multiplication<br />
+<strong>D</strong> - Division<br />
+<strong>A</strong> - Addition<br />
+<strong>S</strong> - Subtraction</p>
+<p>So parentheses get evaluated first, and so on down the line. Another way to remember is the mnemonic, “Please Excuse My Dear Aunt Sally”.  With that said, if you are trying to figure out the order of evaluation for an expression, the simple answer is you probably
+can write it better by using parentheses. Always remember, clarity before brevity.</p>
+</div>
+<blockquote class="epigraph">
+<div><p>Use parentheses when dealing with order of evaluation. Clarity before brevity!</p>
+</div></blockquote>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="note admonition">
+<p class="admonition-title">Naming Variables</p>
+<p>You can name a variable whatever you want, as long as you follow these rules</p>
+<ol class="simple">
+<li><p>A variable name must start with a letter or the underscore character.</p></li>
+<li><p>A variable name can only contain alpha-number characters and underscores.</p></li>
+<li><p>Names are case sensitive (Name and name are two different variables)</p></li>
+<li><p>You may not use any of the reserved words. These are commands in python, and they are as follows.</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>def</p></td>
+<td><p>if</p></td>
+</tr>
+<tr class="row-odd"><td><p>raise</p></td>
+<td><p>None</p></td>
+<td><p>del</p></td>
+</tr>
+<tr class="row-even"><td><p>import</p></td>
+<td><p>return</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>elif</p></td>
+<td><p>in</p></td>
+<td><p>try</p></td>
+</tr>
+<tr class="row-even"><td><p>and</p></td>
+<td><p>else</p></td>
+<td><p>is</p></td>
+</tr>
+<tr class="row-odd"><td><p>while</p></td>
+<td><p>as</p></td>
+<td><p>except</p></td>
+</tr>
+<tr class="row-even"><td><p>lambda</p></td>
+<td><p>with</p></td>
+<td><p>assert</p></td>
+</tr>
+<tr class="row-odd"><td><p>finally</p></td>
+<td><p>nonlocal</p></td>
+<td><p>yield</p></td>
+</tr>
+<tr class="row-even"><td><p>break</p></td>
+<td><p>for</p></td>
+<td><p>not</p></td>
+</tr>
+<tr class="row-odd"><td><p>class</p></td>
+<td><p>from</p></td>
+<td><p>or</p></td>
+</tr>
+<tr class="row-even"><td><p>continue</p></td>
+<td><p>global</p></td>
+<td><p>pass</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</aside>
+<section id="practice">
+<h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Tasks</p>
+<p>Using the following programming window try the following. You should run after each task, not after all the lines!</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Write a statement that assigns your name to the variable <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Print out the your name as “Hello, name”. With name using the variable.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Write a statement that assigns your age to the variable <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Modify the previous print statement to say using the variables, “I am name, and I am age years old.”.<br />
+You may need to move the print statement, remember things are executed in order!</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Modify the age assignment to be calculated by the current year, minus the year you were born, and then assign the answer to <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p></li>
+</ul>
+</div>
+<p>Use the ‘click to show’ to get a code editor below.</p>
+<div class="toggle docutils container">
+<iframe
+ frameBorder="0"
+ height="450px"  
+ src="https://onecompiler.com/embed/python/3ym59u5qg?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true&hideStdin=true" 
+ width="100%"
+ ></iframe>
+</div>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Trillian Astra&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">2022</span> <span class="o">-</span> <span class="mi">1980</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I am </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, and I am </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span> <span class="c1"># remember last section on f-string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am Trillian Astra, and I am 42 years old.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">#</a></h2>
+<p>Without knowing it, we have looked at <strong>numeric</strong> types and the <strong>string</strong> type. Anytime, you type in a number without quotes, you end up with a numeric. Let’s look at string more.</p>
+<section id="string">
+<h3>String<a class="headerlink" href="#string" title="Permalink to this headline">#</a></h3>
+<p>A string can be any sequence of characters (look at your keyboard, those are all characters). However, given that programming using a set syntax/grammar how would I know the variable <code class="docutils literal notranslate"><span class="pre">meaning</span></code> as compared to a string <code class="docutils literal notranslate"><span class="pre">meaning</span></code>? As such, most languages define using the quote or double character as defining a string. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meaning</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">a_string</span> <span class="o">=</span> <span class="s2">&quot;meaning&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">meaning</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
+meaning
+</pre></div>
+</div>
+</div>
+</div>
+<p>In python, you can use <em>either</em> the single quote <code class="docutils literal notranslate"><span class="pre">'</span></code> or the double quote <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> to define a string, as long as you start and end with the same one! This helps us in cases like the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quote</span> <span class="o">=</span> <span class="s1">&#39;And he replied, &quot;As you wish.&quot;&#39;</span>
+<span class="n">conjunc</span> <span class="o">=</span> <span class="s2">&quot;Isn&#39;t python cool?&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">quote</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conjunc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>And he replied, &quot;As you wish.&quot;
+Isn&#39;t python cool?
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this book, we will most often use double quotes for strings with more than one character, and single quote for single character strings. While there are <a class="reference external" href="https://pep8.org/">style conventions</a> for python, which type of quote to use is intentionally not defined in the style convention, other than pick one style and stick to it.</p>
+<section id="adding-strings-concatenation">
+<h4>Adding Strings - Concatenation<a class="headerlink" href="#adding-strings-concatenation" title="Permalink to this headline">#</a></h4>
+<p>You can also add strings together called Concatenation. For example, let’s take two strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;Trillian&quot;</span>
+<span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;Astra&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If I wanted to make a single variable I could do the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">last</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TrillianAstra
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Wait! That didn’t work how I wanted!!</p>
+</div>
+<p>Did I specify a space between the two strings? No, I didn’t, and  computer wouldn’t know unless I am exact! As such to do the above properly, I should do the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">last</span>  <span class="c1"># the space is a single character string</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trillian Astra
+</pre></div>
+</div>
+</div>
+</div>
+<section id="alternative-to-string-concatenation-f-string">
+<h5>Alternative to String Concatenation  - f-String<a class="headerlink" href="#alternative-to-string-concatenation-f-string" title="Permalink to this headline">#</a></h5>
+<p>You can use the format string (f-string) as a way to concatenate, especially if you know the exact pattern you want your string to look like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name2</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">first</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trillian Astra
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="special-characters">
+<h4>Special Characters<a class="headerlink" href="#special-characters" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-ascii-art admonition">
+<p class="admonition-title">ASCII-Art</p>
+<p>ASCII-Art is has a long tradition in computer science, and even before dating back to the original printing presses. It is the art of using characters to build full pictures, and the modern emote is based off the same idea. ASCII is a standard used to convert numbers to characters for display on your screen. To see some examples of ascii-art, visit the <a class="reference external" href="https://www.asciiart.eu/">ASCII Art Archive</a>.</p>
+</div>
+</aside>
+<p>There are a number of special hidden characters you use all the time. Tab and the newline character being the most common. In most languages, including python, they are represented by the <code class="docutils literal notranslate"><span class="pre">\t</span></code> for tab, and <code class="docutils literal notranslate"><span class="pre">\n</span></code> for the new line. This also means to represent the backslash, you have use <code class="docutils literal notranslate"><span class="pre">\\</span></code>. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line1</span> <span class="o">=</span> <span class="s2">&quot;hello</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">line2</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">world</span><span class="se">\n</span><span class="s2">¯</span><span class="se">\\</span><span class="s2">_(ツ)_/¯&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">line1</span> <span class="o">+</span> <span class="n">line2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello
+	world
+¯\_(ツ)_/¯
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Thinking deeper, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function adds <code class="docutils literal notranslate"><span class="pre">\n</span></code> to the end of all your strings!</p>
+</div></blockquote>
+</section>
+<section id="trace-the-code-execution">
+<h4>Trace the Code Execution<a class="headerlink" href="#trace-the-code-execution" title="Permalink to this headline">#</a></h4>
+<p>Use the toggle below to see the full code execution step by step.</p>
+<div class="toggle docutils container">
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=first%20%3D%20%22Trillian%22%0Alast%20%3D%20%22Astra%22%0A%0Aname%20%3D%20first%20%2B%20last%0Aprint%28name%29%0A%0Aname%20%3D%20first%20%2B%20'%20'%20%2B%20last%0Aprint%28name%29%0A%0Aname2%20%3D%20f%22%7Bfirst%7D%20%7Blast%7D%22%0Aprint%28name2%29%0A%0Aline1%20%3D%20%22hello%5Cn%22%0Aline2%20%3D%20%22%5Ctworld%5Cn%C2%AF%5C%5C_%28%E3%83%84%29_/%C2%AF%22%0A%0Aprint%28line1%20%2B%20line2%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&origin=composingprograms.js&py=3&rawInputLstJSON=%5B%5D"> </iframe>
+</div>
+</section>
+</section>
+</section>
+<section id="introducing-input">
+<h2>Introducing input()<a class="headerlink" href="#introducing-input" title="Permalink to this headline">#</a></h2>
+<p>We have already given you function, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function, which displays text output onto the console/screen. However, what if we wanted to get information from our client, most notably, values from what they type on a keyboard? Python has the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function. By default, it takes a message you want to display as a <a class="reference internal" href="../citations.html#term-Parameter"><span class="xref std std-term">Parameter</span></a>, and it first calls <code class="docutils literal notranslate"><span class="pre">print()</span></code> with that message, and then waits for the client to type. When the client hits enter, the value is returned to your code so you can <strong>store</strong> it in a variable.  For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your name? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nice to meet you, </span><span class="si">{name}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now run the code yourself! Change Ada Lovelace to your name in the STDIN block before clicking run.</p>
+<iframe
+ frameBorder="0"
+ height="450px"  
+ src="https://onecompiler.com/embed/python/3ym26kn3u?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true" 
+ width="100%"
+ ></iframe>
+<div class="toggle admonition">
+<p class="admonition-title">Show Run Example:</p>
+<p><img alt="Run Greeting Example" src="../../_images/run_greeting.gif" /></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When looking at code through the browser based code window, newline returns end up getting removed. The above example may be better written it in an IDE or directly in the python interpreter to have a more interactive experience.</p>
+</div>
+</section>
+<section id="input-with-numbers">
+<h2>input() with numbers<a class="headerlink" href="#input-with-numbers" title="Permalink to this headline">#</a></h2>
+<p>As a reminder, input returns a <strong>string</strong> which is not the same as a numeric type. So let’s assume for the following input, someone enters <span class="math notranslate nohighlight">\(1980\)</span> in the input below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">born_year</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year were you born in? &quot;</span><span class="p">)</span>
+<span class="n">current_year</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year is it currently? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">born_year</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My age in </span><span class="si">{</span><span class="n">current_year</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">age</span> <span class="o">=</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">born_year</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My age in </span><span class="si">{</span><span class="n">current_year</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The error above is generated! This is because it doesn’t make sense to subtract a string from a string, and <code class="docutils literal notranslate"><span class="pre">input()</span></code> always provides strings! For now we will learn to cast the string to <code class="docutils literal notranslate"><span class="pre">int()</span></code> if the input is supposed to be a whole number (no decimal places) or a <code class="docutils literal notranslate"><span class="pre">float()</span></code> for numbers with decimal places. As such, code above would be converted to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">born_year_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year were you born in? &quot;</span><span class="p">)</span>
+<span class="n">born_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">born_year_str</span><span class="p">)</span>
+<span class="n">current_year_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What year is it currently? &quot;</span><span class="p">)</span>
+<span class="n">current_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current_year_str</span><span class="p">)</span>
+
+<span class="n">age</span> <span class="o">=</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">born_year</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My age in </span><span class="si">{</span><span class="n">current_year</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h3>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=born_year_str%20%3D%20input%28%22What%20year%20were%20you%20born%20in%3F%20%22%29%0Aborn_year%20%3D%20int%28born_year_str%29%0Acurrent_year_str%20%3D%20input%28%22What%20year%20is%20it%20currently%3F%20%22%29%0Acurrent_year%20%3D%20int%28current_year_str%29%0A%0Aage%20%3D%20current_year%20-%20born_year%0Aprint%28f%22My%20age%20in%20%7Bcurrent_year%7D%20is%20%7Bage%7D.%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&origin=composingprograms.js&py=3&rawInputLstJSON=%5B%221980%22,%222022%22%5D"> </iframe>
+<p>For this visualization, the inputs are fixed to 1980 and 2022. If you wish to modify the input, you will need to open it up directly in <a class="reference external" href="https://pythontutor.com/render.html#code=born_year_str%20%3D%20input%28%22What%20year%20were%20you%20born%20in%3F%20%22%29%0Aborn_year%20%3D%20int%28born_year_str%29%0Acurrent_year_str%20%3D%20input%28%22What%20year%20is%20it%20currently%3F%20%22%29%0Acurrent_year%20%3D%20int%28current_year_str%29%0A%0Aage%20%3D%20current_year%20-%20born_year%0Aprint%28f%22My%20age%20in%20%7Bcurrent_year%7D%20is%20%7Bage%7D.%22%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Python Tutor</a>.</p>
+</section>
+<section id="you-got-this">
+<h3>You Got This<a class="headerlink" href="#you-got-this" title="Permalink to this headline">#</a></h3>
+<p>This is a lot! However, the more your practice, the better you will become. It is also important to think about dividing these problems into smaller chunks, which is why writing your own functions becomes fundamental!</p>
+</section>
+</section>
+<section id="knowledge-checks">
+<h2>Knowledge Checks<a class="headerlink" href="#knowledge-checks" title="Permalink to this headline">#</a></h2>
+<p>TO ADD</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Part1\Chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Ch1_3FirstProgram.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">1.3 Let’s Program!</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Ch1_5Functions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">1.5 Functions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Albert Lionelle<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
