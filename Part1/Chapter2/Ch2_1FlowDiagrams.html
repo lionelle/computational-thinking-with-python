@@ -401,12 +401,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-check">
+   Knowledge Check
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -418,6 +442,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-check">
+   Knowledge Check
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -483,6 +520,10 @@ flowchart TD
     E2 --&gt; gCyear
     E2 --&gt; gByear
         </div><p>But then that gets complicated. It is more common to just give IDs to charts, and list them separately. What if we wanted to add the ability to make choices and repeat actions?</p>
+<section id="knowledge-check">
+<h2>Knowledge Check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">#</a></h2>
+<p>TODO</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

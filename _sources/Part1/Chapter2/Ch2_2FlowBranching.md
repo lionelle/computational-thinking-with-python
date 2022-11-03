@@ -113,3 +113,9 @@ From a learning languages standpoint, we will use flowcharts when representing n
 
 
 We will continue to explore how this looks in code, but for a flowchart it is as simple as thinking out your `True` and `False` pathways. 
+
+
+
+## Knowledge Check
+
+TODO
