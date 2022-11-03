@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -401,12 +403,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditions">
+   Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branching-with-flowcharts">
+   Branching With Flowcharts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repeating-actions">
+   Repeating Actions
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -418,6 +454,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditions">
+   Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branching-with-flowcharts">
+   Branching With Flowcharts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repeating-actions">
+   Repeating Actions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -427,6 +486,113 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="allowing-choices-in-flowcharts">
 <h1>2.2 Allowing Choices in Flowcharts<a class="headerlink" href="#allowing-choices-in-flowcharts" title="Permalink to this headline">#</a></h1>
+<p>Life is made up of choices. Do you cross the street here, or take a left? Do you continue chopping carrots or stop? Most of these choices can be boiled down to a series of Yes and No questions, or more formally thought about as True or False. It is also called a binary (two options) situation often represented as 1 is True and 0 is False.</p>
+<p>With flowcharts we represent a choice with a diamond.</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+    flowchart TD
+        id{Use Strawberry Slices&lt;br&gt; with PB&amp;J}
+        id --True--&gt; place[Place Slice on Bread]
+        id -- False --&gt; join
+        place --&gt; join[Join pieces of bread together]
+        </div><section id="conditions">
+<h2>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">#</a></h2>
+<p>Life also has conditions, and we were taught some ways to represent these conditions in high school algebra.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Condition</p></th>
+<th class="head"><p>Prose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(a &gt;  b\)</span></p></td>
+<td><p>is <span class="math notranslate nohighlight">\(a\)</span> <em>greater than</em> <span class="math notranslate nohighlight">\(b\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(a &lt; b\)</span></p></td>
+<td><p>is <span class="math notranslate nohighlight">\(a\)</span> <em>less than</em> <span class="math notranslate nohighlight">\(b\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(a &gt;= b\)</span></p></td>
+<td><p>is <span class="math notranslate nohighlight">\(a\)</span> <em>greater than or equal to</em> <span class="math notranslate nohighlight">\(b\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(a &lt;= b\)</span></p></td>
+<td><p>is <span class="math notranslate nohighlight">\(a\)</span> <em>less than or equal to</em> <span class="math notranslate nohighlight">\(b\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Combining the two ideas, let’s look back at our program from <a class="reference internal" href="../Chapter1/Ch1_6DesignPrograms.html"><span class="doc">1.6 Divide-Conquer-Glue (aka Designing Programs)</span></a>.</p>
+</section>
+<section id="branching-with-flowcharts">
+<h2>Branching With Flowcharts<a class="headerlink" href="#branching-with-flowcharts" title="Permalink to this headline">#</a></h2>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+  S([Start]) --&gt; gname[/Get Name/]
+  gname --&gt; gCyear[/Get Current Year/]
+  gCyear --&gt; gByear[/Get Birth Year/]
+  gByear --&gt; calc[Calc Age]
+  calc --&gt; p[/Print name is age./]
+  p --&gt; E([End])
+        </div><p>Now, lets say before we calculate age, we want to check to make sure the current year is higher than the birth year. We could modify our flow diagram to include that choice.</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+  S([Start]) --&gt; gname[/Get Name/]
+  gname --&gt; gCyear[/Get Current Year/]
+  gCyear --&gt; gByear[/Get Birth Year/]
+  gByear --&gt; cond{birth year &lt; current year}
+  cond -- True --&gt; calc[Calc Age]
+  cond -- False --&gt; notP[/Print not possible!/]
+  calc --&gt; p[/Print name is age./]
+  p --&gt; E([End])
+  notP --&gt; E
+        </div><p>Adding conditions greatly increases the types of actions we can do, and improves our algorithms.  However, in the example above, if <code class="docutils literal notranslate"><span class="pre">birth</span> <span class="pre">year</span></code> equals <code class="docutils literal notranslate"><span class="pre">current</span> <span class="pre">year</span></code>, it follows the <code class="docutils literal notranslate"><span class="pre">False</span></code> pathway in the flowchart. This is because it isn’t strictly True with the less than condition. That may be intentional, or maybe, I want to do something special if they are a new born!</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+  S([Start]) --&gt; gname[/Get Name/]
+  gname --&gt; gCyear[/Get Current Year/]
+  gCyear --&gt; gByear[/Get Birth Year/]
+  gByear --&gt; cond{birth year &lt; current year}
+  cond -- True --&gt; calc[Calc Age]
+  cond -- False --&gt; isNewBorn{birth year &lt;br&gt; equals &lt;br&gt; current year}
+  isNewBorn -- True --&gt; yayP[/Print welcome newborn!/]
+  isNewBorn -- False --&gt; notP[/Print not possible./]
+  calc --&gt; p[/Print name is age./]
+  p --&gt; E([End])
+  notP --&gt; E
+  yayP --&gt; E
+        </div><p>We just added another condition (choice!) in our flowchart, and we ended up with three possible outcomes to our program. We can see the checks happen in order, and we can see the results of each condition. We now have a very visual representation of our code.</p>
+</section>
+<section id="repeating-actions">
+<h2>Repeating Actions<a class="headerlink" href="#repeating-actions" title="Permalink to this headline">#</a></h2>
+<p>Let’s say we have three strawberries we want to slice for our Million Dollar Sandwich. This is the same action for every strawberry, just repeated three times, or stated another way, repeated until done. After each slice, we mentally ask ourselves is it done, and if not, we keep going. Essentially, a True/False condition on to repeat or be done.</p>
+<p>With a flowchart, that is still represented as a Diamond, as you look at the condition, and based on the condition you mark the step you want to repeat. Going back to our Age example, what if we wanted the client to continue to enter years until the years they enter are valid? We can modify the flowchart simply by changing where our line goes!</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+  S([Start]) --&gt; gname[/Get Name/]
+  gname --&gt; gCyear[/Get Current Year/]
+  gCyear --&gt; gByear[/Get Birth Year/]
+  gByear --&gt; cond{birth year &lt; current year}
+  cond -- True --&gt; calc[Calc Age]
+  cond -- False --&gt; isNewBorn{birth year &lt;br&gt; equals &lt;br&gt; current year}
+  isNewBorn -- True --&gt; yayP[/Print welcome newborn!/]
+  isNewBorn -- False --&gt; gCyear
+  calc --&gt; p[/Print name is age./]
+  p --&gt; E([End])
+  yayP --&gt; E
+        </div><p>This tells us that we have a loop in my code that requires the client to enter valid values for Current Year and Birth Year. In practice, it may make sense to set it up other ways, but this gives an idea of what is going on. Since each of these actions was a function call, I also can start thinking about how this would convert to code by just calling the <code class="docutils literal notranslate"><span class="pre">getYear()</span></code> function again.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title">Software Testing</p>
+<p>Within software testing, flow diagrams for code are so common, there is actually software that will read your code and generate a modified flow diagram. This diagram can then be compared with your tests to make sure you test every pathway on the diagram (formally called a graph)!</p>
+</aside>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You now have two visual tools for code, one is using cards for Divide-Conquer-Glue, while the other is this flowchart. The question is when to use which tool.  In practice, the initial high level breakdown comes from Divide-Conquer-Glue. Flowcharts are often good tools when looking at individual functions - both for design <strong>and</strong> debugging. The strength with debugging shows up formally in software testing, as it is often easy to see pathways or conditions missed.</p>
+<p>From a learning languages standpoint, we will use flowcharts when representing new concepts, so you have a visual pathway to look at on how the code is represented! We will also encourage you to convert from flowchart to code to flowchart, so you can have a better understanding of the actions taken and in what order.</p>
+</div>
+<p>We will continue to explore how this looks in code, but for a flowchart it is as simple as thinking out your <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> pathways.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
