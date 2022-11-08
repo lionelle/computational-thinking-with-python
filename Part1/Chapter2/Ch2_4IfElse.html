@@ -163,6 +163,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Ch1_ww2_bigidea.html">
+     Culture Bonus: Computer Science in World War II
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../Chapter1/Ch1_exercises.html">
      Exercises
     </a>
@@ -202,6 +207,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="Ch2_5SimpleRecursion.html">
      2.5 Repetition with Conditions and Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch2_6DesignWalkthrough.html">
+     Algorithmic Design Walk Through
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch2_turing_bigidea.html">
+     Culture Bonus: The Man, The Myth, The Legend.
     </a>
    </li>
    <li class="toctree-l2">
@@ -254,6 +269,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../Chapter3/Ch3_7FileReading.html">
      3.7 Data From Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter3/Ch3_systems_bigidea.html">
+     Culture Bonus: Von
     </a>
    </li>
    <li class="toctree-l2">
@@ -329,6 +349,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter2/Ch2_4IfElse.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/lionelle/computational-thinking-with-python/blob/main/Part1/Chapter2/Ch2_4IfElse.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -363,6 +430,23 @@ title="Source repository"
   </button>
   <div class="menu-dropdown__content">
     <ul>
+      <li>
+        <a href="../../_sources/Part1/Chapter2/Ch2_4IfElse.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
       <li>
         <a href="../../_sources/Part1/Chapter2/Ch2_4IfElse.md"
    class="headerbtn"
@@ -401,12 +485,91 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-statement-syntax">
+   if statement syntax
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice">
+     Practice
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#programming-window">
+       Programming Window
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#solution-flowchart-for-check-guess-value">
+         Solution Flowchart for check_guess(value)
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#else">
+   Else
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize">
+     Visualize
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nesting-statements">
+     Nesting Statements
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nested-statement-flowchart">
+       Nested Statement Flowchart
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-checks">
+   Knowledge Checks
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -418,6 +581,74 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-statement-syntax">
+   if statement syntax
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice">
+     Practice
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#programming-window">
+       Programming Window
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#solution-flowchart-for-check-guess-value">
+         Solution Flowchart for check_guess(value)
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#else">
+   Else
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize">
+     Visualize
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nesting-statements">
+     Nesting Statements
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nested-statement-flowchart">
+       Nested Statement Flowchart
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-checks">
+   Knowledge Checks
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -427,6 +658,249 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="if-else-statements">
 <h1>2.4 if / else statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">#</a></h1>
+<p>With programming, it is very common to only have code that runs <strong>conditionally</strong> meaning if a statement is true, we run that block of code. We do that in life pretty regularity. If something is true, we do it. If it isn’t true (or false), we don’t do it. Are we hungry? True or False, if True, we eat, if False we don’t eat. In programming, we have commands built into the language - <code class="docutils literal notranslate"><span class="pre">if</span></code> being the command.</p>
+<section id="if-statement-syntax">
+<h2>if statement syntax<a class="headerlink" href="#if-statement-syntax" title="Permalink to this headline">#</a></h2>
+<p>The syntax of an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>if condition:
+   block of code
+   more code
+Outside of if
+</pre></div>
+</div>
+<p>Let’s view that in code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside if block&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will get executed no matter what&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inside if block
+This will get executed no matter what
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span> <span class="c1">#notice value change</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;inside if block&lt;&lt;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will get executed no matter what&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This will get executed no matter what
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try it with code tracing</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20comparison_check%28value%29%3A%0A%20%20%20%20if%20value%20%3E%3D%205%3A%0A%20%20%20%20%20%20%20%20print%28f%22%7Bvalue%7D%20is%20greater%20than%20equal%20to%20five%22%29%0A%20%20%20%20print%28%22End%20of%20function%22%29%0A%0A%0Acomparison_check%286%29%0Aprint%28%29%20%23%20to%20add%20an%20empty%20line%0Acomparison_check%285%29%0Aprint%28%29%0Acomparison_check%284%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Pay special attention step 18.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Anytime you indent in python, you are looking at a code block. A function is a code block where all that code belongs to the <code class="docutils literal notranslate"><span class="pre">def</span></code> for your function. An if block is your indented code that follows the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement. Notice the colon is used before each block, and the indentation matters!</p>
+</div>
+<section id="practice">
+<h3>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h3>
+<p>Let’s practice writing simple <code class="docutils literal notranslate"><span class="pre">if</span></code> statements.</p>
+<div class="important admonition">
+<p class="admonition-title">Tasks</p>
+<p>You task is to write a program that takes client input, and their goal is guess a number. They get one guess, and they get told ‘Correct’, ‘Low’, or ‘High’.  For now, you can pick <code class="docutils literal notranslate"><span class="pre">3</span></code> for the number they are to guess.</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Divide the problem up into smaller parts</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>important!</strong> Draw a flowchart for the function that includes the if statements (called check_guess)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Write function for testing the value, it should return the string value!</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Test the function</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Write function for getting client input (similar to the get_year() you did before…)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Test the final program</p></li>
+</ul>
+<p>Don’t forget to document using docstring. We will also come back to the flowchart throughout this section.s</p>
+<p>HINT: You can have (and need) three seperate <code class="docutils literal notranslate"><span class="pre">if</span></code> statements.</p>
+</div>
+<section id="programming-window">
+<h4>Programming Window<a class="headerlink" href="#programming-window" title="Permalink to this headline">#</a></h4>
+<iframe frameBorder='0' height='450px' src='https://onecompiler.com/embed/python/3ym59u5qg?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true' width='100%'></iframe>
+</section>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<div class="toggle docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_guess</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Informs the client if their value is greater than, less than, or</span>
+<span class="sd">    equal to 3. Returns the string value based on Correct, Low, or High</span>
+<span class="sd">        </span>
+<span class="sd">    &gt;&gt;&gt; check_guess(3)</span>
+<span class="sd">    &#39;Correct&#39;</span>
+<span class="sd">    &gt;&gt;&gt; check_guess(2)</span>
+<span class="sd">    &#39;Low&#39;</span>
+<span class="sd">    &gt;&gt;&gt; check_guess(4)</span>
+<span class="sd">    &#39;High&#39;</span>
+
+<span class="sd">    :param value: The value to be guessed, already assumed to be an int</span>
+<span class="sd">    :param type: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;Correct&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;High&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;Low&quot;</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+<span class="k">def</span> <span class="nf">get_guess</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Gets a number from the client. Does not currently handle error checking.</span>
+
+<span class="sd">    &gt;&gt;&gt; get_guess()  # client enters 2</span>
+<span class="sd">    Guess a whole number:</span>
+<span class="sd">    2</span>
+<span class="sd">    &gt;&gt;&gt; get_guess()  # client enters 3</span>
+<span class="sd">    Guess a whole number:</span>
+<span class="sd">    3</span>
+
+<span class="sd">    :return: a whole number value for their guess</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">guess_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Guess a whole number: &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess_str</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Main driver of the program. Simply asks the client to guess a number, </span>
+<span class="sd">    and says if it is higher or lower than 3.&quot;&quot;&quot;</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="n">get_guess</span><span class="p">()</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">check_guess</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+
+
+<span class="n">main</span><span class="p">()</span> <span class="c1"># run it!</span>
+</pre></div>
+</div>
+</div>
+<p>Your solution may have different comment, especially on the built in tests. If you didn’t include them, you should get into the
+practice of including the full docstrings.</p>
+<section id="solution-flowchart-for-check-guess-value">
+<h5>Solution Flowchart for check_guess(value)<a class="headerlink" href="#solution-flowchart-for-check-guess-value" title="Permalink to this headline">#</a></h5>
+<div class="toggle docutils container">
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+    s([Start]) -- value --&gt; cg[&quot;check_guess(value)&quot;]
+    cg --&gt; set[&quot;set response = ''&quot;]
+    set --&gt;  if1{&quot;value equals 3?&quot;}
+    if1 -- True --&gt; set1[&quot;response = 'Correct'&quot;]
+    if1 -- False --&gt; if2{&quot;value greater than 3?&quot;}
+    set1 --&gt; if2
+
+    if2 -- True --&gt; set2[&quot;response = 'High'&quot;]
+    if2 -- False --&gt; if3{&quot;values less than 3&quot;}
+    set2 --&gt; if3
+
+    if3 -- True --&gt; set3[&quot;response = 'Low'&quot;]
+    if3 -- False --&gt; rtn[&quot;return response&quot;]
+    set3 --&gt; rtn
+    rtn --&gt; e([End])
+      
+        </div></div>
+<p>In the flowchart above, we notice that every if condition gets checked, no matter the result of the previous condition. That seems like a waste if we already know the one before that is free. As such, let’s as the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="else">
+<h2>Else<a class="headerlink" href="#else" title="Permalink to this headline">#</a></h2>
+<p>We are interested in running code if a condition is True, but we are also interested in <strong>only</strong> running code if the condition is False. In english, we would say, “If we are hungry, we eat, else we go play.” Represented in a flowchart, that is:</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+    s([Start]) --&gt;if{&quot;I am hungry&quot;}
+    if -- True --&gt; eat[&quot;Let's eat&quot;]
+    if -- False --&gt; play[&quot;Let's play&quot;]
+    eat --&gt; e([End])
+    play --&gt; e
+        </div><p>From a python perspetive, the syntax would be the following</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Are you hungry (y/n)? &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I hungry&quot;</span><span class="p">)</span>
+    <span class="n">eat</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;not hungry!&quot;</span><span class="p">)</span>
+    <span class="n">play</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Notice the if has a block of code under it (which in this case is printing and then invoking a method), and else has a block of code. You can tell by the indentations that block ‘belongs’ to the line above it.</p>
+<section id="visualize">
+<h3>Visualize<a class="headerlink" href="#visualize" title="Permalink to this headline">#</a></h3>
+<p>See the above example ran with both ‘y’ and ‘n’ entered!</p>
+<iframe width="800" height="600" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20eat%28%29%3A%0A%20%20%20%20print%28%22Nom%20nom%22%29%0A%20%20%20%20%0Adef%20play%28%29%3A%0A%20%20%20%20print%28%22Would%20you%20like%20to%20play%20a%20game%3F%20%22%29%0A%0A%0Adef%20need_to_eat%28%29%3A%0A%20%20%20%20status%20%3D%20input%28%22Are%20you%20hungry%20%28y/n%29%3F%20%22%29%0A%20%20%20%20if%20status%20%3D%3D%20'y'%3A%0A%20%20%20%20%20%20%20%20print%28%22I%20hungry%22%29%0A%20%20%20%20%20%20%20%20eat%28%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22not%20hungry!%22%29%0A%20%20%20%20%20%20%20%20play%28%29%0A%20%20%20%20%20%20%20%20%0Aneed_to_eat%28%29%20%23%23%20entered%20'y'%0Aneed_to_eat%28%29%20%23%23%20entered%20'n'&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22y%22,%22n%22%5D&textReferences=false"> </iframe>
+<p><a class="reference external" href="https://pythontutor.com/render.html#code=def%20eat%28%29%3A%0A%20%20%20%20print%28%22Nom%20nom%22%29%0A%20%20%20%20%0Adef%20play%28%29%3A%0A%20%20%20%20print%28%22Would%20you%20like%20to%20play%20a%20game%3F%20%22%29%0A%0A%0Adef%20need_to_eat%28%29%3A%0A%20%20%20%20status%20%3D%20input%28%22Are%20you%20hungry%20%28y/n%29%3F%20%22%29%0A%20%20%20%20if%20status%20%3D%3D%20%27y%27%3A%0A%20%20%20%20%20%20%20%20print%28%22I%20hungry%22%29%0A%20%20%20%20%20%20%20%20eat%28%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22not%20hungry%21%22%29%0A%20%20%20%20%20%20%20%20play%28%29%0A%20%20%20%20%20%20%20%20%0Aneed_to_eat%28%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Run it yourself</a></p>
+</section>
+<section id="nesting-statements">
+<h3>Nesting Statements<a class="headerlink" href="#nesting-statements" title="Permalink to this headline">#</a></h3>
+<p>Because you can have blocks within blocks, it is possible and common to nest if statements. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value is possitive, but less than 3&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value is negative or 0&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value is 3-9&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value is possitive, 10 or higher&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>value is possitive, but less than 3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="nested-statement-flowchart">
+<h4>Nested Statement Flowchart<a class="headerlink" href="#nested-statement-flowchart" title="Permalink to this headline">#</a></h4>
+<p>The flowchart for the above code is also direct.</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+    s([Start]) --&gt; set[&quot;set value to 3&quot;]
+    set --&gt; if1{&quot;value &lt; 3&quot;}
+    if1 -- True --&gt; if1_2{&quot;value &gt; 0&quot;}
+    if1 -- False --&gt; else1_2{&quot;value &lt; 10&quot;}
+
+    if1_2 -- True --&gt; p1[&quot;print is possitive,&lt;br&gt; but less than 3&quot;]
+    if1_2 -- False --&gt; p2[&quot;print value is&lt;br&gt; negative or 0&quot;]
+
+    else1_2 -- True --&gt; p3[&quot;value is 3-9&quot;]
+    else1_2 -- False --&gt; p4[&quot;value is possitive,&lt;br&gt; 10 or higher&quot;]
+
+    p1 --&gt; e([End])
+    p2 --&gt; e
+    p3 --&gt; e
+    p4 --&gt; e
+
+        </div><div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Drawing the tree / flowchart like the one above makes understanding nested if-statements <em>much</em> easier. Given the above example, we know the moment a value tests as true, we can never <em>jump</em> to another side of the tree. Or another way to say it, draw a line down the middle, and you will never pass that line. Once this drawn, we can feed any series of numbers, and we can easily trace to the answer. Can be much easier than reading the code on complex nesting statements!</p>
+</div>
+<p>Between if statements and conditions, you have the basics of controlling the flow of which of your operations get executed. With that said, using just the tools we have, how would we repeat an action until a certain condition is met? Let’s look at that!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you look up if-statements in python, you will see a number of commands we don’t cover here. <code class="docutils literal notranslate"><span class="pre">elif</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code> for the primary ones. The reason these are omitted is becuase we will come back to this topic in a couple chapters. While traditional programming teaches you everything at once, research shows it is better to learn in stages, and return to topics. For now, you can safely ignore such references online, and focus only on understanding the fundamental structure of if/else.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="knowledge-checks">
+<h2>Knowledge Checks<a class="headerlink" href="#knowledge-checks" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
