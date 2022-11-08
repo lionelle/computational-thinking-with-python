@@ -36,6 +36,7 @@ if 10 > 5:
 print("This will get executed no matter what")
 ```
 
+And if the conditional statement is False.
 ```{code-cell}
 if 0 > 5: #notice value change
     print(">>inside if block<<")
@@ -248,4 +249,4 @@ Between if statements and conditions, you have the basics of controlling the flo
 When you look up if-statements in python, you will see a number of commands we don't cover here. `elif`, `and`, `or`, `not` for the primary ones. The reason these are omitted is becuase we will come back to this topic in a couple chapters. While traditional programming teaches you everything at once, research shows it is better to learn in stages, and return to topics. For now, you can safely ignore such references online, and focus only on understanding the fundamental structure of if/else.
 ```
 
-## Knowledge Checks
+## Knowledge Check

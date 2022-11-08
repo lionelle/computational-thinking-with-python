@@ -68,6 +68,9 @@ Program
 Programming Language
     A tool in which we learn to play the computer that follows specific grammar rules so other programs can parse the grammars to be used directly on the computer. 
 
+Recursion
+    Functions are repeating by calling themselves until they reach a base case. 
+
 Runtime Errors
     Errors that happen while the programming is running that cause the program to crash. These programs have valid syntax but when they run they
     come across unexpected situations. For example, entering "hi" when they were supposed to enter "22" throws a ValueFormat error. These

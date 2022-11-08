@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.1 Flow Diagram &#8212; Computational Thinking with Python</title>
+    <title>2.5 Repetition &#8212; Computational Thinking with Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.2 Allowing Choices in Flowcharts" href="Ch2_2FlowBranching.html" />
-    <link rel="prev" title="2 Algorithmic Thinking" href="Ch2_0Intro.html" />
+    <link rel="next" title="2.6 Algorithmic Design" href="Ch2_6DesignWalkthrough.html" />
+    <link rel="prev" title="2.4 if / else statements" href="Ch2_4IfElse.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -184,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch2_1FlowDiagrams.html">
      2.1 Flow Diagram
     </a>
    </li>
@@ -204,8 +204,8 @@ const thebe_selector_output = ".output, .cell_output"
      2.4 if / else statements
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_5SimpleWhile.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      2.5 Repetition
     </a>
    </li>
@@ -349,6 +349,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter2/Ch2_5SimpleWhile.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/lionelle/computational-thinking-with-python/blob/main/Part1/Chapter2/Ch2_5SimpleWhile.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -384,7 +431,24 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/Part1/Chapter2/Ch2_1FlowDiagrams.md"
+        <a href="../../_sources/Part1/Chapter2/Ch2_5SimpleWhile.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../../_sources/Part1/Chapter2/Ch2_5SimpleWhile.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -444,6 +508,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-repetition">
+   Simple repetition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize">
+     Visualize
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looping-with-functions">
+   Looping With Functions?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#knowledge-check">
    Knowledge Check
   </a>
@@ -457,7 +543,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>2.1 Flow Diagram</h1>
+                <h1>2.5 Repetition</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -467,6 +553,28 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-repetition">
+   Simple repetition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize">
+     Visualize
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looping-with-functions">
+   Looping With Functions?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#knowledge-check">
    Knowledge Check
@@ -482,67 +590,108 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="flow-diagram">
-<h1>2.1 Flow Diagram<a class="headerlink" href="#flow-diagram" title="Permalink to this headline">#</a></h1>
-<p>Taking a step back from the python language, let’s talk about programming visually. An age old practice in programming is building a flowchart. The advantage of building a flowchart is that you can represent the algorithm/program in a way that is language independent. This flow also helps us visual paths for testing the program, and can help us understand the programming concepts themselves, as no  matter the language the concepts show up the same in the flowchart. This makes it easier to write our code, test our code, and even learn new languages.</p>
-<p>Let’s look at the Million Dollar Sandwich example</p>
-<div class="mermaid">
-            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
-flowchart TD
-    s([Start]) --&gt; spreadB[Spread Peanut Butter]
-    spreadB --&gt; spreadJ[Spread Jam]
-    spreadJ --&gt; slice[Slice Strawberries]
-    slice --&gt; place[Place Strawberries on Jam]
-    place --&gt; join[Join pieces of bread together]
-    join --&gt; e([End])
-        </div><p>You will notice that <strong>Start</strong> and <strong>End</strong> are both circles/ovals, while every <em>simple</em> step is a rectangle. However, what if we wanted to represent input/output? Let’s look at our activity from <a class="reference internal" href="../Chapter1/Ch1_6DesignPrograms.html"><span class="doc">1.6 Divide-Conquer-Glue (aka Designing Programs)</span></a>, and redefine that as a flowchart. In order to do that, we will have to add a Rhombus slanting right to define input/output interaction.</p>
-<div class="mermaid">
-            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
-flowchart TD
-  S([Start]) --&gt; gname[/Get Name/]
-  gname --&gt; gCyear[/Get Current Year/]
-  gCyear --&gt; gByear[/Get Birth Year/]
-  gByear --&gt; calc[Calc Age]
-  calc --&gt; p[/Print name is age./]
-  p --&gt; E([End])
-        </div><div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>There are many standardized symbols used for flowcharts, often coming from the engineering schools of thought. For our use, we will use four common symbols.</p>
-<ul class="simple">
-<li><p>Circle/Oval - start, end, method call, return statement</p></li>
-<li><p>Rectangle - A simple action</p></li>
-<li><p>Rhombus - Input/Output/Data</p></li>
-<li><p>Diamond - Choices (talked about in <a class="reference internal" href="Ch2_2FlowBranching.html"><span class="doc">2.2 Allowing Choices in Flowcharts</span></a>)</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="repetition">
+<h1>2.5 Repetition<a class="headerlink" href="#repetition" title="Permalink to this headline">#</a></h1>
+<p>Since we can group code into blocks, like functions, and then we can conditionally code, we can look at how to cause blocks of code to repeat themselves.</p>
+<section id="simple-repetition">
+<h2>Simple repetition<a class="headerlink" href="#simple-repetition" title="Permalink to this headline">#</a></h2>
+<p>Let’s say we want a menu to show until a client asks us to type ‘x’. We could write such a menu as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_something</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hey, you entered: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">menu</span><span class="p">():</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">!=</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+        <span class="n">do_something</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thank you for playing&quot;</span><span class="p">)</span>
+
+<span class="n">menu</span><span class="p">()</span>
+</pre></div>
 </div>
-<p>Right away, we can follow the flowchart, and get an idea of each of our steps in our code. For the most part, each individual action is an item, and as you define functions, you create additional flow charts. You can even link to the additional flow charts, as follows.</p>
+<p>The program would run once. You can visualize the execution below assuming the input is five.</p>
+<div class="toggle docutils container">
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20do_something%28value%29%3A%0A%20%20%20%20print%28f%22Hey,%20you%20entered%3A%20%7Bvalue%7D%22%20%29%0A%0Adef%20menu%28%29%3A%0A%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20if%20val%20!%3D%20'x'%3A%0A%20%20%20%20%20%20%20%20do_something%28val%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Thank%20you%20for%20playing%22%29%0A%0Amenu%28%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%225%22%5D&textReferences=false"> </iframe>
+</div>
+<p>Or you can <a class="reference external" href="https://pythontutor.com/render.html#code=def%20do_something%28value%29%3A%0A%20%20%20%20print%28f%22Hey,%20you%20entered%3A%20%7Bvalue%7D%22%20%29%0A%0Adef%20menu%28%29%3A%0A%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20if%20val%20%21%3D%20%27x%27%3A%0A%20%20%20%20%20%20%20%20do_something%28val%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Thank%20you%20for%20playing%22%29%0A%0Amenu%28%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">run it yourself</a></p>
+<p>The above code can be visually represented as:</p>
 <div class="mermaid">
             %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
 flowchart TD
-    subgraph getYear[Get Year]
-        S2([Start])
-        S2 --&gt; prompt[/Print Prompt/]
-        prompt -- value --&gt; int[Convert value to int]
-        int --&gt; E2([return int])
-    end
-   
-    subgraph main
-        S([Start]) --&gt; gname[/Get Name/]
-        gname --&gt; gCyear[/Get Current Year/]
-        gCyear --&gt; gByear[/Get Birth Year/]
-        gByear --&gt; calc[Calc Age]
-        calc --&gt; p[/Print name is age./]
-        p --&gt; E([End])
-    end
-   
-    gCyear --&gt; S2
-    gByear --&gt; S2
-    E2 --&gt; gCyear
-    E2 --&gt; gByear
-        </div><p>But then that gets complicated. It is more common to just give IDs to charts, and list them separately. What if we wanted to add the ability to make choices and repeat actions?</p>
+    s([Start]) --&gt; menu[&quot;menu()&quot;]
+    menu --&gt;  val[/&quot;enter a value&quot;/]
+    val -- &quot;val&quot; --&gt; if{&quot;val != 'x'&quot;}
+    if -- True --&gt; do[&quot;do_something(val)&quot;]
+    if -- False --&gt; p[&quot;Thank you for playing&quot;]
+    p --&gt; e([End])
+    do --&gt; e
+        </div><p>Now if we wanted to repeat, instead of ending after do something, we just go back to the menu.</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+    s([Start]) --&gt; menu[&quot;menu()&quot;]
+    menu --&gt;  val[/&quot;enter a value&quot;/]
+    val -- &quot;val&quot; --&gt; if{&quot;val != 'x'&quot;}
+    if -- True --&gt; do[&quot;do_something(val)&quot;]
+    if -- False --&gt; p[&quot;Thank you for playing&quot;]
+    p --&gt; e([End])
+    do --&gt; val
+        </div><p>This tells us, that when it is true, we need to invoke both <code class="docutils literal notranslate"><span class="pre">do_something(val)</span></code> and then jump back to asking for input. To do this, we use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_something</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hey, you entered: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">menu</span><span class="p">():</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value: &quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">val</span> <span class="o">!=</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+        <span class="n">do_something</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value: &quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thank you for playing&quot;</span><span class="p">)</span>
+
+<span class="n">menu</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="visualize">
+<h3>Visualize<a class="headerlink" href="#visualize" title="Permalink to this headline">#</a></h3>
+<p>This program will keep running until ‘x’ is entered. You can visualize the execution below assuming the input is <code class="docutils literal notranslate"><span class="pre">5</span></code>, <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<div class="toggle docutils container">
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20do_something%28value%29%3A%0A%20%20%20%20print%28f%22Hey,%20you%20entered%3A%20%7Bvalue%7D%22%20%29%0A%0Adef%20menu%28%29%3A%0A%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20while%20val%20!%3D%20'x'%3A%0A%20%20%20%20%20%20%20%20do_something%28val%29%0A%20%20%20%20%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Thank%20you%20for%20playing%22%29%0A%0Amenu%28%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%225%22,%2210%22,%22x%22%5D&textReferences=false"> </iframe>
+</div>
+<p>You can also <a class="reference external" href="https://pythontutor.com/render.html#code=def%20do_something%28value%29%3A%0A%20%20%20%20print%28f%22Hey,%20you%20entered%3A%20%7Bvalue%7D%22%20%29%0A%0Adef%20menu%28%29%3A%0A%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20while%20val%20%21%3D%20%27x%27%3A%0A%20%20%20%20%20%20%20%20do_something%28val%29%0A%20%20%20%20%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Thank%20you%20for%20playing%22%29%0A%0Amenu%28%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">run it yourself</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In practice you, you do not need the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement for most loops, as that code gets run when the loop is done. As such, the above can be rewritten as the following.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_something</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hey, you entered: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">menu</span><span class="p">():</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value: &quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">val</span> <span class="o">!=</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+        <span class="n">do_something</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value: &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thank you for playing&quot;</span><span class="p">)</span>
+
+<span class="n">menu</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>However, knowing you can have an else statement helps take care of some special conditions that can come up once in a while (pun intended).</p>
+</div>
+</section>
+</section>
+<section id="looping-with-functions">
+<h2>Looping With Functions?<a class="headerlink" href="#looping-with-functions" title="Permalink to this headline">#</a></h2>
+<p>Someone looking at the above flowchart could point out one could just reset the if/else line to <code class="docutils literal notranslate"><span class="pre">menu()</span></code> and it would loop! You are correct, and you can <a class="reference external" href="https://pythontutor.com/render.html#code=def%20do_something%28value%29%3A%0A%20%20%20%20print%28f%22Hey,%20you%20entered%3A%20%7Bvalue%7D%22%20%29%0A%0Adef%20menu%28%29%3A%0A%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20if%20val%20%21%3D%20%27x%27%3A%0A%20%20%20%20%20%20%20%20do_something%28val%29%0A%20%20%20%20%20%20%20%20menu%28%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Thank%20you%20for%20playing%22%29%0A%20%20%20%20%20%20%20%20%0Amenu%28%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">vizualize such an execution</a>.</p>
+<div class="toggle docutils container">
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20do_something%28value%29%3A%0A%20%20%20%20print%28f%22Hey,%20you%20entered%3A%20%7Bvalue%7D%22%20%29%0A%0Adef%20menu%28%29%3A%0A%20%20%20%20val%20%3D%20input%28%22Enter%20a%20value%3A%20%22%29%0A%20%20%20%20if%20val%20!%3D%20'x'%3A%0A%20%20%20%20%20%20%20%20do_something%28val%29%0A%20%20%20%20%20%20%20%20menu%28%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Thank%20you%20for%20playing%22%29%0A%20%20%20%20%20%20%20%20%0Amenu%28%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%225%22,%22x%22%5D&textReferences=false"> </iframe>
+</div>
+<p>This means you are thinking ahead and uncovering a concept called <a class="reference internal" href="../citations.html#term-Recursion"><span class="xref std std-term">Recursion</span></a>, which a function is called within a function. Both loops and Recusion have their advantages. We will cover Recusion more in the future.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>We have used if/else statements and while loops to help control the flow of our program. Let’s work it all together with our overall program design in the next section.</p>
+</section>
 <section id="knowledge-check">
 <h2>Knowledge Check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">#</a></h2>
-<p>TODO</p>
 </section>
 </section>
 
@@ -573,17 +722,17 @@ flowchart TD
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Ch2_0Intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Ch2_4IfElse.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">2 Algorithmic Thinking</p>
+            <p class="prev-next-title">2.4 if / else statements</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Ch2_2FlowBranching.html" title="next page">
+    <a class='right-next' id="next-link" href="Ch2_6DesignWalkthrough.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2.2 Allowing Choices in Flowcharts</p>
+        <p class="prev-next-title">2.6 Algorithmic Design</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

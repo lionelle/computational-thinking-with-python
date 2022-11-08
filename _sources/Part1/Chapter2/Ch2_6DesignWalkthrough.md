@@ -1,1 +1,1 @@
-# Algorithmic Design Walk Through
+# 2.6 Algorithmic Design
