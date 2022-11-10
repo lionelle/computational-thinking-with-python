@@ -514,7 +514,7 @@ if __name__ == "__main__":
 
 What that says is "if you are loading this file as the first file in your program, run this block of code". This gives me the ability to run the program, or just use the functions separately as needed. You can indeed include any code under the if statement, but for now, we will often just call the main driver for our program. 
 
-```{margin}
+```{margin} Solution Code
 You will find solutions for a walk-through like this are in the [github repository](https://github.com/lionelle/computational-thinking-with-python). You are encouraged to download them and run them on your local computer, including the line that talks about running the built in tests. You can even clone the entire repository, and have it all on your computer. Explore! 
 ```
 
