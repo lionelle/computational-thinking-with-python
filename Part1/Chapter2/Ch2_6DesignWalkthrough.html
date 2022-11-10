@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -349,6 +351,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter2/Ch2_6DesignWalkthrough.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/lionelle/computational-thinking-with-python/blob/main/Part1/Chapter2/Ch2_6DesignWalkthrough.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -383,6 +432,23 @@ title="Source repository"
   </button>
   <div class="menu-dropdown__content">
     <ul>
+      <li>
+        <a href="../../_sources/Part1/Chapter2/Ch2_6DesignWalkthrough.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
       <li>
         <a href="../../_sources/Part1/Chapter2/Ch2_6DesignWalkthrough.md"
    class="headerbtn"
@@ -421,12 +487,161 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-big-view">
+   Design: Big View
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brainstorm-steps-required">
+     Brainstorm Steps Required
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decomposition">
+     Decomposition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#look-for-patterns-and-abstraction">
+     Look for Patterns, and Abstraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-code-the-small-view">
+   Writing Code: The Small View
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#focus-on-check-guess-int-correct-int-str">
+     Focus on
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       check(guess:
+      </span>
+      <span class="pre">
+       int,
+      </span>
+      <span class="pre">
+       correct:
+      </span>
+      <span class="pre">
+       int)
+      </span>
+      <span class="pre">
+       -&gt;
+      </span>
+      <span class="pre">
+       str:
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-one-define-the-function">
+       Step One: Define The Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-two-document">
+       Step Two: Document
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-three-write-the-function-incrementally">
+       Step Three: Write the function incrementally
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-four-test">
+       Step Four: Test!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn">
+     Your Turn!
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#focus-on-main">
+     Focus on main()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Your Turn!
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Solution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#adding-main">
+       Adding
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         __main__
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#play-the-game">
+   Play the game
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reflection">
+   Reflection
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -438,6 +653,144 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-big-view">
+   Design: Big View
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brainstorm-steps-required">
+     Brainstorm Steps Required
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decomposition">
+     Decomposition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#look-for-patterns-and-abstraction">
+     Look for Patterns, and Abstraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-code-the-small-view">
+   Writing Code: The Small View
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#focus-on-check-guess-int-correct-int-str">
+     Focus on
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       check(guess:
+      </span>
+      <span class="pre">
+       int,
+      </span>
+      <span class="pre">
+       correct:
+      </span>
+      <span class="pre">
+       int)
+      </span>
+      <span class="pre">
+       -&gt;
+      </span>
+      <span class="pre">
+       str:
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-one-define-the-function">
+       Step One: Define The Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-two-document">
+       Step Two: Document
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-three-write-the-function-incrementally">
+       Step Three: Write the function incrementally
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-four-test">
+       Step Four: Test!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn">
+     Your Turn!
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#focus-on-main">
+     Focus on main()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Your Turn!
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Solution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#adding-main">
+       Adding
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         __main__
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#play-the-game">
+   Play the game
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reflection">
+   Reflection
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -447,6 +800,617 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="algorithmic-design">
 <h1>2.6 Algorithmic Design<a class="headerlink" href="#algorithmic-design" title="Permalink to this headline">#</a></h1>
+<p>For this design walk through, we are going to build a guessing game application. The goal is to help combine the elements for algorithmic thinking with decomposition and abstraction. We encourage you to follow along using your own <a class="reference internal" href="../citations.html#term-IDE"><span class="xref std std-term">IDE</span></a>.</p>
+<p>We will also introduce two new concepts in this section</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">randint()</span></code> - a way to generate random numbers <a class="reference external" href="https://docs.python.org/3/library/random.html#random.randint">built into python</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> a common block used in python code to make running programs easier</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title">Design Worksheet</p>
+<p>TODO: add a downloadable worksheet to build through design process</p>
+</aside>
+<aside class="margin sidebar">
+<p class="sidebar-title">Programmers Notebook</p>
+<p>Are you using your programmers notebook? There is a worksheet that you can use above, or you can put it all in the notebook.</p>
+</aside>
+<p>Our client has presented the following request to us.</p>
+<div class="admonition-scenario admonition">
+<p class="admonition-title">Scenario</p>
+<p>We would like you to build a guessing game. The player is asked the high end of range of possible numbers, and then a random number is generated between 1 and the number provided. They are meant to guess with being given feed back, high, low, or correct if they guess it correctly. If the client enters an ‘x’ the program ends early, sharing with them what the number.</p>
+<p><strong>Stretch / Bonus Goals</strong></p>
+<ul class="simple">
+<li><p>Add the option to create a limited number of guesses</p></li>
+</ul>
+<p>You have the freedom to determine the wording used in the application.</p>
+</div>
+<section id="design-big-view">
+<h2>Design: Big View<a class="headerlink" href="#design-big-view" title="Permalink to this headline">#</a></h2>
+<p>We first start with high level design of the program. This is completely conceptional and separate from the code. Often called the ‘big’ view or high level view. Using the <strong>Divide-Conquer-Glue</strong> approach, this can be broken down as the following.</p>
+<ol class="simple">
+<li><p>Brainstorm Program Steps / Client Perspective</p></li>
+<li><p>Break Steps up into Logical Parts (divide)</p></li>
+<li><p>Repeat 2 with until minimal</p></li>
+<li><p>Look for ideas that can be combined into similar concepts</p></li>
+<li><p>For each compo</p></li>
+</ol>
+<section id="brainstorm-steps-required">
+<h3>Brainstorm Steps Required<a class="headerlink" href="#brainstorm-steps-required" title="Permalink to this headline">#</a></h3>
+<p>Write down the major tasks defined by the client.</p>
+<ol class="simple">
+<li><p>Ask player to set the <em>max</em> range of the guess, giving  <span class="math notranslate nohighlight">\( 1 &lt;= n &lt;= max \)</span></p></li>
+<li><p>Set a random number</p></li>
+<li><p>Start game</p>
+<ol class="simple">
+<li><p>Ask player to guess a number</p>
+<ol class="simple">
+<li><p>If high, respond to with ‘High’</p></li>
+<li><p>If low, response with ‘Low’</p></li>
+<li><p>If the number, respond with ‘Correct’</p></li>
+</ol>
+</li>
+<li><p>Repeat until ‘Correct’</p></li>
+</ol>
+</li>
+<li><p>End game - report out that it is correct, and end the game</p>
+<ol class="simple">
+<li><p>Special condition, ‘x’ can end the game immediately, displaying the correct answer</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="decomposition">
+<h3>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this headline">#</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Start Game</div>
+<p class="sd-card-text">Collect From client:</p>
+<ul class="simple">
+<li><p class="sd-card-text">max range</p>
+<ul>
+<li><p class="sd-card-text">convert max to <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p class="sd-card-text">needs to be greater than 0</p></li>
+</ul>
+</li>
+</ul>
+<p class="sd-card-text">Background process:</p>
+<ul class="simple">
+<li><p class="sd-card-text">select random number based on range</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Play Game</div>
+<ul class="simple">
+<li><p class="sd-card-text">Get guess from client</p>
+<ul>
+<li><p class="sd-card-text">convert guess to <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
+<ul>
+<li><p class="sd-card-text">check for ‘x’ before converting!</p></li>
+<li><p class="sd-card-text">needs to be greater than 0</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="sd-card-text">Test guess against actual number</p>
+<ul class="simple">
+<li><p class="sd-card-text">respond with, high, low, correct</p></li>
+<li><p class="sd-card-text">if correct - end game</p></li>
+<li><p class="sd-card-text">else - repeat</p></li>
+</ul>
+<p class="sd-card-text">Needs: random number
+Finishes with: True they won,
+or False they did not (aka they typed ‘x’).</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+End Game</div>
+<p class="sd-card-text">Report the correct number, and that they won or not</p>
+<p class="sd-card-text">Needs: They won or not from Play game
+Needs: The random number</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="look-for-patterns-and-abstraction">
+<h3>Look for Patterns, and Abstraction<a class="headerlink" href="#look-for-patterns-and-abstraction" title="Permalink to this headline">#</a></h3>
+<p>Are there any tasks that are exactly the same between components?</p>
+<blockquote class="epigraph">
+<div><p>Look for matching tasks!</p>
+</div></blockquote>
+<p>The getting client input and converting it into an <code class="docutils literal notranslate"><span class="pre">int</span></code> is a matching task. As such, if we look how to represent that abstractly, we can come up with a “utility function” that helps with both components. We can also further divide the program into components or functions at this stage.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title">Time Management</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These components can help with time management. Let’s say we have an assignment due in a week, if <strong>on the day it is assigned</strong> we break up the project into these components, we can then assign a day/time to work on each component. This helps from last minute scrambling, and provides time to modify and revamp.</p>
+</div>
+</aside>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+get_positive_int(prompt : str) -&gt; int</div>
+<ul class="simple">
+<li><p class="sd-card-text">get input from client</p></li>
+<li><p class="sd-card-text">check to see if input is x</p></li>
+<li><p class="sd-card-text">convert to int</p></li>
+<li><p class="sd-card-text">check to see if input &gt; 0</p></li>
+<li><p class="sd-card-text">repeat until x or greater than 0</p></li>
+</ul>
+<p class="sd-card-text">question: what value can I return that means they put in ‘x’?
+answer: -1 (since it has to be positive)</p>
+<p class="sd-card-text">Note: further error checking could happen, but not required.</p>
+<p class="sd-card-text">Dev Required:</p>
+<ul class="simple">
+<li><p class="sd-card-text">None</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+main()</div>
+<ul class="simple">
+<li><p class="sd-card-text">max = get max from client</p></li>
+<li><p class="sd-card-text">correct_answer = <span class="math notranslate nohighlight">\(1 &lt;= n &lt;= max\)</span> random</p></li>
+<li><p class="sd-card-text">victory = play_game(correct_answer)</p></li>
+<li><p class="sd-card-text">if victory is true: display congrats</p></li>
+<li><p class="sd-card-text">else display correct_answer</p></li>
+</ul>
+<p class="sd-card-text">Dev. Required:</p>
+<ul class="simple">
+<li><p class="sd-card-text">get_positive_int</p></li>
+<li><p class="sd-card-text">play_game</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+play_game(correct: int) -&gt; bool </div>
+<ul class="simple">
+<li><p class="sd-card-text">guess = prompt for client input</p></li>
+<li><p class="sd-card-text">if value &gt; -1
+response = check(guess, correct)
+if response == ‘Correct’ - return true
+else print(response)</p></li>
+<li><p class="sd-card-text">if value &lt; 0 return False</p></li>
+</ul>
+<p class="sd-card-text">Dev Required:</p>
+<ul class="simple">
+<li><p class="sd-card-text">check</p></li>
+<li><p class="sd-card-text">get_positive_int</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+check(guess : int, correct : int) -&gt; str</div>
+<ul class="simple">
+<li><p class="sd-card-text">if guess == correct - return ‘Correct’</p></li>
+<li><p class="sd-card-text">else if guess &lt; correct - return ‘Low’</p></li>
+<li><p class="sd-card-text">else return ‘High’</p></li>
+</ul>
+<p class="sd-card-text">Dev Required:</p>
+<ul class="simple">
+<li><p class="sd-card-text">None</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="error admonition">
+<p class="admonition-title">STOP</p>
+<p>You have taken a moment to define your functions. You <strong>DO NOT</strong> have to stick to this plan 100%. Sometimes you come back to this stage, once you realize what you need to do to implement a function, or (more commonly) you realize one function should be broken up into even smaller parts.</p>
+<p>It is also good to think about it for a moment before moving forward. Does this cover the entire program? Are there things you may be missing? Critically evaluate and reflect.</p>
+</div>
+</section>
+</section>
+<section id="writing-code-the-small-view">
+<h2>Writing Code: The Small View<a class="headerlink" href="#writing-code-the-small-view" title="Permalink to this headline">#</a></h2>
+<p>At this stage, you start thinking about the actual algorithm you want to build. It is essential to keep the task <strong>small</strong>, so your algorithm can remain simple. If you find your algorithm is getting too complex, then you may want to reevaluate what you are doing! At this stage, we are thinking more about the single repeatable algorithm for a single task.</p>
+<blockquote class="epigraph">
+<div><p>Look at small tasks when writing code</p>
+</div></blockquote>
+<p>Since we defined the various functions above, at this stage write each function. Which begs the question, where do we start?</p>
+<p>First, check your dependencies - which function depends on others being completed (written as Dev Required above). Only two functions do not require others to be implemented, so that is a very good place to start. Out of the two, one requires both loops and conditions, while the other just requires conditions and similar to what we wrote before. As such, starting at <code class="docutils literal notranslate"><span class="pre">check(guess,</span> <span class="pre">correct)</span></code> is a good spot!</p>
+<section id="focus-on-check-guess-int-correct-int-str">
+<h3>Focus on <code class="docutils literal notranslate"><span class="pre">check(guess:</span> <span class="pre">int,</span> <span class="pre">correct:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">str:</span></code><a class="headerlink" href="#focus-on-check-guess-int-correct-int-str" title="Permalink to this headline">#</a></h3>
+<p>From this point, the rest of the functions or the program doesn’t matter. You have <strong>ONE</strong> task only, complete a function that takes in two values, and lets you know if the values are equal, or if one is lower or higher than the other. That is it! A very common mistake with programming is trying to think of all the things you need to do, when really, you are switching your focus to the one small thing you need to do.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember the <strong>Steps for Writing a Function</strong></p>
+<ol class="simple">
+<li><p>Define the function</p></li>
+<li><p>Document the function - with expected input and output</p></li>
+<li><p>Write the function incrementally</p>
+<ul class="simple">
+<li><p>You can test as you write - run snippets to see what is happening, etc</p></li>
+</ul>
+</li>
+<li><p>Test the function with full black box testing</p></li>
+</ol>
+</div>
+<p>A function isn’t completed until all the steps above are completed. After it is completed, you can just <em>use</em> the function without having to worry about it again (mostly).</p>
+<section id="step-one-define-the-function">
+<h4>Step One: Define The Function<a class="headerlink" href="#step-one-define-the-function" title="Permalink to this headline">#</a></h4>
+<p>Mostly done in the card above, though writing additional implementation notes or doing flow diagrams often happens at this stage.
+Code wise, we end up with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="n">correct</span><span class="p">):</span>
+        <span class="c1"># in progress</span>
+</pre></div>
+</div>
+</section>
+<section id="step-two-document">
+<h4>Step Two: Document<a class="headerlink" href="#step-two-document" title="Permalink to this headline">#</a></h4>
+<p>Write the <em>docstring</em> and follow the full documentation pattern defined in <a class="reference internal" href="../Chapter1/Ch1_5Functions.html"><span class="doc">1.5 Functions</span></a>. We want to make sure we include tests by way of sample input and output as part of the docstring. For this function, it could look like.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="n">correct</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks to see if guess is equal to, higher or lower than correct. Returns</span>
+<span class="sd">    &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39; respectively. For example:</span>
+
+<span class="sd">    &gt;&gt;&gt; check(10, 10)</span>
+<span class="sd">    &#39;Correct&#39;</span>
+<span class="sd">    &gt;&gt;&gt; check(3, 5)</span>
+<span class="sd">    &#39;Low&#39;</span>
+<span class="sd">    &gt;&gt;&gt; check(5, 3)</span>
+<span class="sd">    &#39;High&#39;</span>
+
+<span class="sd">    :param guess: the value they are guessing</span>
+<span class="sd">    :type guess: int</span>
+<span class="sd">    :param correct: a value that is to be tested against</span>
+<span class="sd">    :type correct: int</span>
+<span class="sd">    :return: &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39;</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-three-write-the-function-incrementally">
+<h4>Step Three: Write the function incrementally<a class="headerlink" href="#step-three-write-the-function-incrementally" title="Permalink to this headline">#</a></h4>
+<p>This is where you write code. You may also want to write a flowchart to see the logic, as it is an if statement with a nested if statement.</p>
+<div class="mermaid">
+            %%{init: {'securityLevel': 'loose', 'theme':'forest'}}%%
+flowchart TD
+    s([Start]) --&gt; setResponse[&quot;response = ''&quot;]
+    setResponse --&gt; if{&quot;guess == correct&quot;}
+
+    if -- True --&gt; setC{&quot;response = 'Correct'&quot;}
+    if -- False --&gt; if2{&quot;guess &lt; correct&quot;}
+
+    if2 -- True --&gt; setL{&quot;response = 'Low'&quot;}
+    if2 -- False --&gt; setH{&quot;response = 'High'&quot;}
+
+    setC --&gt; e([&quot;End(return response)&quot;])
+    setL --&gt; e
+    setH --&gt; e
+        </div><p>Now in code form.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">correct</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Checks to see if guess is equal to, higher or lower than correct. Returns</span>
+<span class="sd">    &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39; respectively. For example:</span>
+
+<span class="sd">    &gt;&gt;&gt; check(10, 10)</span>
+<span class="sd">    &#39;Correct&#39;</span>
+<span class="sd">    &gt;&gt;&gt; check(3, 5)</span>
+<span class="sd">    &#39;Low&#39;</span>
+<span class="sd">    &gt;&gt;&gt; check(5, 3)</span>
+<span class="sd">    &#39;High&#39;</span>
+
+<span class="sd">    :param guess: the value they are guessing</span>
+<span class="sd">    :type guess: int</span>
+<span class="sd">    :param correct: a value that is to be tested against</span>
+<span class="sd">    :type correct: int</span>
+<span class="sd">    :return: &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39;</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">correct</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;Correct&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">correct</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;Low&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;High&#39;</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-four-test">
+<h4>Step Four: Test!<a class="headerlink" href="#step-four-test" title="Permalink to this headline">#</a></h4>
+<p>Now, you write tests to test your function. You always do this before moving on, as it becomes <em>exponentially</em> harder to find errors later as you write more functions!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Tests comment out when done</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TESTING: check(guess, correct)&quot;</span><span class="p">)</span>
+<span class="n">val1</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TEST: check(10, 10) should return &#39;Correct&#39;, it returned: </span><span class="si">{</span><span class="n">val1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">val2</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TEST: check(3, 5) should return &#39;Low&#39;, it returned: </span><span class="si">{</span><span class="n">val2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">val3</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TEST: check(5, 3) should return &#39;High&#39;, it returned: </span><span class="si">{</span><span class="n">val3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TESTING: check(guess, correct)
+TEST: check(10, 10) should return &#39;Correct&#39;, it returned: Correct
+TEST: check(3, 5) should return &#39;Low&#39;, it returned: Low
+TEST: check(5, 3) should return &#39;High&#39;, it returned: High
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function now works and has been verified. You shouldn’t have to go back to the function unless you figure out an error in your design later in the process.</p>
+</section>
+</section>
+<section id="your-turn">
+<h3>Your Turn!<a class="headerlink" href="#your-turn" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title">Instructor Note:</p>
+<p>Walking through one of these functions would be a good lab activity!</p>
+</aside>
+<p>Implement:</p>
+<ol class="simple">
+<li><p>get_positive_int(prompt)</p></li>
+<li><p>play_game(correct)</p></li>
+</ol>
+<p>Make sure to complete all four steps for each before you move onto the next! The logic for both is a bit harder, as it will require repetition. You will definitely want to work out the flowchart, and test as you develop!</p>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>This is one possible solution. Your wording may be different, and your structure may be slightly different. The main question, did you test and make sure your solution worked!</p>
+<div class="toggle docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_positive_int</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Asks the user based on the prompt to enter a number. The</span>
+<span class="sd">    number has to be either a number greater than 0 or an &#39;x&#39;.</span>
+<span class="sd">    If &#39;x&#39; is entered, -1 is returned. Will continue to prompt if 0 or lower</span>
+<span class="sd">    numbers are entered. :Does not do any error checking if non-digits are entered.</span>
+<span class="sd">    Example execution:</span>
+
+<span class="sd">    Assume client enters 10</span>
+<span class="sd">    &gt;&gt;&gt; get_positive_int(&quot;Enter the max number in your range: &quot;) </span>
+<span class="sd">    Enter the max number in your range: </span>
+<span class="sd">    10</span>
+
+<span class="sd">    Assume client enters x</span>
+<span class="sd">    &gt;&gt;&gt; get_positive_int(&quot;Enter a guess: &quot;) </span>
+<span class="sd">    Enter a guess: </span>
+<span class="sd">    -1</span>
+
+<span class="sd">    Assume client enters 0 followed by 2</span>
+<span class="sd">    &gt;&gt;&gt; get_positive_int(&quot;Enter a guess: &quot;) </span>
+<span class="sd">    Enter a guess: </span>
+<span class="sd">    Invalid Number, try again (must be greater than 0): </span>
+<span class="sd">    2</span>
+
+<span class="sd">    :param prompt: A string to prompt the client</span>
+<span class="sd">    :type prompt: str</span>
+<span class="sd">    :return: either a number &gt; 0, or -1 if client enters x</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># there is an optional way to do this with a method call and if check</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Invalid Number, try again (must be greater than 0): &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num</span>
+
+<span class="k">def</span> <span class="nf">play_game</span><span class="p">(</span><span class="n">correct</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Runs a guessing game in which the client guesses numbers greater than 0 until they guess the number. </span>
+<span class="sd">       They will be given feedback based on high, low, or correct using `check(guess, correct)`. They </span>
+<span class="sd">       can end the game early at any point returning False. </span>
+
+<span class="sd">    Sample of game play. Assume the client enters 20, 5, 9, 10</span>
+<span class="sd">    &gt;&gt;&gt; play_game(10)  </span>
+<span class="sd">    Guess a number: </span>
+<span class="sd">    You guessed 20, that is High.</span>
+<span class="sd">    Guess a number:</span>
+<span class="sd">    You guessed 5, that is Low.</span>
+<span class="sd">    Guess a number:</span>
+<span class="sd">    You guessed 9, that is Low.</span>
+<span class="sd">    Guess a number:</span>
+<span class="sd">    You guessed 10, that is Correct.</span>
+<span class="sd">    True</span>
+
+<span class="sd">    Sample of game play. Assume the client enters 20, x</span>
+<span class="sd">    &gt;&gt;&gt; play_game(10) </span>
+<span class="sd">    Guess a number:</span>
+<span class="sd">    You guessed 20, that is High.</span>
+<span class="sd">    Guess a number: </span>
+<span class="sd">    False</span>
+
+<span class="sd">    :param correct: the correct value</span>
+<span class="sd">    :type correct: int</span>
+<span class="sd">    :return: True if they found the value, False if they failed to find it.</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">while</span> <span class="n">result</span> <span class="o">!=</span> <span class="s1">&#39;Correct&#39;</span><span class="p">:</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="n">get_positive_int</span><span class="p">(</span><span class="s2">&quot;Guess a number: &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>  <span class="c1">## early exit</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="n">correct</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You guessed </span><span class="si">{</span><span class="n">guess</span><span class="si">}</span><span class="s2">, that is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="focus-on-main">
+<h3>Focus on main()<a class="headerlink" href="#focus-on-main" title="Permalink to this headline">#</a></h3>
+<p>When looking at <code class="docutils literal notranslate"><span class="pre">main()</span></code> there are two things that stood out.</p>
+<ol class="simple">
+<li><p>We never talked about giving the client instructions!</p></li>
+<li><p>How do we handle a random number?</p></li>
+</ol>
+<aside class="margin sidebar">
+<p class="sidebar-title">Splash?</p>
+<p>When you open an application and there is an image while it loads, that is called a splash screen. This was originally done in ascii art, and  it allowed the program to load information in the background while the client waited. It is even more common with applications with a lot of graphics, as it can take a bit to load those images into memory.</p>
+</aside>
+<p>For the first part, that is easy. We said above that you may come across additional functions as you develop, and having a function that prints out the instructions is one! We can even include a quick game welcome, so essentially a splash screen.</p>
+<ul class="simple">
+<li><p>Add to the process - printInstructions or <code class="docutils literal notranslate"><span class="pre">splash()</span></code> function.</p>
+<ul>
+<li><p>It will consist of just a series of print statements, and called first in <code class="docutils literal notranslate"><span class="pre">main()</span></code></p></li>
+</ul>
+</li>
+<li><p>Research random???</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Random Numbers</p>
+<p>Random is actually pretty hard to generate with computers, and most languages have a built in way to find random. Searching online, we will find a reference to the python <a class="reference external" href="https://docs.python.org/3/library/random.html">random module</a>. Python has a <strong>rich</strong> library of created modules, that others wrote that can help you out. This is a common one. In our case, we need to find a function that generates a random <code class="docutils literal notranslate"><span class="pre">int</span></code> between the range of 1 and max. Scrolling through, there is a section ‘Functions for integers’ this looks promising!</p>
+<p>There are a couple function to use, but one function generates exactly what we need.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">Return</span> <span class="n">a</span> <span class="n">random</span> <span class="n">integer</span> <span class="n">N</span> <span class="n">such</span> <span class="n">that</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="o">.</span> <span class="n">Alias</span> <span class="k">for</span> <span class="n">randrange</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>So how does that look in python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>   <span class="c1">## place this at the top of your file!</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">mx</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># this will change</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mx</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since I imported the function <code class="docutils literal notranslate"><span class="pre">randint</span></code> I can use it directly in my code just like <code class="docutils literal notranslate"><span class="pre">print</span></code> or <code class="docutils literal notranslate"><span class="pre">input</span></code>. We will deal more with imports later, as there are different ways to import things. However, for now, you now have the ability to generate a random number!</p>
+</div>
+<blockquote class="epigraph">
+<div><p>Often programming is research - finding the right library or module you can use in your code!</p>
+</div></blockquote>
+<section id="id1">
+<h4>Your Turn!<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>Given that information, go ahead and work in implementing main.</p>
+</section>
+<section id="id2">
+<h4>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>Here is one possible solution for <code class="docutils literal notranslate"><span class="pre">main()</span></code> and <code class="docutils literal notranslate"><span class="pre">splash()</span></code></p>
+<div class="toggle docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">splash</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Prints a how to play dialog and welcome screen&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to the guessing game.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=============================&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You will set the max value, and a random number will be selected.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You can then guess numbers. At any point, type x to end the game early.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=============================&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Main driver of the program&quot;&quot;&quot;</span>
+    <span class="n">splash</span><span class="p">()</span>
+    <span class="n">mx</span> <span class="o">=</span> <span class="n">get_positive_int</span><span class="p">(</span><span class="s2">&quot;Enter the max for the range: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mx</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid max, thank you for not playing.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">correct</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mx</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random is set, good luck!&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">play_game</span><span class="p">(</span><span class="n">correct</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Congratulations! You won!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry you didn&#39;t find the number, it was </span><span class="si">{</span><span class="n">correct</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="adding-main">
+<h4>Adding <code class="docutils literal notranslate"><span class="pre">__main__</span></code><a class="headerlink" href="#adding-main" title="Permalink to this headline">#</a></h4>
+<p>Right now, we have been adding the <code class="docutils literal notranslate"><span class="pre">main()</span></code> at the bottom of our file to launch our final program. However, that is not the traditional way to do it. In python, it is common to use this code at the bottom of the file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>What that says is “if you are loading this file as the first file in your program, run this block of code”. This gives me the ability to run the program, or just use the functions separately as needed. You can indeed include any code under the if statement, but for now, we will often just call the main driver for our program.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>You will find solutions for a walk-through like this are in the <a class="reference external" href="https://github.com/lionelle/computational-thinking-with-python">github repository</a>. You are encouraged to download them and run them on your local computer, including the line that talks about running the built in tests. You can even clone the entire repository, and have it all on your computer. Explore!</p>
+</aside>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>For this program, we looked at the following.</p>
+<ol class="simple">
+<li><p>The Big View - we broke the problem up into smaller parts</p></li>
+<li><p>The Small View - we wrote the code for the smaller parts individually</p></li>
+</ol>
+<p>For every function, we</p>
+<ul class="simple">
+<li><p>define</p></li>
+<li><p>document</p></li>
+<li><p>implement</p></li>
+<li><p>test</p></li>
+</ul>
+<p>Always before moving on.</p>
+<p>This process is one you should follow even for small programs, as you are learning the process of how to look at  programming. That process is known as <strong>computational thinking</strong>, and it takes practice. Above all, explore, struggle, and learn.</p>
+</section>
+<section id="play-the-game">
+<h2>Play the game<a class="headerlink" href="#play-the-game" title="Permalink to this headline">#</a></h2>
+<p>Don’t forget to play the game when you are done, and let others play it.</p>
+<blockquote class="epigraph">
+<div><p>Can you come up with an algorithm that is quick at finding the answer?</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>maybe for one 1 - 10, you just start guessing numbers in order. Bad idea as with 1-100 that would take a while!</p></li>
+<li><p>What if you instead divided by 2 each time, and guessed that?</p>
+<ul class="simple">
+<li><p>1 - 100 is range, you guess 50, the answer is high</p></li>
+<li><p>your new range is 1-50, you guess 25, the answer is low</p></li>
+<li><p>new range is 26-50</p></li>
+<li><p>Until you narrow down the answer?</p></li>
+</ul>
+</li>
+</ol>
+<p>Algorithm 2 is a binary search! It is naturally <strong>divide-conquer-glue</strong>, and it dates back to roman times as a very fast algorithm for searching items that are in order.  The next chapter we will explore having more than one item or a list of items.</p>
+</section>
+<section id="reflection">
+<h2>Reflection<a class="headerlink" href="#reflection" title="Permalink to this headline">#</a></h2>
+<p>Take time to reflect. Reflection is one of five principles of recall, and is an <em>evidence based</em> practice on improving your understanding of material <span id="id3">[<a class="reference internal" href="../citations.html#id5" title="Henry L Roediger III and Mary A Pyc. Inexpensive techniques to improve education: Applying cognitive psychology to enhance educational practice. J. Appl. Res. Mem. Cogn., 1(4):242–248, 2012.">RoedigerIIIP12</a>]</span>,<span id="id4">[<a class="reference internal" href="../citations.html#id6" title="Peter C Brown, Henry L Roediger III, and Mark A McDaniel. Make it stick. Harvard University Press, 2014.">BRoedigerIIIM14</a>]</span>,<span id="id5">[<a class="reference internal" href="../citations.html#id7" title="Henry L Roediger III. Applying cognitive psychology to education: Translational educational science. Psychol. Sci. Public Interes., 14(1):1–3, 2013.">RoedigerIII13</a>]</span>! It has been directly linked towards programming success <span id="id6">[<a class="reference internal" href="../citations.html#id8" title="Tammy VanDeGrift, Tamara Caruso, Natalie Hill, Beth Simon, Tammy Van DeGrift, and Beth Simon. Experience Report: Getting Novice Programmers to THINK about Improving their Software Development Process. In Proc. 42nd ACM Tech. Symp. Comput. Sci. Educ., 493–498. New York, New York, USA, 2011. ACM Press. URL: http://portal.acm.org/citation.cfm?doid=1953163.1953307, doi:10.1145/1953163.1953307.">VCH+11</a>]</span>, <span id="id7">[<a class="reference internal" href="../citations.html#id9" title="Jeffrey A Stone and Elinor M Madigan. Integrating reflective writing in CS/IS. ACM SIGCSE Bull., 39(2):42–45, 2007. doi:10.1145/1272848.1272881.">SM07</a>]</span>. As such, before you move onto the next chapter, we encourage you to write out in a journal/notebook/etc the following.</p>
+<ul class="simple">
+<li><p>What are concepts you understand the most? Can you imagine ways to use them in the future.</p></li>
+<li><p>What are concepts you find yourself struggling with? What are some resources that will help you understand them? See if you can come up with code examples of these concepts.</p></li>
+<li><p>Reflect on the process of what you are learning, and how it applies not only to programming but problems around you on a day to day basis.</p></li>
+<li><p>Reflect on items in your life that could benefit from a program to help with the task. Whether you know how to write it not, just think of solutions to things that could be improved with software.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
