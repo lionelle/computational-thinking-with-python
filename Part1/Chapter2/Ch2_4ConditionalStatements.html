@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.3 Conditional Operations &#8212; Computational Thinking with Python</title>
+    <title>2.4 Conditional Operations &#8212; Computational Thinking with Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.4 if / else statements" href="Ch2_4IfElse.html" />
-    <link rel="prev" title="2.2 Allowing Choices in Flowcharts" href="Ch2_2FlowBranching.html" />
+    <link rel="next" title="2.5 if / else statements" href="Ch2_5IfElse.html" />
+    <link rel="prev" title="2.3 Types" href="Ch2_3Types.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -178,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="Ch2_0Intro.html">
-   2 Algorithmic Thinking
+   2. Algorithmic Thinking
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -196,24 +196,29 @@ const thebe_selector_output = ".output, .cell_output"
      2.2 Allowing Choices in Flowcharts
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch2_3Types.html">
+     2.3 Types
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.3 Conditional Operations
+     2.4 Conditional Operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_4IfElse.html">
-     2.4 if / else statements
+    <a class="reference internal" href="Ch2_5IfElse.html">
+     2.5 if / else statements
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_5SimpleWhile.html">
-     2.5 Repetition
+    <a class="reference internal" href="Ch2_6SimpleWhile.html">
+     2.6 Repetition
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_6DesignWalkthrough.html">
-     2.6 Algorithmic Design
+    <a class="reference internal" href="Ch2_7DesignWalkthrough.html">
+     2.7 Algorithmic Design
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,7 +364,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter2/Ch2_3ConditionalStatements.md"
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter2/Ch2_4ConditionalStatements.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -415,7 +420,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/Part1/Chapter2/Ch2_3ConditionalStatements.ipynb"
+        <a href="../../_sources/Part1/Chapter2/Ch2_4ConditionalStatements.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -432,7 +437,7 @@ title="Download notebook file"
       </li>
       
       <li>
-        <a href="../../_sources/Part1/Chapter2/Ch2_3ConditionalStatements.md"
+        <a href="../../_sources/Part1/Chapter2/Ch2_4ConditionalStatements.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -492,13 +497,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boolean-values">
-   Boolean Values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Conditional Operations
+  <a class="reference internal nav-link" href="#conditions">
+   Conditions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -556,7 +556,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>2.3 Conditional Operations</h1>
+                <h1>2.4 Conditional Operations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -567,13 +567,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boolean-values">
-   Boolean Values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Conditional Operations
+  <a class="reference internal nav-link" href="#conditions">
+   Conditions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -633,45 +628,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="conditional-operations">
-<h1>2.3 Conditional Operations<a class="headerlink" href="#conditional-operations" title="Permalink to this headline">#</a></h1>
+<h1>2.4 Conditional Operations<a class="headerlink" href="#conditional-operations" title="Permalink to this headline">#</a></h1>
 <p>In this section we will expand the number of our operations. In the past, we talked about typical math operations of <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> . Now we will look at expanding those options to include conditional statements. These statements generate True or False for the answer, also known as boolean values.</p>
-<section id="boolean-values">
-<h2>Boolean Values<a class="headerlink" href="#boolean-values" title="Permalink to this headline">#</a></h2>
-<p>In python <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> is called a boolean value. Boolean meaning there are two options for the value, and they map directly to the idea that 1 is “on” or True, and 0 is “off” or False. You type them directly, and <strong>case</strong> matters! So true isn’t the same as True.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">like_cats</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">like_cats</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<p>Notice in the example, that we store True in the variable <code class="docutils literal notranslate"><span class="pre">like_cats</span></code>. True is typed as is without any quotes.</p>
-<p>We can also manually create a boolean value using the <code class="docutils literal notranslate"><span class="pre">bool()</span></code> function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">like_cats</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
-<span class="n">like_dogs</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Do I like dogs? </span><span class="si">{</span><span class="n">like_dogs</span><span class="si">}</span><span class="s2">, but do I also like cats? </span><span class="si">{</span><span class="n">like_cats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Do I like dogs? True, but do I also like cats? True
-</pre></div>
-</div>
-</div>
-</div>
-<p>In practice, <code class="docutils literal notranslate"><span class="pre">bool()</span></code> rarely gets used. Instead, True/False is typed, or conditional operations used!</p>
-</section>
-<section id="id1">
-<h2>Conditional Operations<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="conditions">
+<h2>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">#</a></h2>
 <p>Python programmers can use the mathematical conditional operators directly in code. These conditions are requirements of making choices and branches in code, which makes them fundamental operations. The example operations with code are as follows.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -912,17 +872,17 @@ True
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Ch2_2FlowBranching.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Ch2_3Types.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">2.2 Allowing Choices in Flowcharts</p>
+            <p class="prev-next-title">2.3 Types</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Ch2_4IfElse.html" title="next page">
+    <a class='right-next' id="next-link" href="Ch2_5IfElse.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2.4 if / else statements</p>
+        <p class="prev-next-title">2.5 if / else statements</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

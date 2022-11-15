@@ -12,7 +12,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# 2.6 Algorithmic Design
+# 2.7 Algorithmic Design
 
 For this design walk through, we are going to build a guessing game application. The goal is to help combine the elements for algorithmic thinking with decomposition and abstraction. We encourage you to follow along using your own {term}`IDE`. 
 
@@ -227,7 +227,7 @@ Mostly done in the card above, though writing additional implementation notes or
 Code wise, we end up with
 
 ```python
-    def check(guess, correct):
+    def check(guess : int, correct : int) -> str:
         # in progress
 ```
 
@@ -236,23 +236,24 @@ Code wise, we end up with
 Write the *docstring* and follow the full documentation pattern defined in {doc}`../Chapter1/Ch1_5Functions`. We want to make sure we include tests by way of sample input and output as part of the docstring. For this function, it could look like.
 
 ```python
-def check(guess, correct):
+def check(guess : int, correct : int) -> str:
     """Checks to see if guess is equal to, higher or lower than correct. Returns
-    'Correct', 'High', 'Low' respectively. For example:
+    'Correct', 'High', 'Low' respectively.
 
-    >>> check(10, 10)
-    'Correct'
-    >>> check(3, 5)
-    'Low'
-    >>> check(5, 3)
-    'High'
+    Examples:
+        >>> check(10, 10)
+        'Correct'
+        >>> check(3, 5)
+        'Low'
+        >>> check(5, 3)
+        'High'
 
-    :param guess: the value they are guessing
-    :type guess: int
-    :param correct: a value that is to be tested against
-    :type correct: int
-    :return: 'Correct', 'High', 'Low'
-    :rtype: str
+    Args:
+        guess (int): the value they are guessing
+        correct (int): a value that is to be tested against
+
+    Returns:
+        str:  'Correct', 'High',  or 'Low'
     """
 ```
 
@@ -282,21 +283,22 @@ Now in code form.
 ```{code-cell}
 def check(guess : int, correct : int) -> str:
     """Checks to see if guess is equal to, higher or lower than correct. Returns
-    'Correct', 'High', 'Low' respectively. For example:
+    'Correct', 'High', 'Low' respectively.
 
-    >>> check(10, 10)
-    'Correct'
-    >>> check(3, 5)
-    'Low'
-    >>> check(5, 3)
-    'High'
+    Examples:
+        >>> check(10, 10)
+        'Correct'
+        >>> check(3, 5)
+        'Low'
+        >>> check(5, 3)
+        'High'
 
-    :param guess: the value they are guessing
-    :type guess: int
-    :param correct: a value that is to be tested against
-    :type correct: int
-    :return: 'Correct', 'High', 'Low'
-    :rtype: str
+    Args:
+        guess (int): the value they are guessing
+        correct (int): a value that is to be tested against
+
+    Returns:
+        str:  'Correct', 'High',  or 'Low'
     """
     response = ''
     if guess == correct:
@@ -345,73 +347,76 @@ This is one possible solution. Your wording may be different, and your structure
 
 ````{toggle}
 ```python
-def get_positive_int(prompt):
+def get_positive_int(prompt : str) -> int:
     """Asks the user based on the prompt to enter a number. The
     number has to be either a number greater than 0 or an 'x'.
     If 'x' is entered, -1 is returned. Will continue to prompt if 0 or lower
-    numbers are entered. :Does not do any error checking if non-digits are entered.
-    Example execution:
+    numbers are entered. :Does not do any error checking if non-digits are entered.:
+    
+    Examples:
+        Assume client enters 10
+        >>> get_positive_int("Enter the max number in your range: ") # doctest: +NORMALIZE_WHITESPACE
+        Enter the max number in your range: 
+        10
 
-    Assume client enters 10
-    >>> get_positive_int("Enter the max number in your range: ") 
-    Enter the max number in your range: 
-    10
+        Assume client enters x
+        >>> get_positive_int("Enter a guess: ") # doctest: +NORMALIZE_WHITESPACE
+        Enter a guess: 
+        -1
 
-    Assume client enters x
-    >>> get_positive_int("Enter a guess: ") 
-    Enter a guess: 
-    -1
+        Assume client enters 0 followed by 2
+        >>> get_positive_int("Enter a guess: ") # doctest: +NORMALIZE_WHITESPACE
+        Enter a guess: 
+        Invalid Number, try again (must be greater than 0): 
+        2
 
-    Assume client enters 0 followed by 2
-    >>> get_positive_int("Enter a guess: ") 
-    Enter a guess: 
-    Invalid Number, try again (must be greater than 0): 
-    2
+    Args:
+        prompt (str): A string to prompt the client
 
-    :param prompt: A string to prompt the client
-    :type prompt: str
-    :return: either a number > 0, or -1 if client enters x
-    :rtype: int
+    Returns:
+        int: either a number > 0, or -1 if client enters x
     """
     val = input(prompt)
     if val == 'x':
         return -1
     num = int(val)
-    while num < 1:  # there is an optional way to do this with a method call and if check
+    while num < 1:
         val = input("Invalid Number, try again (must be greater than 0): ")
         if val == 'x':
             return -1
         num = int(val)
     return num
 
-def play_game(correct):
+def play_game(correct : int) -> bool:
     """Runs a guessing game in which the client guesses numbers greater than 0 until they guess the number. 
        They will be given feedback based on high, low, or correct using `check(guess, correct)`. They 
        can end the game early at any point returning False. 
+    
+    Example:
+        Sample of game play. Assume the client enters 20, 5, 9, 10
+        >>> play_game(10)  # doctest: +NORMALIZE_WHITESPACE
+        Guess a number: 
+        You guessed 20, that is High.
+        Guess a number:
+        You guessed 5, that is Low.
+        Guess a number:
+        You guessed 9, that is Low.
+        Guess a number:
+        You guessed 10, that is Correct.
+        True
 
-    Sample of game play. Assume the client enters 20, 5, 9, 10
-    >>> play_game(10)  
-    Guess a number: 
-    You guessed 20, that is High.
-    Guess a number:
-    You guessed 5, that is Low.
-    Guess a number:
-    You guessed 9, that is Low.
-    Guess a number:
-    You guessed 10, that is Correct.
-    True
+        Sample of game play. Assume the client enters 20, x
+        >>> play_game(10)  # doctest: +NORMALIZE_WHITESPACE
+        Guess a number:
+        You guessed 20, that is High.
+        Guess a number: 
+        False
 
-    Sample of game play. Assume the client enters 20, x
-    >>> play_game(10) 
-    Guess a number:
-    You guessed 20, that is High.
-    Guess a number: 
-    False
+    Args:
+        correct (int): the correct value
 
-    :param correct: the correct value
-    :type correct: int
-    :return: True if they found the value, False if they failed to find it.
-    :rtype: bool
+    Returns:
+        bool: True if they found the value, False if they failed to find it.
     """
     result = None
     while result != 'Correct':
@@ -421,7 +426,6 @@ def play_game(correct):
         result = check(guess, correct)
         print(f"You guessed {guess}, that is {result}.")
     return True
-
 ```
 ````
 

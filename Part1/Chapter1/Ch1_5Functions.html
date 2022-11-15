@@ -176,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chapter2/Ch2_0Intro.html">
-   2 Algorithmic Thinking
+   2. Algorithmic Thinking
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -195,23 +195,28 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_3ConditionalStatements.html">
-     2.3 Conditional Operations
+    <a class="reference internal" href="../Chapter2/Ch2_3Types.html">
+     2.3 Types
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_4IfElse.html">
-     2.4 if / else statements
+    <a class="reference internal" href="../Chapter2/Ch2_4ConditionalStatements.html">
+     2.4 Conditional Operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_5SimpleWhile.html">
-     2.5 Repetition
+    <a class="reference internal" href="../Chapter2/Ch2_5IfElse.html">
+     2.5 if / else statements
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_6DesignWalkthrough.html">
-     2.6 Algorithmic Design
+    <a class="reference internal" href="../Chapter2/Ch2_6SimpleWhile.html">
+     2.6 Repetition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_7DesignWalkthrough.html">
+     2.7 Algorithmic Design
     </a>
    </li>
    <li class="toctree-l2">
@@ -782,33 +787,34 @@ The dog says woof.
 <p>It is also possible to have a function call another function inside of it! For example, let’s modify the above code to be:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-     <span class="sd">&quot;&quot;&quot;Doubles a string value</span>
-<span class="sd">       </span>
-<span class="sd">       :param value: the string you want doubled to be separated by new line character</span>
-<span class="sd">       :type value: Any</span>
-<span class="sd">       :return: a doubled string of the format &quot;{value}\n{value}&quot;</span>
-<span class="sd">       :rtype: str</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Doubles a string value</span>
 
-   <span class="k">def</span> <span class="nf">dsays</span><span class="p">(</span><span class="n">animal</span><span class="p">,</span> <span class="n">sound</span><span class="p">):</span>
-     <span class="sd">&quot;&quot;&quot;Builds a doubled string of what the animal says, and doubles it before return</span>
-<span class="sd">     </span>
-<span class="sd">       :param animal: The type of animal</span>
-<span class="sd">       :type animal: str</span>
-<span class="sd">       :param sound: The sound the animal makes</span>
-<span class="sd">       :type sound: str</span>
-<span class="sd">       :return: string of format &quot;The {animal} says {sound}.\\nThe {animal} says {sound}.&quot;</span>
-<span class="sd">       :rtype: str</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-     <span class="n">double</span> <span class="o">=</span> <span class="n">double_it</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">animal</span><span class="si">}</span><span class="s2"> says </span><span class="si">{</span><span class="n">sound</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> 
-     <span class="k">return</span> <span class="n">double</span>
+<span class="sd">    Args:</span>
+<span class="sd">        value (str): The string to be doubled with \\n between the string</span>
 
-   <span class="n">cat_says</span> <span class="o">=</span> <span class="n">dsays</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;meow&quot;</span><span class="p">)</span>
-   <span class="n">dog_says</span> <span class="o">=</span> <span class="n">dsays</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;woof&quot;</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="n">cat_says</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="n">dog_says</span><span class="p">)</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: value twice with a new line between</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">def</span> <span class="nf">dsays</span><span class="p">(</span><span class="n">animal</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sound</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Takes and animal and sound, and returns a doubled version of the animal says.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        animal (str): the animal</span>
+<span class="sd">        sound (str): the sound they make</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A doubled version of the saying &quot;The {animal} says {sound}.&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">double</span> <span class="o">=</span> <span class="n">double_it</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">animal</span><span class="si">}</span><span class="s2"> says </span><span class="si">{</span><span class="n">sound</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">double</span>
+
+<span class="n">cat_says</span> <span class="o">=</span> <span class="n">dsays</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+<span class="n">dog_says</span> <span class="o">=</span> <span class="n">dsays</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;woof&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cat_says</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog_says</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -824,7 +830,7 @@ The dog says woof.
 <section id="id1">
 <h3>Trace The Code<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>Trace the code above. Notice that the <code class="docutils literal notranslate"><span class="pre">dsays</span></code> frame is still open while <code class="docutils literal notranslate"><span class="pre">double_it()</span></code> is being called.</p>
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20double_it%28value%29%3A%0A%20%20%22%22%22Doubles%20a%20string%20value%0A%20%20%20%20%0A%20%20%20%20%3Aparam%20value%3A%20the%20string%20you%20want%20doubled%20to%20be%20separated%20by%20new%20line%20character%0A%20%20%20%20%3Atype%20value%3A%20Any%0A%20%20%20%20%3Areturn%3A%20a%20doubled%20string%20of%20the%20format%20%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%20%20%20%20%3Artype%3A%20str%0A%20%20%22%22%22%0A%20%20return%20f%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%0Adef%20dsays%28animal,%20sound%29%3A%0A%20%20%22%22%22Builds%20a%20doubled%20string%20of%20what%20the%20animal%20says,%20and%20doubles%20it%20before%20return%0A%20%20%0A%20%20%20%20%3Aparam%20animal%3A%20The%20type%20of%20animal%0A%20%20%20%20%3Atype%20animal%3A%20str%0A%20%20%20%20%3Aparam%20sound%3A%20The%20sound%20the%20animal%20makes%0A%20%20%20%20%3Atype%20sound%3A%20str%0A%20%20%20%20%3Areturn%3A%20string%20of%20format%20%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%5CnThe%20%7Banimal%7D%20says%20%7Bsound%7D.%22%0A%20%20%20%20%3Artype%3A%20str%0A%20%20%22%22%22%0A%20%20double%20%3D%20double_it%28f%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%29%20%0A%20%20return%20double%0A%0Acat_says%20%3D%20dsays%28%22cat%22,%20%22meow%22%29%0Adog_says%20%3D%20dsays%28%22dog%22,%20%22woof%22%29%0Aprint%28cat_says%29%0Aprint%28dog_says%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20double_it%28value%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Doubles%20a%20string%20value%0A%0A%20%20%20%20Args%3A%0A%20%20%20%20%20%20%20%20value%20%28str%29%3A%20The%20string%20to%20be%20doubled%20with%20%5C%5Cn%20between%20the%20string%0A%0A%20%20%20%20Returns%3A%0A%20%20%20%20%20%20%20%20str%3A%20value%20twice%20with%20a%20new%20line%20between%0A%20%20%20%20%22%22%22%0A%20%20%20%20return%20f%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%0Adef%20dsays%28animal%20%3A%20str,%20sound%20%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Takes%20and%20animal%20and%20sound,%20and%20returns%20a%20doubled%20version%20of%20the%20animal%20says.%0A%0A%20%20%20%20Args%3A%0A%20%20%20%20%20%20%20%20animal%20%28str%29%3A%20the%20animal%0A%20%20%20%20%20%20%20%20sound%20%28str%29%3A%20the%20sound%20they%20make%0A%0A%20%20%20%20Returns%3A%0A%20%20%20%20%20%20%20%20str%3A%20A%20doubled%20version%20of%20the%20saying%20%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%0A%20%20%20%20%22%22%22%0A%20%20%20%20double%20%3D%20double_it%28f%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%29%0A%20%20%20%20return%20double%0A%0Acat_says%20%3D%20dsays%28%22cat%22,%20%22meow%22%29%0Adog_says%20%3D%20dsays%28%22dog%22,%20%22woof%22%29%0Aprint%28cat_says%29%0Aprint%28dog_says%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </section>
 </section>
 <section id="docstring">
@@ -832,31 +838,36 @@ The dog says woof.
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="tip admonition">
-<p class="admonition-title">reStructuredText</p>
-<p>In this book we will use the <a class="reference external" href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">reStructuredText</a> format for docstrings encouraged as the default for Sphinx.autodoc. Sphinx is a common documentation generator in industry,
-and reST is common. It is simply a way to format your files, so another program can read it to generate webpages or other documentation.  If you are using <a class="reference external" href="https://code.visualstudio.com/">VSCode</a> there is an <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">extension</a> for docstrings. If you are using <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> it
-is the default documentation syntax for python.</p>
+<p class="admonition-title">Google Style</p>
+<p>In this book we will use the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>
+format for docstrings. Eventually, you will learn about tools like Sphinx.autodoc that can generate webpages
+based on your docstrings for others to use your code.<br />
+If you are using <a class="reference external" href="https://code.visualstudio.com/">VSCode</a> there is an <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">extension</a> for docstrings that defaults to google format. If you are using <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> the
+docstring formatter is included, but you may need to go into preferences to make sure it uses google.</p>
 <p>In both cases, you just simply define your function, type return/enter, and then three three quotation marks and enter. This will
 automatically generate the base docstring formatting!</p>
 </div>
 </aside>
-<p>In the above example, we gave an extensive <a class="reference internal" href="../citations.html#term-docstring"><span class="xref std std-term">docstring</span></a> which is short for documentation string. It is a special formatted string using three quotes or three double quotes immediately below the function definition. It is broken up into the various parts.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;[SUMMARY]</span>
+<p>In the above example, we gave an extensive <a class="reference internal" href="../citations.html#term-docstring"><span class="xref std std-term">docstring</span></a> which is short for documentation string. It is a special formatted string using three double quotes immediately below the function definition. It is broken up into the various parts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Summary - can be multiple lines</span>
 
-<span class="sd">----</span>
-<span class="sd">[Expected input and output] </span>
-<span class="sd">----</span>
+<span class="sd">Example: </span>
+<span class="sd">  &gt;&gt;&gt; some examples of execution </span>
+<span class="sd">  result of execution</span>
+<span class="sd">  &gt;&gt;&gt; another example of execution</span>
+<span class="sd">  result of example</span>
 
-<span class="sd">:param parameter1: Description of parameter</span>
-<span class="sd">:type parameter1: Optional, but clear definition of expected value type</span>
-<span class="sd">... </span>
+<span class="sd">Args:</span>
+<span class="sd">  Variable Name (type): Why it is needed</span>
+<span class="sd">  Variable Name (type): etc</span>
 
-<span class="sd">:return: Description of what is returned</span>
-<span class="sd">:rtype: description of the return type</span>
+<span class="sd">Returns:</span>
+<span class="sd">  (type): description about the value being returned. </span>
+<span class="sd">  You can have multiple lines explaining what to expect</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>The summary should provide what the function does in simple terms. It can be detailed and even highlight some of the steps as part of the process. While not common, for this course, you will include a section that includes expected input and output for the function. This will be used to help you test and debug functions that we talk about in the next section. The param is needed for each parameter, but the type is optional. However, it helps you clearly see what you expect. The return is important, so you know what is being returned. The rtype is also optional, but it helps you know more about what is being returned.</p>
+<p>The summary should provide what the function does in simple terms. It can be detailed and even highlight some of the steps as part of the process. While not common, for this course, you will include a section that includes expected input and output for the function. This will be used to help you test and debug functions that we talk about in the next section. <strong>Example</strong>, you will be putting in examples of what happen when that function is called. These actually double up as tests to confirm the validity of what you wrote. In <strong>Args</strong> you put in the name and type (optional) for each of your parameters. This is also called function arguments, thus the term “Args”. <strong>Returns</strong> The return is important, so you know what is being returned. The type is optional, but good to put in there, so the person calling your function knows the type to expect. This section can have multiple lines to provide more details of the returned value.</p>
 <p>Why is this formatting useful? It is actually possible to generate webpages, and this formatting is used on the <a class="reference external" href="https://docs.python.org/3/library/index.html">python language library</a> to generate the entire website! Most importantly, you write docstrings so <strong>you</strong> know what you did (or least supposed to do) when you wrote the function and come back to it later!</p>
 <blockquote class="epigraph">
 <div><p>Documenting functions is critical to programming, both on the job and in practice.</p>
@@ -871,15 +882,15 @@ automatically generate the base docstring formatting!</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function dsays in module __main__:
 
-dsays(animal, sound)
-    Builds a doubled string of what the animal says, and doubles it before return
+dsays(animal: str, sound: str) -&gt; str
+    Takes and animal and sound, and returns a doubled version of the animal says.
     
-    :param animal: The type of animal
-    :type animal: str
-    :param sound: The sound the animal makes
-    :type sound: str
-    :return: string of format &quot;The {animal} says {sound}.\nThe {animal} says {sound}.&quot;
-    :rtype: str
+    Args:
+        animal (str): the animal
+        sound (str): the sound they make
+    
+    Returns:
+        str: A doubled version of the saying &quot;The {animal} says {sound}.&quot;
 </pre></div>
 </div>
 </div>
@@ -892,15 +903,15 @@ dsays(animal, sound)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Builds a doubled string of what the animal says, and doubles it before return
-  
-    :param animal: The type of animal
-    :type animal: str
-    :param sound: The sound the animal makes
-    :type sound: str
-    :return: string of format &quot;The {animal} says {sound}.\nThe {animal} says {sound}.&quot;
-    :rtype: str
-  
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Takes and animal and sound, and returns a doubled version of the animal says.
+
+    Args:
+        animal (str): the animal
+        sound (str): the sound they make
+
+    Returns:
+        str: A doubled version of the saying &quot;The {animal} says {sound}.&quot;
+    
 </pre></div>
 </div>
 </div>

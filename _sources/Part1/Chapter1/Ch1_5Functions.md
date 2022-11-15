@@ -162,72 +162,79 @@ print(age2)
 
 It is also possible to have a function call another function inside of it! For example, let's modify the above code to be:
 
- ```{code-cell}
-    def double_it(value):
-      """Doubles a string value
-        
-        :param value: the string you want doubled to be separated by new line character
-        :type value: Any
-        :return: a doubled string of the format "{value}\n{value}"
-        :rtype: str
-      """
-      return f"{value}\n{value}"
+```{code-cell}
+def double_it(value: str) -> str:
+    """Doubles a string value
 
-    def dsays(animal, sound):
-      """Builds a doubled string of what the animal says, and doubles it before return
-      
-        :param animal: The type of animal
-        :type animal: str
-        :param sound: The sound the animal makes
-        :type sound: str
-        :return: string of format "The {animal} says {sound}.\\nThe {animal} says {sound}."
-        :rtype: str
-      """
-      double = double_it(f"The {animal} says {sound}.") 
-      return double
+    Args:
+        value (str): The string to be doubled with \\n between the string
 
-    cat_says = dsays("cat", "meow")
-    dog_says = dsays("dog", "woof")
-    print(cat_says)
-    print(dog_says)
-  ```
+    Returns:
+        str: value twice with a new line between
+    """
+    return f"{value}\n{value}"
+
+def dsays(animal : str, sound : str) -> str:
+    """Takes and animal and sound, and returns a doubled version of the animal says.
+
+    Args:
+        animal (str): the animal
+        sound (str): the sound they make
+
+    Returns:
+        str: A doubled version of the saying "The {animal} says {sound}."
+    """
+    double = double_it(f"The {animal} says {sound}.")
+    return double
+
+cat_says = dsays("cat", "meow")
+dog_says = dsays("dog", "woof")
+print(cat_says)
+print(dog_says)
+```
+
+
 ### Trace The Code
 Trace the code above. Notice that the `dsays` frame is still open while `double_it()` is being called.
 
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20double_it%28value%29%3A%0A%20%20%22%22%22Doubles%20a%20string%20value%0A%20%20%20%20%0A%20%20%20%20%3Aparam%20value%3A%20the%20string%20you%20want%20doubled%20to%20be%20separated%20by%20new%20line%20character%0A%20%20%20%20%3Atype%20value%3A%20Any%0A%20%20%20%20%3Areturn%3A%20a%20doubled%20string%20of%20the%20format%20%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%20%20%20%20%3Artype%3A%20str%0A%20%20%22%22%22%0A%20%20return%20f%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%0Adef%20dsays%28animal,%20sound%29%3A%0A%20%20%22%22%22Builds%20a%20doubled%20string%20of%20what%20the%20animal%20says,%20and%20doubles%20it%20before%20return%0A%20%20%0A%20%20%20%20%3Aparam%20animal%3A%20The%20type%20of%20animal%0A%20%20%20%20%3Atype%20animal%3A%20str%0A%20%20%20%20%3Aparam%20sound%3A%20The%20sound%20the%20animal%20makes%0A%20%20%20%20%3Atype%20sound%3A%20str%0A%20%20%20%20%3Areturn%3A%20string%20of%20format%20%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%5CnThe%20%7Banimal%7D%20says%20%7Bsound%7D.%22%0A%20%20%20%20%3Artype%3A%20str%0A%20%20%22%22%22%0A%20%20double%20%3D%20double_it%28f%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%29%20%0A%20%20return%20double%0A%0Acat_says%20%3D%20dsays%28%22cat%22,%20%22meow%22%29%0Adog_says%20%3D%20dsays%28%22dog%22,%20%22woof%22%29%0Aprint%28cat_says%29%0Aprint%28dog_says%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20double_it%28value%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Doubles%20a%20string%20value%0A%0A%20%20%20%20Args%3A%0A%20%20%20%20%20%20%20%20value%20%28str%29%3A%20The%20string%20to%20be%20doubled%20with%20%5C%5Cn%20between%20the%20string%0A%0A%20%20%20%20Returns%3A%0A%20%20%20%20%20%20%20%20str%3A%20value%20twice%20with%20a%20new%20line%20between%0A%20%20%20%20%22%22%22%0A%20%20%20%20return%20f%22%7Bvalue%7D%5Cn%7Bvalue%7D%22%0A%0Adef%20dsays%28animal%20%3A%20str,%20sound%20%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Takes%20and%20animal%20and%20sound,%20and%20returns%20a%20doubled%20version%20of%20the%20animal%20says.%0A%0A%20%20%20%20Args%3A%0A%20%20%20%20%20%20%20%20animal%20%28str%29%3A%20the%20animal%0A%20%20%20%20%20%20%20%20sound%20%28str%29%3A%20the%20sound%20they%20make%0A%0A%20%20%20%20Returns%3A%0A%20%20%20%20%20%20%20%20str%3A%20A%20doubled%20version%20of%20the%20saying%20%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%0A%20%20%20%20%22%22%22%0A%20%20%20%20double%20%3D%20double_it%28f%22The%20%7Banimal%7D%20says%20%7Bsound%7D.%22%29%0A%20%20%20%20return%20double%0A%0Acat_says%20%3D%20dsays%28%22cat%22,%20%22meow%22%29%0Adog_says%20%3D%20dsays%28%22dog%22,%20%22woof%22%29%0Aprint%28cat_says%29%0Aprint%28dog_says%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 ## Docstring
 
 ````{margin}
-  ```{admonition} reStructuredText
+  ```{admonition} Google Style
     :class: tip
-    In this book we will use the [reStructuredText](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html) format for docstrings encouraged as the default for Sphinx.autodoc. Sphinx is a common documentation generator in industry,
-    and reST is common. It is simply a way to format your files, so another program can read it to generate webpages or other documentation.  If you are using [VSCode](https://code.visualstudio.com/) there is an [extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) for docstrings. If you are using [PyCharm](https://www.jetbrains.com/pycharm/) it
-    is the default documentation syntax for python. 
+    In this book we will use the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) 
+    format for docstrings. Eventually, you will learn about tools like Sphinx.autodoc that can generate webpages 
+    based on your docstrings for others to use your code.  
+    If you are using [VSCode](https://code.visualstudio.com/) there is an [extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) for docstrings that defaults to google format. If you are using [PyCharm](https://www.jetbrains.com/pycharm/) the 
+    docstring formatter is included, but you may need to go into preferences to make sure it uses google. 
 
     In both cases, you just simply define your function, type return/enter, and then three three quotation marks and enter. This will
     automatically generate the base docstring formatting!
 ````
-In the above example, we gave an extensive {term}`docstring` which is short for documentation string. It is a special formatted string using three quotes or three double quotes immediately below the function definition. It is broken up into the various parts.
+In the above example, we gave an extensive {term}`docstring` which is short for documentation string. It is a special formatted string using three double quotes immediately below the function definition. It is broken up into the various parts.
 
 ```python
-"""[SUMMARY]
+"""Summary - can be multiple lines
 
-----
-[Expected input and output] 
-----
+Example: 
+  >>> some examples of execution 
+  result of execution
+  >>> another example of execution
+  result of example
 
-:param parameter1: Description of parameter
-:type parameter1: Optional, but clear definition of expected value type
-... 
+Args:
+  Variable Name (type): Why it is needed
+  Variable Name (type): etc
 
-:return: Description of what is returned
-:rtype: description of the return type
+Returns:
+  (type): description about the value being returned. 
+  You can have multiple lines explaining what to expect
 """
 ```
-The summary should provide what the function does in simple terms. It can be detailed and even highlight some of the steps as part of the process. While not common, for this course, you will include a section that includes expected input and output for the function. This will be used to help you test and debug functions that we talk about in the next section. The param is needed for each parameter, but the type is optional. However, it helps you clearly see what you expect. The return is important, so you know what is being returned. The rtype is also optional, but it helps you know more about what is being returned. 
+The summary should provide what the function does in simple terms. It can be detailed and even highlight some of the steps as part of the process. While not common, for this course, you will include a section that includes expected input and output for the function. This will be used to help you test and debug functions that we talk about in the next section. **Example**, you will be putting in examples of what happen when that function is called. These actually double up as tests to confirm the validity of what you wrote. In **Args** you put in the name and type (optional) for each of your parameters. This is also called function arguments, thus the term "Args". **Returns** The return is important, so you know what is being returned. The type is optional, but good to put in there, so the person calling your function knows the type to expect. This section can have multiple lines to provide more details of the returned value.  
 
 Why is this formatting useful? It is actually possible to generate webpages, and this formatting is used on the [python language library](https://docs.python.org/3/library/index.html) to generate the entire website! Most importantly, you write docstrings so **you** know what you did (or least supposed to do) when you wrote the function and come back to it later!
 

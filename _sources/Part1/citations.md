@@ -13,11 +13,17 @@ Assignment Operator
 Binary File
     Files only readable by a computer.
 
+Boolean
+    A value that as only two possible states, True or False, 1 or 0, etc.
+
 Client
     The person interacting with your program, often called a user. 
 
 docstring
     A specific string of text immediately after a function or class definition that gets stored in the __doc__ parameter of the object. Used to pull up information and for documenting what a function does. 
+
+Dynamically Typed
+    Type values for variables are determined at runtime, but must still adhere to rules for those variable types.
 
 File Extension
     .value that helps computers determine which program to read a file with. Common extensions include .txt for text, .csv for comma separated values, .html for webpages, .docx for word docs, etc.
@@ -75,6 +81,9 @@ Runtime Errors
     Errors that happen while the programming is running that cause the program to crash. These programs have valid syntax but when they run they
     come across unexpected situations. For example, entering "hi" when they were supposed to enter "22" throws a ValueFormat error. These
     errors often show up as exceptions or simply crash the program.
+
+Statically Typed
+    Languages that require the type to be defined when writing the program, and prevents the program from compiling if the type is not correct.
 
 Syntax Errors
     Errors before the program is complied or interrupted. Often errors in the formatting of the program (spacing, order, etc) or spelling of commands.

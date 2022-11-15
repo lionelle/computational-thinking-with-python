@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.6 Algorithmic Design &#8212; Computational Thinking with Python</title>
+    <title>2.7 Algorithmic Design &#8212; Computational Thinking with Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Culture Bonus: The Man, The Myth, The Legend." href="Ch2_turing_bigidea.html" />
-    <link rel="prev" title="2.5 Repetition" href="Ch2_5SimpleWhile.html" />
+    <link rel="prev" title="2.6 Repetition" href="Ch2_6SimpleWhile.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -178,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="Ch2_0Intro.html">
-   2 Algorithmic Thinking
+   2. Algorithmic Thinking
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -197,23 +197,28 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_3ConditionalStatements.html">
-     2.3 Conditional Operations
+    <a class="reference internal" href="Ch2_3Types.html">
+     2.3 Types
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_4IfElse.html">
-     2.4 if / else statements
+    <a class="reference internal" href="Ch2_4ConditionalStatements.html">
+     2.4 Conditional Operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Ch2_5SimpleWhile.html">
-     2.5 Repetition
+    <a class="reference internal" href="Ch2_5IfElse.html">
+     2.5 if / else statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Ch2_6SimpleWhile.html">
+     2.6 Repetition
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.6 Algorithmic Design
+     2.7 Algorithmic Design
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,7 +364,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter2/Ch2_6DesignWalkthrough.md"
+        <a href="https://mybinder.org/v2/gh/lionelle/computational-thinking-with-python/main?urlpath=tree/Part1/Chapter2/Ch2_7DesignWalkthrough.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -415,7 +420,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/Part1/Chapter2/Ch2_6DesignWalkthrough.ipynb"
+        <a href="../../_sources/Part1/Chapter2/Ch2_7DesignWalkthrough.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -432,7 +437,7 @@ title="Download notebook file"
       </li>
       
       <li>
-        <a href="../../_sources/Part1/Chapter2/Ch2_6DesignWalkthrough.md"
+        <a href="../../_sources/Part1/Chapter2/Ch2_7DesignWalkthrough.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -630,7 +635,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>2.6 Algorithmic Design</h1>
+                <h1>2.7 Algorithmic Design</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -781,7 +786,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="algorithmic-design">
-<h1>2.6 Algorithmic Design<a class="headerlink" href="#algorithmic-design" title="Permalink to this headline">#</a></h1>
+<h1>2.7 Algorithmic Design<a class="headerlink" href="#algorithmic-design" title="Permalink to this headline">#</a></h1>
 <p>For this design walk through, we are going to build a guessing game application. The goal is to help combine the elements for algorithmic thinking with decomposition and abstraction. We encourage you to follow along using your own <a class="reference internal" href="../citations.html#term-IDE"><span class="xref std std-term">IDE</span></a>.</p>
 <p>We will also introduce two new concepts in this section</p>
 <ul class="simple">
@@ -1048,7 +1053,7 @@ check(guess : int, correct : int) -&gt; str</div>
 <h4>Step One: Define The Function<a class="headerlink" href="#step-one-define-the-function" title="Permalink to this headline">#</a></h4>
 <p>Mostly done in the card above, though writing additional implementation notes or doing flow diagrams often happens at this stage.
 Code wise, we end up with</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="n">correct</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">correct</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="c1"># in progress</span>
 </pre></div>
 </div>
@@ -1056,23 +1061,24 @@ Code wise, we end up with</p>
 <section id="step-two-document">
 <h4>Step Two: Document<a class="headerlink" href="#step-two-document" title="Permalink to this headline">#</a></h4>
 <p>Write the <em>docstring</em> and follow the full documentation pattern defined in <a class="reference internal" href="../Chapter1/Ch1_5Functions.html"><span class="doc">1.5 Functions</span></a>. We want to make sure we include tests by way of sample input and output as part of the docstring. For this function, it could look like.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="n">correct</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">correct</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Checks to see if guess is equal to, higher or lower than correct. Returns</span>
-<span class="sd">    &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39; respectively. For example:</span>
+<span class="sd">    &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39; respectively.</span>
 
-<span class="sd">    &gt;&gt;&gt; check(10, 10)</span>
-<span class="sd">    &#39;Correct&#39;</span>
-<span class="sd">    &gt;&gt;&gt; check(3, 5)</span>
-<span class="sd">    &#39;Low&#39;</span>
-<span class="sd">    &gt;&gt;&gt; check(5, 3)</span>
-<span class="sd">    &#39;High&#39;</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; check(10, 10)</span>
+<span class="sd">        &#39;Correct&#39;</span>
+<span class="sd">        &gt;&gt;&gt; check(3, 5)</span>
+<span class="sd">        &#39;Low&#39;</span>
+<span class="sd">        &gt;&gt;&gt; check(5, 3)</span>
+<span class="sd">        &#39;High&#39;</span>
 
-<span class="sd">    :param guess: the value they are guessing</span>
-<span class="sd">    :type guess: int</span>
-<span class="sd">    :param correct: a value that is to be tested against</span>
-<span class="sd">    :type correct: int</span>
-<span class="sd">    :return: &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39;</span>
-<span class="sd">    :rtype: str</span>
+<span class="sd">    Args:</span>
+<span class="sd">        guess (int): the value they are guessing</span>
+<span class="sd">        correct (int): a value that is to be tested against</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str:  &#39;Correct&#39;, &#39;High&#39;,  or &#39;Low&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -1100,21 +1106,22 @@ flowchart TD
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">guess</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">correct</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Checks to see if guess is equal to, higher or lower than correct. Returns</span>
-<span class="sd">    &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39; respectively. For example:</span>
+<span class="sd">    &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39; respectively.</span>
 
-<span class="sd">    &gt;&gt;&gt; check(10, 10)</span>
-<span class="sd">    &#39;Correct&#39;</span>
-<span class="sd">    &gt;&gt;&gt; check(3, 5)</span>
-<span class="sd">    &#39;Low&#39;</span>
-<span class="sd">    &gt;&gt;&gt; check(5, 3)</span>
-<span class="sd">    &#39;High&#39;</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; check(10, 10)</span>
+<span class="sd">        &#39;Correct&#39;</span>
+<span class="sd">        &gt;&gt;&gt; check(3, 5)</span>
+<span class="sd">        &#39;Low&#39;</span>
+<span class="sd">        &gt;&gt;&gt; check(5, 3)</span>
+<span class="sd">        &#39;High&#39;</span>
 
-<span class="sd">    :param guess: the value they are guessing</span>
-<span class="sd">    :type guess: int</span>
-<span class="sd">    :param correct: a value that is to be tested against</span>
-<span class="sd">    :type correct: int</span>
-<span class="sd">    :return: &#39;Correct&#39;, &#39;High&#39;, &#39;Low&#39;</span>
-<span class="sd">    :rtype: str</span>
+<span class="sd">    Args:</span>
+<span class="sd">        guess (int): the value they are guessing</span>
+<span class="sd">        correct (int): a value that is to be tested against</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str:  &#39;Correct&#39;, &#39;High&#39;,  or &#39;Low&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">correct</span><span class="p">:</span>
@@ -1174,73 +1181,76 @@ TEST: check(5, 3) should return &#39;High&#39;, it returned: High
 <h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
 <p>This is one possible solution. Your wording may be different, and your structure may be slightly different. The main question, did you test and make sure your solution worked!</p>
 <div class="toggle docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_positive_int</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_positive_int</span><span class="p">(</span><span class="n">prompt</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Asks the user based on the prompt to enter a number. The</span>
 <span class="sd">    number has to be either a number greater than 0 or an &#39;x&#39;.</span>
 <span class="sd">    If &#39;x&#39; is entered, -1 is returned. Will continue to prompt if 0 or lower</span>
-<span class="sd">    numbers are entered. :Does not do any error checking if non-digits are entered.</span>
-<span class="sd">    Example execution:</span>
+<span class="sd">    numbers are entered. :Does not do any error checking if non-digits are entered.:</span>
+<span class="sd">    </span>
+<span class="sd">    Examples:</span>
+<span class="sd">        Assume client enters 10</span>
+<span class="sd">        &gt;&gt;&gt; get_positive_int(&quot;Enter the max number in your range: &quot;) # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">        Enter the max number in your range: </span>
+<span class="sd">        10</span>
 
-<span class="sd">    Assume client enters 10</span>
-<span class="sd">    &gt;&gt;&gt; get_positive_int(&quot;Enter the max number in your range: &quot;) </span>
-<span class="sd">    Enter the max number in your range: </span>
-<span class="sd">    10</span>
+<span class="sd">        Assume client enters x</span>
+<span class="sd">        &gt;&gt;&gt; get_positive_int(&quot;Enter a guess: &quot;) # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">        Enter a guess: </span>
+<span class="sd">        -1</span>
 
-<span class="sd">    Assume client enters x</span>
-<span class="sd">    &gt;&gt;&gt; get_positive_int(&quot;Enter a guess: &quot;) </span>
-<span class="sd">    Enter a guess: </span>
-<span class="sd">    -1</span>
+<span class="sd">        Assume client enters 0 followed by 2</span>
+<span class="sd">        &gt;&gt;&gt; get_positive_int(&quot;Enter a guess: &quot;) # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">        Enter a guess: </span>
+<span class="sd">        Invalid Number, try again (must be greater than 0): </span>
+<span class="sd">        2</span>
 
-<span class="sd">    Assume client enters 0 followed by 2</span>
-<span class="sd">    &gt;&gt;&gt; get_positive_int(&quot;Enter a guess: &quot;) </span>
-<span class="sd">    Enter a guess: </span>
-<span class="sd">    Invalid Number, try again (must be greater than 0): </span>
-<span class="sd">    2</span>
+<span class="sd">    Args:</span>
+<span class="sd">        prompt (str): A string to prompt the client</span>
 
-<span class="sd">    :param prompt: A string to prompt the client</span>
-<span class="sd">    :type prompt: str</span>
-<span class="sd">    :return: either a number &gt; 0, or -1 if client enters x</span>
-<span class="sd">    :rtype: int</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        int: either a number &gt; 0, or -1 if client enters x</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
     <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-    <span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># there is an optional way to do this with a method call and if check</span>
+    <span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Invalid Number, try again (must be greater than 0): &quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">num</span>
 
-<span class="k">def</span> <span class="nf">play_game</span><span class="p">(</span><span class="n">correct</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">play_game</span><span class="p">(</span><span class="n">correct</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Runs a guessing game in which the client guesses numbers greater than 0 until they guess the number. </span>
 <span class="sd">       They will be given feedback based on high, low, or correct using `check(guess, correct)`. They </span>
 <span class="sd">       can end the game early at any point returning False. </span>
+<span class="sd">    </span>
+<span class="sd">    Example:</span>
+<span class="sd">        Sample of game play. Assume the client enters 20, 5, 9, 10</span>
+<span class="sd">        &gt;&gt;&gt; play_game(10)  # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">        Guess a number: </span>
+<span class="sd">        You guessed 20, that is High.</span>
+<span class="sd">        Guess a number:</span>
+<span class="sd">        You guessed 5, that is Low.</span>
+<span class="sd">        Guess a number:</span>
+<span class="sd">        You guessed 9, that is Low.</span>
+<span class="sd">        Guess a number:</span>
+<span class="sd">        You guessed 10, that is Correct.</span>
+<span class="sd">        True</span>
 
-<span class="sd">    Sample of game play. Assume the client enters 20, 5, 9, 10</span>
-<span class="sd">    &gt;&gt;&gt; play_game(10)  </span>
-<span class="sd">    Guess a number: </span>
-<span class="sd">    You guessed 20, that is High.</span>
-<span class="sd">    Guess a number:</span>
-<span class="sd">    You guessed 5, that is Low.</span>
-<span class="sd">    Guess a number:</span>
-<span class="sd">    You guessed 9, that is Low.</span>
-<span class="sd">    Guess a number:</span>
-<span class="sd">    You guessed 10, that is Correct.</span>
-<span class="sd">    True</span>
+<span class="sd">        Sample of game play. Assume the client enters 20, x</span>
+<span class="sd">        &gt;&gt;&gt; play_game(10)  # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">        Guess a number:</span>
+<span class="sd">        You guessed 20, that is High.</span>
+<span class="sd">        Guess a number: </span>
+<span class="sd">        False</span>
 
-<span class="sd">    Sample of game play. Assume the client enters 20, x</span>
-<span class="sd">    &gt;&gt;&gt; play_game(10) </span>
-<span class="sd">    Guess a number:</span>
-<span class="sd">    You guessed 20, that is High.</span>
-<span class="sd">    Guess a number: </span>
-<span class="sd">    False</span>
+<span class="sd">    Args:</span>
+<span class="sd">        correct (int): the correct value</span>
 
-<span class="sd">    :param correct: the correct value</span>
-<span class="sd">    :type correct: int</span>
-<span class="sd">    :return: True if they found the value, False if they failed to find it.</span>
-<span class="sd">    :rtype: bool</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if they found the value, False if they failed to find it.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">while</span> <span class="n">result</span> <span class="o">!=</span> <span class="s1">&#39;Correct&#39;</span><span class="p">:</span>
@@ -1250,7 +1260,6 @@ TEST: check(5, 3) should return &#39;High&#39;, it returned: High
         <span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="n">correct</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You guessed </span><span class="si">{</span><span class="n">guess</span><span class="si">}</span><span class="s2">, that is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">True</span>
-
 </pre></div>
 </div>
 </div>
@@ -1422,11 +1431,11 @@ TEST: check(5, 3) should return &#39;High&#39;, it returned: High
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Ch2_5SimpleWhile.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Ch2_6SimpleWhile.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">2.5 Repetition</p>
+            <p class="prev-next-title">2.6 Repetition</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Ch2_turing_bigidea.html" title="next page">

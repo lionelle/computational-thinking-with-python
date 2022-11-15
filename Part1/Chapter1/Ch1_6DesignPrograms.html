@@ -176,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chapter2/Ch2_0Intro.html">
-   2 Algorithmic Thinking
+   2. Algorithmic Thinking
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -195,23 +195,28 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_3ConditionalStatements.html">
-     2.3 Conditional Operations
+    <a class="reference internal" href="../Chapter2/Ch2_3Types.html">
+     2.3 Types
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_4IfElse.html">
-     2.4 if / else statements
+    <a class="reference internal" href="../Chapter2/Ch2_4ConditionalStatements.html">
+     2.4 Conditional Operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_5SimpleWhile.html">
-     2.5 Repetition
+    <a class="reference internal" href="../Chapter2/Ch2_5IfElse.html">
+     2.5 if / else statements
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chapter2/Ch2_6DesignWalkthrough.html">
-     2.6 Algorithmic Design
+    <a class="reference internal" href="../Chapter2/Ch2_6SimpleWhile.html">
+     2.6 Repetition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Ch2_7DesignWalkthrough.html">
+     2.7 Algorithmic Design
     </a>
    </li>
    <li class="toctree-l2">
@@ -833,46 +838,56 @@ we really only have one action each. Giving us the following functions</p>
 <section id="documenting">
 <h2>Documenting<a class="headerlink" href="#documenting" title="Permalink to this headline">#</a></h2>
 <p>We are almost to writing code, in fact we can now write our method definitions and our docstring! This process is often called “stubbing” or “function stubs” your code.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_name</span><span class="p">():</span>
-   <span class="sd">&quot;&quot;&quot; Prompts the client to enter name of the individual.</span>
-<span class="sd">       For example,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_name</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+   <span class="sd">&quot;&quot;&quot;Prompts the client to enter name of the individual.</span>
+<span class="sd">   </span>
+<span class="sd">   Examples:</span>
+<span class="sd">      Client enters Ada Lovelace</span>
+<span class="sd">      &gt;&gt;&gt; get_name()   # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">      Enter a name:</span>
+<span class="sd">      &#39;Ada Lovelace&#39;</span>
 
-<span class="sd">        &gt;&gt;&gt; get_name() # client enters Ada Lovelace</span>
-<span class="sd">       Enter a name: </span>
-<span class="sd">       &#39;Ada Lovelace&#39;</span>
-<span class="sd">       &gt;&gt;&gt; get_name() # client enters Trillian Astra</span>
-<span class="sd">       Enter a name: </span>
-<span class="sd">       &#39;Trillian Astra&#39;</span>
-<span class="sd">      </span>
+<span class="sd">      Client enters Trillian Astra</span>
+<span class="sd">      &gt;&gt;&gt; get_name()   # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">      Enter a name:</span>
+<span class="sd">      &#39;Trillian Astra&#39;</span>
 
-<span class="sd">      :return: The value returned by the input</span>
-<span class="sd">      :rtype: str</span>
+<span class="sd">   Returns:</span>
+<span class="sd">       str: The value returned by the input</span>
 <span class="sd">   &quot;&quot;&quot;</span>
 
-<span class="k">def</span> <span class="nf">get_year</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
-   <span class="sd">&quot;&quot;&quot; Prompts the user with `prompt` requesting a year. For example:</span>
+<span class="k">def</span> <span class="nf">get_year</span><span class="p">(</span><span class="n">prompt</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+   <span class="sd">&quot;&quot;&quot;Prompts the user with `prompt` requesting a year. For example:</span>
 <span class="sd">       `get_year(&quot;What is the current year? &quot;)` would print to the screen</span>
 <span class="sd">       &quot;What is the current year? &quot; and wait for the client to enter</span>
 <span class="sd">       a whole number. The whole number is converted to an int. For example,</span>
-<span class="sd">      </span>
-<span class="sd">        &gt;&gt;&gt; get_year(&quot;Current Year &quot;)  # client enters &quot;2022&quot; </span>
-<span class="sd">       Current Year </span>
-<span class="sd">       2022</span>
-<span class="sd">       &gt;&gt;&gt; get_year(&quot;Current Year &quot;)  # client enters &quot;2525&quot; </span>
-<span class="sd">       Current Year </span>
-<span class="sd">       2525</span>
-<span class="sd">       &gt;&gt;&gt; get_year(&quot;Other Message &quot;) # client enters &quot;1979&quot; </span>
-<span class="sd">       Other Message </span>
-<span class="sd">       1979</span>
-<span class="sd">       &gt;&gt;&gt; get_year(&quot;Birth Year &quot;) # client enters &quot;1224&quot; </span>
-<span class="sd">       Birth Year </span>
-<span class="sd">       1224 </span>
+<span class="sd">   </span>
+<span class="sd">   Examples:</span>
+<span class="sd">      Client enter 2022</span>
+<span class="sd">      &gt;&gt;&gt; get_year(&quot;Current Year &quot;)  # doctest: +NORMALIZE_WHITESPACE  </span>
+<span class="sd">      Current Year </span>
+<span class="sd">      2022</span>
 
-<span class="sd">       :param prompt: Message to show to the user, make sure to include space at the end</span>
-<span class="sd">       :type prompt: str</span>
+<span class="sd">      Client enters 2525</span>
+<span class="sd">      &gt;&gt;&gt; get_year(&quot;Current Year &quot;)  # doctest: +NORMALIZE_WHITESPACE </span>
+<span class="sd">      Current Year </span>
+<span class="sd">      2525</span>
 
-<span class="sd">       :return: The whole number of the value entered</span>
-<span class="sd">       :rtype: int  </span>
+<span class="sd">      Client enters 1979</span>
+<span class="sd">      &gt;&gt;&gt; get_year(&quot;Other Message &quot;)  # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">      Other Message </span>
+<span class="sd">      1979</span>
+
+<span class="sd">      client enters 1224</span>
+<span class="sd">      &gt;&gt;&gt; get_year(&quot;Birth Year &quot;)  # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">      Birth Year </span>
+<span class="sd">      1224 </span>
+<span class="sd">       </span>
+<span class="sd">   Args:</span>
+<span class="sd">       prompt (str): Message to show to the user, make sure to include space at the end</span>
+
+<span class="sd">   Returns:</span>
+<span class="sd">       int: The whole number of the value entered</span>
 <span class="sd">   &quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -892,7 +907,7 @@ next line the returned value. If the returned value is a string use single quote
 <iframe
  frameBorder="0"
  height="450px"  
- src="https://onecompiler.com/embed/python/3ymmashx7?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true" 
+ src="https://onecompiler.com/embed/python/3ynymw9v6?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true" 
  width="100%"
  ></iframe>
 </section>
@@ -903,30 +918,30 @@ next line the returned value. If the returned value is a string use single quote
 we have completed in <a class="reference internal" href="Ch1_5Functions.html"><span class="doc">1.5 Functions</span></a> in the check_age example. We will start with that one. Your docstring may differ. You should feel to write the code in the programming window above or in your own <a class="reference internal" href="../citations.html#term-IDE"><span class="xref std std-term">IDE</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="n">current_year</span><span class="p">,</span> <span class="n">birth_year</span><span class="p">):</span>
-   <span class="sd">&quot;&quot;&quot; Takes the current year minus the birth year, and returns the result.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="n">current_year</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">birth_year</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+   <span class="sd">&quot;&quot;&quot;Takes the current year minus the birth year, and returns the result.</span>
 <span class="sd">       There is no error checking, it will return the value of whatever</span>
-<span class="sd">       numbers are provided. For example,</span>
-
-<span class="sd">      &gt;&gt;&gt; get_age(2022, 1980) </span>
+<span class="sd">       numbers are provided.</span>
+<span class="sd">   </span>
+<span class="sd">   Examples:</span>
+<span class="sd">      &gt;&gt;&gt; get_age(2022, 1980)</span>
 <span class="sd">      42</span>
-<span class="sd">      &gt;&gt;&gt; get_age(2525, 1979) </span>
+<span class="sd">      &gt;&gt;&gt; get_age(2525, 1979)</span>
 <span class="sd">      546</span>
-<span class="sd">      &gt;&gt;&gt; get_age(2022, 2022) </span>
+<span class="sd">      &gt;&gt;&gt; get_age(2022, 2022)</span>
 <span class="sd">      0</span>
-<span class="sd">      </span>
-<span class="sd">      It currently does not factor invalid age ranges, as the the following </span>
+
+<span class="sd">      It currently does not factor invalid age ranges, as the the following</span>
 <span class="sd">      would be valid.</span>
 <span class="sd">      &gt;&gt;&gt; get_age(2022, 2023)</span>
 <span class="sd">      -1</span>
-<span class="sd">      </span>
 
-<span class="sd">      :param current_year: the current year as a whole number</span>
-<span class="sd">      :type current_year: int</span>
-<span class="sd">      :param birth_year: the birth year as a whole number</span>
-<span class="sd">      :type birth_year: int</span>
-<span class="sd">      :return: the current_year - birth_year </span>
-<span class="sd">      :rtype: int</span>
+<span class="sd">   Args:</span>
+<span class="sd">       current_year (int): the current year as a whole number</span>
+<span class="sd">       birth_year (int): the birth year as a whole number</span>
+
+<span class="sd">   Returns:</span>
+<span class="sd">       int: the current_year - birth_year</span>
 <span class="sd">   &quot;&quot;&quot;</span>
    <span class="k">return</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">birth_year</span>
 </pre></div>
@@ -1025,7 +1040,7 @@ tests at the bottom of the file after each function.</p>
 <p>You will notice a few things about the  main() function. This function doesn’t do any real work. Instead, it is calling other functions, and simply storing the returned result. Each function it calls is a very isolated task, that by itself may not make sense, but when put together in the main() we have a working program.</p>
 <p>Often times, you will multiple glue methods in your program, and it all depends on how many layers of decomposition was needed in the design. Each layer is often a point in which we need to bring concepts together.</p>
 <blockquote>
-<div><p>View the <a class="reference external" href="https://pythontutor.com/render.html#code=def%20get_name%28%29%3A%0A%20%20%20%20%22%22%22%20Prompts%20the%20client%20to%20enter%20name%20of%20the%20individual.%0A%20%20%20%20%20%20%20For%20example,%0A%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%23%20client%20enters%20Ada%20Lovelace%0A%20%20%20%20%20%20%20Enter%20a%20name%3A%20%0A%20%20%20%20%20%20%20%27Ada%20Lovelace%27%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%23%20client%20enters%20Trillian%20Astra%0A%20%20%20%20%20%20%20Enter%20a%20name%3A%20%0A%20%20%20%20%20%20%20%27Trillian%20Astra%27%0A%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%3Areturn%3A%20The%20value%20returned%20by%20the%20input%0A%20%20%20%20%20%20%3Artype%3A%20str%0A%20%20%20%20%22%22%22%0A%20%20%20%20return%20input%28%22Enter%20a%20name%3A%20%22%29%0A%0A%0Adef%20get_year%28prompt%29%3A%0A%20%20%20%22%22%22%20Prompts%20the%20user%20with%20%60prompt%60%20requesting%20a%20year.%20For%20example%3A%0A%20%20%20%20%20%20%20%60get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%60%20would%20print%20to%20the%20screen%0A%20%20%20%20%20%20%20%22What%20is%20the%20current%20year%3F%20%22%20and%20wait%20for%20the%20client%20to%20enter%0A%20%20%20%20%20%20%20a%20whole%20number.%20The%20whole%20number%20is%20converted%20to%20an%20int.%20For%20example,%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20client%20enters%20%222022%22%20%0A%20%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%20%202022%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20client%20enters%20%222525%22%20%0A%20%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%20%202525%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Other%20Message%20%22%29%20%23%20client%20enters%20%221979%22%20%0A%20%20%20%20%20%20%20Other%20Message%20%0A%20%20%20%20%20%20%201979%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Birth%20Year%20%22%29%20%23%20client%20enters%20%221224%22%20%0A%20%20%20%20%20%20%20Birth%20Year%20%0A%20%20%20%20%20%20%201224%20%0A%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%20%3Aparam%20prompt%3A%20Message%20to%20show%20to%20the%20user,%20make%20sure%20to%20include%20space%20at%20the%20end%0A%20%20%20%20%20%20%20%3Atype%20prompt%3A%20str%0A%0A%20%20%20%20%20%20%20%3Areturn%3A%20The%20whole%20number%20of%20the%20value%20entered%0A%20%20%20%20%20%20%20%3Artype%3A%20int%20%20%0A%20%20%20%22%22%22%0A%20%20%20return%20int%28input%28prompt%29%29%20%0A%0A%0Adef%20get_age%28current_year,%20birth_year%29%3A%0A%20%20%20%22%22%22%20Takes%20the%20current%20year%20minus%20the%20birth%20year,%20and%20returns%20the%20result.%0A%20%20%20%20%20%20%20There%20is%20no%20error%20checking,%20it%20will%20return%20the%20value%20of%20whatever%0A%20%20%20%20%20%20%20numbers%20are%20provided.%20For%20example,%0A%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%201980%29%20%0A%20%20%20%20%20%2042%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282525,%201979%29%20%0A%20%20%20%20%20%20546%0A%20%20%20%20%20%0A%20%20%20%20%20%20It%20currently%20does%20not%20factor%20invalid%20age%20ranges%20%0A%20%20%20%20%20%20would%20be%20valid.%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%202023%29%0A%20%20%20%20%20%20-1%0A%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%3Aparam%20current_year%3A%20the%20current%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%3Atype%20current_year%3A%20int%0A%20%20%20%20%20%20%3Aparam%20birth_year%3A%20the%20birth%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%3Atype%20birth_year%3A%20int%0A%20%20%20%20%20%20%3Areturn%3A%20the%20current_year%20-%20birth_year%20%0A%20%20%20%20%20%20%3Artype%3A%20int%0A%20%20%20%22%22%22%0A%20%20%20return%20current_year%20-%20birth_year%0A%0A%0Adef%20print_results%28name,%20age%29%3A%0A%20%20%20%22%22%22%20Prints%20to%20the%20screen%20%7Bname%7D%20is%20%7Bage%7D%20based%20on%20parameters.%20For%20example%3A%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28%27Ada%20Lovelace%27,%2022%29%20%0A%20%20%20%20%20%20Ada%20Lovelace%20is%2022.%20%20%20%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28%27Trillian%20Astra%27,%2042%29%20%0A%20%20%20%20%20%20Trillian%20Astra%20is%2042.%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Aparam%20name%3A%20the%20name%20of%20the%20person%0A%20%20%20%20%20%20%3Atype%20name%3A%20str%0A%20%20%20%20%20%20%3Aparam%20age%3A%20the%20age%20of%20the%20person%0A%20%20%20%20%20%20%3Atype%20age%3A%20int%0A%20%20%20%22%22%22%0A%20%20%20print%28f%22%7Bname%7D%20is%20%7Bage%7D.%22%29%0A%0A%0Adef%20main%28%29%3A%20%20%23%20this%20is%20the%20common%20name%20for%20the%20starting%20point%20of%20a%20program%21%0A%20%20%20%22%22%22%20A%20simple%20program%20that%20asks%20a%20client%20for%20a%20name,%20a%20current%20year,%0A%20%20%20%20%20%20%20and%20the%20birth%20year%20of%20an%20individual.%20Will%20print%20out%0A%20%20%20%20%20%20%20%7Bname%7D%20is%20%7Bage%7D.%0A%20%20%20%22%22%22%0A%20%20%20name%20%3D%20get_name%28%29%0A%20%20%20current_year%20%3D%20get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%0A%20%20%20birth_year%20%3D%20get_year%28%22What%20is%20the%20birth%20year%3F%20%22%29%0A%20%20%20age%20%3D%20get_age%28current_year,%20birth_year%29%0A%20%20%20print_results%28name,%20age%29%0A%0A%0Amain%28%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">final solution with code tracing</a>.</p>
+<div><p>View the <a class="reference external" href="https://pythontutor.com/render.html#code=def%20get_name%28%29%20-%3E%20str%3A%0A%20%20%20%22%22%22Prompts%20the%20client%20to%20enter%20name%20of%20the%20individual.%0A%20%20%20%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20Client%20enters%20Ada%20Lovelace%0A%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Enter%20a%20name%3A%0A%20%20%20%20%20%20%27Ada%20Lovelace%27%0A%0A%20%20%20%20%20%20Client%20enters%20Trillian%20Astra%0A%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Enter%20a%20name%3A%0A%20%20%20%20%20%20%27Trillian%20Astra%27%0A%0A%20%20%20Returns%3A%0A%20%20%20%20%20%20%20str%3A%20The%20value%20returned%20by%20the%20input%0A%20%20%20%22%22%22%0A%20%20%20return%20input%28%22Enter%20a%20name%3A%20%22%29%0A%0A%0Adef%20get_year%28prompt%20%3A%20str%29%20-%3E%20int%3A%0A%20%20%20%22%22%22Prompts%20the%20user%20with%20%60prompt%60%20requesting%20a%20year.%20For%20example%3A%0A%20%20%20%20%20%20%20%60get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%60%20would%20print%20to%20the%20screen%0A%20%20%20%20%20%20%20%22What%20is%20the%20current%20year%3F%20%22%20and%20wait%20for%20the%20client%20to%20enter%0A%20%20%20%20%20%20%20a%20whole%20number.%20The%20whole%20number%20is%20converted%20to%20an%20int.%20For%20example,%0A%20%20%20%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20Client%20enter%202022%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%20%20%0A%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%202022%0A%0A%20%20%20%20%20%20Client%20enters%202525%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%20%0A%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%202525%0A%0A%20%20%20%20%20%20Client%20enters%201979%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Other%20Message%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Other%20Message%20%0A%20%20%20%20%20%201979%0A%0A%20%20%20%20%20%20client%20enters%201224%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Birth%20Year%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Birth%20Year%20%0A%20%20%20%20%20%201224%20%0A%20%20%20%20%20%20%20%0A%20%20%20Args%3A%0A%20%20%20%20%20%20%20prompt%20%28str%29%3A%20Message%20to%20show%20to%20the%20user,%20make%20sure%20to%20include%20space%20at%20the%20end%0A%0A%20%20%20Returns%3A%0A%20%20%20%20%20%20%20int%3A%20The%20whole%20number%20of%20the%20value%20entered%0A%20%20%20%22%22%22%0A%20%20%20return%20int%28input%28prompt%29%29%20%0A%0A%0Adef%20get_age%28current_year%20%3A%20int,%20birth_year%20%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%22%22%22Takes%20the%20current%20year%20minus%20the%20birth%20year,%20and%20returns%20the%20result.%0A%20%20%20%20%20%20%20There%20is%20no%20error%20checking,%20it%20will%20return%20the%20value%20of%20whatever%0A%20%20%20%20%20%20%20numbers%20are%20provided.%0A%20%20%20%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%201980%29%0A%20%20%20%20%20%2042%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282525,%201979%29%0A%20%20%20%20%20%20546%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%202022%29%0A%20%20%20%20%20%200%0A%0A%20%20%20Args%3A%0A%20%20%20%20%20%20%20current_year%20%28int%29%3A%20the%20current%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%20birth_year%20%28int%29%3A%20the%20birth%20year%20as%20a%20whole%20number%0A%0A%20%20%20Returns%3A%0A%20%20%20%20%20%20%20int%3A%20the%20current_year%20-%20birth_year%0A%20%20%20%22%22%22%0A%20%20%20return%20current_year%20-%20birth_year%0A%0Adef%20print_results%28name%20%3A%20str,%20age%20%3A%20int%29%20-%3E%20None%3A%0A%20%20%20%22%22%22Prints%20to%20the%20screen%20%7Bname%7D%20is%20%7Bage%7D%20based%20on%20parameters.%0A%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28%27Ada%20Lovelace%27,%2022%29%0A%20%20%20%20%20%20Ada%20Lovelace%20is%2022.%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28%27Trillian%20Astra%27,%2042%29%0A%20%20%20%20%20%20Trillian%20Astra%20is%2042.%0A%0A%20%20%20Args%3A%0A%20%20%20%20%20%20%20name%20%28str%29%3A%20the%20name%20of%20the%20person%0A%20%20%20%20%20%20%20age%20%28int%29%3A%20the%20age%20of%20the%20person%0A%20%20%20%22%22%22%0A%20%20%20print%28f%22%7Bname%7D%20is%20%7Bage%7D.%22%29%0A%0Adef%20main%28%29%3A%20%20%23%20this%20is%20the%20common%20name%20for%20the%20starting%20point%20of%20a%20program%21%0A%20%20%20%22%22%22%20A%20simple%20program%20that%20asks%20a%20client%20for%20a%20name,%20a%20current%20year,%0A%20%20%20%20%20%20%20and%20the%20birth%20year%20of%20an%20individual.%20Will%20print%20out%0A%20%20%20%20%20%20%20%7Bname%7D%20is%20%7Bage%7D.%0A%20%20%20%22%22%22%0A%20%20%20name%20%3D%20get_name%28%29%0A%20%20%20current_year%20%3D%20get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%0A%20%20%20birth_year%20%3D%20get_year%28%22What%20is%20the%20birth%20year%3F%20%22%29%0A%20%20%20age%20%3D%20get_age%28current_year,%20birth_year%29%0A%20%20%20print_results%28name,%20age%29%0A%20%20%20%0A%20%20%20%0Amain%28%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">final solution with code tracing</a>.</p>
 </div></blockquote>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>

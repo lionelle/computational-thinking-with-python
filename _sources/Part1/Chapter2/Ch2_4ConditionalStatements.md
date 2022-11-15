@@ -13,33 +13,11 @@ kernelspec:
   name: python3
 ---
 
-# 2.3 Conditional Operations
+# 2.4 Conditional Operations
 
 In this section we will expand the number of our operations. In the past, we talked about typical math operations of `+`, `-`, `*`, `/` and `=` . Now we will look at expanding those options to include conditional statements. These statements generate True or False for the answer, also known as boolean values.
 
-
-## Boolean Values
-In python `True` and `False` is called a boolean value. Boolean meaning there are two options for the value, and they map directly to the idea that 1 is "on" or True, and 0 is "off" or False. You type them directly, and **case** matters! So true isn't the same as True.
-
-```{code-cell}
-like_cats = True
-print(like_cats)
-```
-
-Notice in the example, that we store True in the variable `like_cats`. True is typed as is without any quotes.
-
-We can also manually create a boolean value using the `bool()` function. 
-
-```{code-cell}
-like_cats = bool("True")
-like_dogs = bool(1)
-
-print(f"Do I like dogs? {like_dogs}, but do I also like cats? {like_cats}")
-```
-
-In practice, `bool()` rarely gets used. Instead, True/False is typed, or conditional operations used!
-
-## Conditional Operations
+## Conditions
 
 Python programmers can use the mathematical conditional operators directly in code. These conditions are requirements of making choices and branches in code, which makes them fundamental operations. The example operations with code are as follows.
 

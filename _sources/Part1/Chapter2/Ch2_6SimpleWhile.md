@@ -12,7 +12,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# 2.5 Repetition 
+# 2.6 Repetition 
 
 Since we can group code into blocks, like functions, and then we can conditionally code, we can look at how to cause blocks of code to repeat themselves. 
 
@@ -22,7 +22,7 @@ Since we can group code into blocks, like functions, and then we can conditional
 Let's say we want a menu to show until a client asks us to type 'x'. We could write such a menu as follows:
 
 ```python
-def do_something(value):
+def do_something(value : str):
     print(f"Hey, you entered: {value}" )
 
 def menu():
@@ -72,7 +72,7 @@ flowchart TD
 This tells us, that when it is true, we need to invoke both `do_something(val)` and then jump back to asking for input. To do this, we use a `while` loop.
 
 ```python
-def do_something(value):
+def do_something(value : str):
     print(f"Hey, you entered: {value}" )
 
 def menu():
@@ -101,7 +101,7 @@ You can also [run it yourself](https://pythontutor.com/render.html#code=def%20do
 In practice you, you do not need the `else` statement for most loops, as that code gets run when the loop is done. As such, the above can be rewritten as the following.
 
 ```python
-def do_something(value):
+def do_something(value : str):
     print(f"Hey, you entered: {value}" )
 
 def menu():

@@ -143,46 +143,56 @@ we really only have one action each. Giving us the following functions
 We are almost to writing code, in fact we can now write our method definitions and our docstring! This process is often called "stubbing" or "function stubs" your code. 
 
 ```{code-block}
-def get_name():
-   """ Prompts the client to enter name of the individual.
-       For example,
+def get_name() -> str:
+   """Prompts the client to enter name of the individual.
+   
+   Examples:
+      Client enters Ada Lovelace
+      >>> get_name()   # doctest: +NORMALIZE_WHITESPACE
+      Enter a name:
+      'Ada Lovelace'
 
-        >>> get_name() # client enters Ada Lovelace
-       Enter a name: 
-       'Ada Lovelace'
-       >>> get_name() # client enters Trillian Astra
-       Enter a name: 
-       'Trillian Astra'
-      
+      Client enters Trillian Astra
+      >>> get_name()   # doctest: +NORMALIZE_WHITESPACE
+      Enter a name:
+      'Trillian Astra'
 
-      :return: The value returned by the input
-      :rtype: str
+   Returns:
+       str: The value returned by the input
    """
 
-def get_year(prompt):
-   """ Prompts the user with `prompt` requesting a year. For example:
+def get_year(prompt : str) -> int:
+   """Prompts the user with `prompt` requesting a year. For example:
        `get_year("What is the current year? ")` would print to the screen
        "What is the current year? " and wait for the client to enter
        a whole number. The whole number is converted to an int. For example,
-      
-        >>> get_year("Current Year ")  # client enters "2022" 
-       Current Year 
-       2022
-       >>> get_year("Current Year ")  # client enters "2525" 
-       Current Year 
-       2525
-       >>> get_year("Other Message ") # client enters "1979" 
-       Other Message 
-       1979
-       >>> get_year("Birth Year ") # client enters "1224" 
-       Birth Year 
-       1224 
+   
+   Examples:
+      Client enter 2022
+      >>> get_year("Current Year ")  # doctest: +NORMALIZE_WHITESPACE  
+      Current Year 
+      2022
 
-       :param prompt: Message to show to the user, make sure to include space at the end
-       :type prompt: str
+      Client enters 2525
+      >>> get_year("Current Year ")  # doctest: +NORMALIZE_WHITESPACE 
+      Current Year 
+      2525
 
-       :return: The whole number of the value entered
-       :rtype: int  
+      Client enters 1979
+      >>> get_year("Other Message ")  # doctest: +NORMALIZE_WHITESPACE
+      Other Message 
+      1979
+
+      client enters 1224
+      >>> get_year("Birth Year ")  # doctest: +NORMALIZE_WHITESPACE
+      Birth Year 
+      1224 
+       
+   Args:
+       prompt (str): Message to show to the user, make sure to include space at the end
+
+   Returns:
+       int: The whole number of the value entered
    """
 ```
 ### Practice
@@ -204,7 +214,7 @@ While we are writing the tests ourselves for now, this type of format is common 
 <iframe
  frameBorder="0"
  height="450px"  
- src="https://onecompiler.com/embed/python/3ymmashx7?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true" 
+ src="https://onecompiler.com/embed/python/3ynymw9v6?hideLanguageSelection=true&hideNewFileOption=true&hideTitle=true&hideNew=true" 
  width="100%"
  ></iframe>
 
@@ -214,33 +224,32 @@ You now broken up your clients request into smaller parts, clearly defined what 
 we have completed in {doc}`Ch1_5Functions` in the check_age example. We will start with that one. Your docstring may differ. You should feel to write the code in the programming window above or in your own {term}`IDE`. 
 
 ```{code-cell}
-def get_age(current_year, birth_year):
-   """ Takes the current year minus the birth year, and returns the result.
+def get_age(current_year : int, birth_year : int) -> int:
+   """Takes the current year minus the birth year, and returns the result.
        There is no error checking, it will return the value of whatever
-       numbers are provided. For example,
-
-      >>> get_age(2022, 1980) 
+       numbers are provided.
+   
+   Examples:
+      >>> get_age(2022, 1980)
       42
-      >>> get_age(2525, 1979) 
+      >>> get_age(2525, 1979)
       546
-      >>> get_age(2022, 2022) 
+      >>> get_age(2022, 2022)
       0
-      
-      It currently does not factor invalid age ranges, as the the following 
+
+      It currently does not factor invalid age ranges, as the the following
       would be valid.
       >>> get_age(2022, 2023)
       -1
-      
 
-      :param current_year: the current year as a whole number
-      :type current_year: int
-      :param birth_year: the birth year as a whole number
-      :type birth_year: int
-      :return: the current_year - birth_year 
-      :rtype: int
+   Args:
+       current_year (int): the current year as a whole number
+       birth_year (int): the birth year as a whole number
+
+   Returns:
+       int: the current_year - birth_year
    """
    return current_year - birth_year
-
 ```
 
 ## Validate Code
@@ -330,7 +339,7 @@ You will notice a few things about the  main() function. This function doesn't d
 
 Often times, you will multiple glue methods in your program, and it all depends on how many layers of decomposition was needed in the design. Each layer is often a point in which we need to bring concepts together. 
 
-> View the [final solution with code tracing](https://pythontutor.com/render.html#code=def%20get_name%28%29%3A%0A%20%20%20%20%22%22%22%20Prompts%20the%20client%20to%20enter%20name%20of%20the%20individual.%0A%20%20%20%20%20%20%20For%20example,%0A%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%23%20client%20enters%20Ada%20Lovelace%0A%20%20%20%20%20%20%20Enter%20a%20name%3A%20%0A%20%20%20%20%20%20%20'Ada%20Lovelace'%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%23%20client%20enters%20Trillian%20Astra%0A%20%20%20%20%20%20%20Enter%20a%20name%3A%20%0A%20%20%20%20%20%20%20'Trillian%20Astra'%0A%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%3Areturn%3A%20The%20value%20returned%20by%20the%20input%0A%20%20%20%20%20%20%3Artype%3A%20str%0A%20%20%20%20%22%22%22%0A%20%20%20%20return%20input%28%22Enter%20a%20name%3A%20%22%29%0A%0A%0Adef%20get_year%28prompt%29%3A%0A%20%20%20%22%22%22%20Prompts%20the%20user%20with%20%60prompt%60%20requesting%20a%20year.%20For%20example%3A%0A%20%20%20%20%20%20%20%60get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%60%20would%20print%20to%20the%20screen%0A%20%20%20%20%20%20%20%22What%20is%20the%20current%20year%3F%20%22%20and%20wait%20for%20the%20client%20to%20enter%0A%20%20%20%20%20%20%20a%20whole%20number.%20The%20whole%20number%20is%20converted%20to%20an%20int.%20For%20example,%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20client%20enters%20%222022%22%20%0A%20%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%20%202022%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20client%20enters%20%222525%22%20%0A%20%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%20%202525%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Other%20Message%20%22%29%20%23%20client%20enters%20%221979%22%20%0A%20%20%20%20%20%20%20Other%20Message%20%0A%20%20%20%20%20%20%201979%0A%20%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Birth%20Year%20%22%29%20%23%20client%20enters%20%221224%22%20%0A%20%20%20%20%20%20%20Birth%20Year%20%0A%20%20%20%20%20%20%201224%20%0A%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%20%3Aparam%20prompt%3A%20Message%20to%20show%20to%20the%20user,%20make%20sure%20to%20include%20space%20at%20the%20end%0A%20%20%20%20%20%20%20%3Atype%20prompt%3A%20str%0A%0A%20%20%20%20%20%20%20%3Areturn%3A%20The%20whole%20number%20of%20the%20value%20entered%0A%20%20%20%20%20%20%20%3Artype%3A%20int%20%20%0A%20%20%20%22%22%22%0A%20%20%20return%20int%28input%28prompt%29%29%20%0A%0A%0Adef%20get_age%28current_year,%20birth_year%29%3A%0A%20%20%20%22%22%22%20Takes%20the%20current%20year%20minus%20the%20birth%20year,%20and%20returns%20the%20result.%0A%20%20%20%20%20%20%20There%20is%20no%20error%20checking,%20it%20will%20return%20the%20value%20of%20whatever%0A%20%20%20%20%20%20%20numbers%20are%20provided.%20For%20example,%0A%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%201980%29%20%0A%20%20%20%20%20%2042%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282525,%201979%29%20%0A%20%20%20%20%20%20546%0A%20%20%20%20%20%0A%20%20%20%20%20%20It%20currently%20does%20not%20factor%20invalid%20age%20ranges%20%0A%20%20%20%20%20%20would%20be%20valid.%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%202023%29%0A%20%20%20%20%20%20-1%0A%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%3Aparam%20current_year%3A%20the%20current%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%3Atype%20current_year%3A%20int%0A%20%20%20%20%20%20%3Aparam%20birth_year%3A%20the%20birth%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%3Atype%20birth_year%3A%20int%0A%20%20%20%20%20%20%3Areturn%3A%20the%20current_year%20-%20birth_year%20%0A%20%20%20%20%20%20%3Artype%3A%20int%0A%20%20%20%22%22%22%0A%20%20%20return%20current_year%20-%20birth_year%0A%0A%0Adef%20print_results%28name,%20age%29%3A%0A%20%20%20%22%22%22%20Prints%20to%20the%20screen%20%7Bname%7D%20is%20%7Bage%7D%20based%20on%20parameters.%20For%20example%3A%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28'Ada%20Lovelace',%2022%29%20%0A%20%20%20%20%20%20Ada%20Lovelace%20is%2022.%20%20%20%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28'Trillian%20Astra',%2042%29%20%0A%20%20%20%20%20%20Trillian%20Astra%20is%2042.%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Aparam%20name%3A%20the%20name%20of%20the%20person%0A%20%20%20%20%20%20%3Atype%20name%3A%20str%0A%20%20%20%20%20%20%3Aparam%20age%3A%20the%20age%20of%20the%20person%0A%20%20%20%20%20%20%3Atype%20age%3A%20int%0A%20%20%20%22%22%22%0A%20%20%20print%28f%22%7Bname%7D%20is%20%7Bage%7D.%22%29%0A%0A%0Adef%20main%28%29%3A%20%20%23%20this%20is%20the%20common%20name%20for%20the%20starting%20point%20of%20a%20program!%0A%20%20%20%22%22%22%20A%20simple%20program%20that%20asks%20a%20client%20for%20a%20name,%20a%20current%20year,%0A%20%20%20%20%20%20%20and%20the%20birth%20year%20of%20an%20individual.%20Will%20print%20out%0A%20%20%20%20%20%20%20%7Bname%7D%20is%20%7Bage%7D.%0A%20%20%20%22%22%22%0A%20%20%20name%20%3D%20get_name%28%29%0A%20%20%20current_year%20%3D%20get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%0A%20%20%20birth_year%20%3D%20get_year%28%22What%20is%20the%20birth%20year%3F%20%22%29%0A%20%20%20age%20%3D%20get_age%28current_year,%20birth_year%29%0A%20%20%20print_results%28name,%20age%29%0A%0A%0Amain%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false).
+> View the [final solution with code tracing](https://pythontutor.com/render.html#code=def%20get_name%28%29%20-%3E%20str%3A%0A%20%20%20%22%22%22Prompts%20the%20client%20to%20enter%20name%20of%20the%20individual.%0A%20%20%20%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20Client%20enters%20Ada%20Lovelace%0A%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Enter%20a%20name%3A%0A%20%20%20%20%20%20'Ada%20Lovelace'%0A%0A%20%20%20%20%20%20Client%20enters%20Trillian%20Astra%0A%20%20%20%20%20%20%3E%3E%3E%20get_name%28%29%20%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Enter%20a%20name%3A%0A%20%20%20%20%20%20'Trillian%20Astra'%0A%0A%20%20%20Returns%3A%0A%20%20%20%20%20%20%20str%3A%20The%20value%20returned%20by%20the%20input%0A%20%20%20%22%22%22%0A%20%20%20return%20input%28%22Enter%20a%20name%3A%20%22%29%0A%0A%0Adef%20get_year%28prompt%20%3A%20str%29%20-%3E%20int%3A%0A%20%20%20%22%22%22Prompts%20the%20user%20with%20%60prompt%60%20requesting%20a%20year.%20For%20example%3A%0A%20%20%20%20%20%20%20%60get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%60%20would%20print%20to%20the%20screen%0A%20%20%20%20%20%20%20%22What%20is%20the%20current%20year%3F%20%22%20and%20wait%20for%20the%20client%20to%20enter%0A%20%20%20%20%20%20%20a%20whole%20number.%20The%20whole%20number%20is%20converted%20to%20an%20int.%20For%20example,%0A%20%20%20%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20Client%20enter%202022%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%20%20%0A%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%202022%0A%0A%20%20%20%20%20%20Client%20enters%202525%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Current%20Year%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%20%0A%20%20%20%20%20%20Current%20Year%20%0A%20%20%20%20%20%202525%0A%0A%20%20%20%20%20%20Client%20enters%201979%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Other%20Message%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Other%20Message%20%0A%20%20%20%20%20%201979%0A%0A%20%20%20%20%20%20client%20enters%201224%0A%20%20%20%20%20%20%3E%3E%3E%20get_year%28%22Birth%20Year%20%22%29%20%20%23%20doctest%3A%20%2BNORMALIZE_WHITESPACE%0A%20%20%20%20%20%20Birth%20Year%20%0A%20%20%20%20%20%201224%20%0A%20%20%20%20%20%20%20%0A%20%20%20Args%3A%0A%20%20%20%20%20%20%20prompt%20%28str%29%3A%20Message%20to%20show%20to%20the%20user,%20make%20sure%20to%20include%20space%20at%20the%20end%0A%0A%20%20%20Returns%3A%0A%20%20%20%20%20%20%20int%3A%20The%20whole%20number%20of%20the%20value%20entered%0A%20%20%20%22%22%22%0A%20%20%20return%20int%28input%28prompt%29%29%20%0A%0A%0Adef%20get_age%28current_year%20%3A%20int,%20birth_year%20%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%22%22%22Takes%20the%20current%20year%20minus%20the%20birth%20year,%20and%20returns%20the%20result.%0A%20%20%20%20%20%20%20There%20is%20no%20error%20checking,%20it%20will%20return%20the%20value%20of%20whatever%0A%20%20%20%20%20%20%20numbers%20are%20provided.%0A%20%20%20%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%201980%29%0A%20%20%20%20%20%2042%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282525,%201979%29%0A%20%20%20%20%20%20546%0A%20%20%20%20%20%20%3E%3E%3E%20get_age%282022,%202022%29%0A%20%20%20%20%20%200%0A%0A%20%20%20Args%3A%0A%20%20%20%20%20%20%20current_year%20%28int%29%3A%20the%20current%20year%20as%20a%20whole%20number%0A%20%20%20%20%20%20%20birth_year%20%28int%29%3A%20the%20birth%20year%20as%20a%20whole%20number%0A%0A%20%20%20Returns%3A%0A%20%20%20%20%20%20%20int%3A%20the%20current_year%20-%20birth_year%0A%20%20%20%22%22%22%0A%20%20%20return%20current_year%20-%20birth_year%0A%0Adef%20print_results%28name%20%3A%20str,%20age%20%3A%20int%29%20-%3E%20None%3A%0A%20%20%20%22%22%22Prints%20to%20the%20screen%20%7Bname%7D%20is%20%7Bage%7D%20based%20on%20parameters.%0A%0A%20%20%20Examples%3A%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28'Ada%20Lovelace',%2022%29%0A%20%20%20%20%20%20Ada%20Lovelace%20is%2022.%0A%20%20%20%20%20%20%3E%3E%3E%20print_results%28'Trillian%20Astra',%2042%29%0A%20%20%20%20%20%20Trillian%20Astra%20is%2042.%0A%0A%20%20%20Args%3A%0A%20%20%20%20%20%20%20name%20%28str%29%3A%20the%20name%20of%20the%20person%0A%20%20%20%20%20%20%20age%20%28int%29%3A%20the%20age%20of%20the%20person%0A%20%20%20%22%22%22%0A%20%20%20print%28f%22%7Bname%7D%20is%20%7Bage%7D.%22%29%0A%0Adef%20main%28%29%3A%20%20%23%20this%20is%20the%20common%20name%20for%20the%20starting%20point%20of%20a%20program!%0A%20%20%20%22%22%22%20A%20simple%20program%20that%20asks%20a%20client%20for%20a%20name,%20a%20current%20year,%0A%20%20%20%20%20%20%20and%20the%20birth%20year%20of%20an%20individual.%20Will%20print%20out%0A%20%20%20%20%20%20%20%7Bname%7D%20is%20%7Bage%7D.%0A%20%20%20%22%22%22%0A%20%20%20name%20%3D%20get_name%28%29%0A%20%20%20current_year%20%3D%20get_year%28%22What%20is%20the%20current%20year%3F%20%22%29%0A%20%20%20birth_year%20%3D%20get_year%28%22What%20is%20the%20birth%20year%3F%20%22%29%0A%20%20%20age%20%3D%20get_age%28current_year,%20birth_year%29%0A%20%20%20print_results%28name,%20age%29%0A%20%20%20%0A%20%20%20%0Amain%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false).
 
 
 ````{margin}

@@ -1,4 +1,4 @@
-# 2 Algorithmic Thinking
+# 2. Algorithmic Thinking
 
 When we first took algebra, math teachers said we were solving algorithms which of course causes to associate the term with algebra. The same is true with formulas. We were often given something like the following:
 

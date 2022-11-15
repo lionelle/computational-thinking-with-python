@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# 2.4 if / else statements
+# 2.5 if / else statements
 
 With programming, it is very common to only have code that runs **conditionally** meaning if a statement is true, we run that block of code. We do that in life pretty regularity. If something is true, we do it. If it isn't true (or false), we don't do it. Are we hungry? True or False, if True, we eat, if False we don't eat. In programming, we have commands built into the language - `if` being the command.
 
@@ -80,22 +80,25 @@ HINT: You can have (and need) three seperate `if` statements.
 
 #### Solution
 
-```{toggle}
+````{toggle}
 ```python
-def check_guess(value):
-    """
-    Informs the client if their value is greater than, less than, or
-    equal to 3. Returns the string value based on Correct, Low, or High
-        
-    >>> check_guess(3)
-    'Correct'
-    >>> check_guess(2)
-    'Low'
-    >>> check_guess(4)
-    'High'
+def check_guess(value : int) -> str:
+    """Informs the client if their value is greater than, less than, or
+        equal to 3. Returns the string value based on Correct, Low, or High
+    
+    Examples:
+        >>> check_guess(3)
+        'Correct'
+        >>> check_guess(2)
+        'Low'
+        >>> check_guess(4)
+        'High'
 
-    :param value: The value to be guessed, already assumed to be an int
-    :param type: int
+    Args:
+        value (int): The value to be guessed, already assumed to be an int
+
+    Returns:
+        str: The values Correct, High or Low 
     """
     response = ""
     if value == 3:
@@ -108,33 +111,34 @@ def check_guess(value):
 
 def get_guess():
     """Gets a number from the client. Does not currently handle error checking.
+    
+    Examples:
+        Client enters 2
+        >>> get_guess()  # doctest: +NORMALIZE_WHITESPACE
+        Guess a whole number:
+        2
+        
+        Client enters 3
+        >>> get_guess()  # doctest: +NORMALIZE_WHITESPACE
+        Guess a whole number:
+        3
 
-    >>> get_guess()  # client enters 2
-    Guess a whole number:
-    2
-    >>> get_guess()  # client enters 3
-    Guess a whole number:
-    3
-
-    :return: a whole number value for their guess
-    :rtype: int
+    Returns:
+        int: a whole number value for their guess
     """
     guess_str = input("Guess a whole number: ")
     return int(guess_str)
 
-def main():
-    """ Main driver of the program. Simply asks the client to guess a number, 
-    and says if it is higher or lower than 3."""
-    guess = get_guess()
-    answer = check_guess(guess)
-    print(answer)
-
-
 main() # run it!
 ```
-Your solution may have different comment, especially on the built in tests. If you didn't include them, you should get into the 
-practice of including the full docstrings. 
+Your solution may have different comment, especially on the built in tests. **If you didn't include them, you should get into the 
+practice of including the full docstrings. **
 
+```{note}
+What is this `# doctest: +NORMALIZE_WHITESPACE` in the docstring? This is commonly used when dealing with client input. It allows
+the test to show up on multiple lines without it erroring.
+```
+````
 
 ##### Solution Flowchart for check_guess(value)
 ````{toggle}
