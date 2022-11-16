@@ -1,1 +1,1 @@
-# 3.4 Strings are Sequential 
+# 3.6 Strings are Sequential 
