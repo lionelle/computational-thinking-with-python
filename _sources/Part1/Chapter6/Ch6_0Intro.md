@@ -1,1 +1,1 @@
-# 6. Leveraging Functions
+# 6. Abstractions
